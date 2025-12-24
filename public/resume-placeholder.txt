@@ -1,0 +1,6 @@
+# CV - Edmil Jampier Saire Bustamante
+
+Este archivo debe ser reemplazado con tu CV en formato PDF.
+
+Puedes colocar tu CV aquí:
+`public/resume.pdf`

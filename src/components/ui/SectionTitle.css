@@ -1,0 +1,31 @@
+.section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.section-title-main {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-title-subtitle {
+  font-size: var(--text-body-lg);
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-md);
+}
+
+.section-title-divider {
+  width: 60px;
+  height: 3px;
+  background-color: var(--neutral-900);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    margin-bottom: var(--spacing-2xl);
+  }
+}
