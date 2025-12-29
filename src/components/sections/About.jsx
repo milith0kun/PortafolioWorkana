@@ -4,6 +4,7 @@ import { User, Rocket, Mail, MapPin, GraduationCap, Github, Linkedin } from 'luc
 import SectionTitle from '../ui/SectionTitle';
 import Button from '../ui/Button';
 import NextSectionButton from '../ui/NextSectionButton';
+import BrandMark from '../ui/BrandMark';
 import './About.css';
 
 const About = ({ onNext }) => {
@@ -15,21 +16,21 @@ const About = ({ onNext }) => {
   };
 
   const socialLinks = [
-    { 
-      icon: <Github size={20} />, 
-      url: 'https://github.com/edmilsaire', 
+    {
+      icon: <Github size={20} />,
+      url: 'https://github.com/edmilsaire',
       label: 'GitHub',
       variant: 'github'
     },
-    { 
-      icon: <Linkedin size={20} />, 
-      url: 'https://linkedin.com/in/edmilSaire', 
+    {
+      icon: <Linkedin size={20} />,
+      url: 'https://linkedin.com/in/edmilSaire',
       label: 'LinkedIn',
       variant: 'linkedin'
     },
-    { 
-      icon: <Mail size={20} />, 
-      url: 'mailto:174449@unsaac.edu.pe', 
+    {
+      icon: <Mail size={20} />,
+      url: 'mailto:174449@unsaac.edu.pe',
       label: 'Email',
       variant: 'email'
     }
@@ -37,6 +38,7 @@ const About = ({ onNext }) => {
 
   return (
     <section id="about" className="section about">
+      <BrandMark variant="corner" position="right" />
       <div className="about-container">
         <motion.div
           className="about-header"
@@ -59,10 +61,18 @@ const About = ({ onNext }) => {
             transition={{ duration: 0.6 }}
           >
             <div className="about-profile-image">
-              <User size={120} strokeWidth={1.5} />
+              <img src="/profile-photo.png" alt="Edmil Jampier Saire Bustamante" />
             </div>
             <h3 className="about-profile-title">Edmil Jampier Saire Bustamante</h3>
             <p className="about-profile-role">Ingeniero de Sistemas e Informática</p>
+
+            <a href="/CV-Edmil-Saire.pdf" download className="about-profile-cta">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                <path d="M10 13L5 8H15L10 13Z" fill="currentColor" />
+                <path d="M4 16H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+              <span>Descargar CV</span>
+            </a>
           </motion.div>
 
           {/* Main Content - Right Side */}
@@ -139,16 +149,6 @@ const About = ({ onNext }) => {
                 <li>Plataformas de geolocalización en tiempo real</li>
                 <li>Sistemas HACCP desplegados en AWS</li>
               </ul>
-            </div>
-
-            <div className="about-cta-card">
-              <a href="/resume.pdf" download className="about-download-btn">
-                <span>Descargar CV Completo</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M10 13L5 8H15L10 13Z" fill="currentColor"/>
-                  <path d="M4 16H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </a>
             </div>
           </motion.div>
         </div>

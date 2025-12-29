@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, MessageSquare, MapPin, Github, Linkedin, Send, CheckCircle2, AlertCircle, Phone } from 'lucide-react';
 import SectionTitle from '../ui/SectionTitle';
 import Button from '../ui/Button';
+import BrandMark from '../ui/BrandMark';
 import './Contact.css';
 
 const Contact = () => {
@@ -65,7 +66,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -77,9 +78,9 @@ const Contact = () => {
       // Aquí puedes integrar EmailJS o Formspree
       // Por ahora simulamos el envío
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
+
       console.log('Formulario enviado:', formData);
-      
+
       setSubmitStatus('success');
       setFormData({
         name: '',
@@ -144,9 +145,10 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section contact">
+      <BrandMark variant="large" position="center" />
       <div className="container">
-        <SectionTitle 
-          title="Contacto" 
+        <SectionTitle
+          title="Contacto"
           subtitle="¿Tienes un proyecto en mente? Hablemos"
         />
 
@@ -197,7 +199,7 @@ const Contact = () => {
           </motion.div>
 
           {/* Formulario */}
-          <motion.div 
+          <motion.div
             className="contact-form-wrapper"
             {...fadeInUp}
             transition={{ duration: 0.6, delay: 0.2 }}

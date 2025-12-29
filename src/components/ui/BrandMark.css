@@ -1,0 +1,93 @@
+/* BrandMark - Marca decorativa "ed" */
+
+.brand-mark {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    line-height: 0.85;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.brand-mark-e,
+.brand-mark-d {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Variantes de tamaño */
+.brand-mark-large {
+    font-size: clamp(8rem, 20vw, 14rem);
+    opacity: 0.04;
+}
+
+.brand-mark-small {
+    font-size: clamp(4rem, 10vw, 6rem);
+    opacity: 0.06;
+}
+
+.brand-mark-corner {
+    font-size: clamp(3rem, 8vw, 4rem);
+    opacity: 0.08;
+}
+
+.brand-mark-inline {
+    position: relative;
+    flex-direction: row;
+    font-size: 1.5rem;
+    opacity: 0.15;
+    gap: 0.1em;
+}
+
+/* Posiciones */
+.brand-mark-right {
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.brand-mark-left {
+    left: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.brand-mark-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.brand-mark-corner.brand-mark-right {
+    right: 3%;
+    top: auto;
+    bottom: 10%;
+    transform: none;
+}
+
+.brand-mark-corner.brand-mark-left {
+    left: 3%;
+    top: 10%;
+    transform: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .brand-mark-large {
+        font-size: clamp(5rem, 15vw, 8rem);
+    }
+
+    .brand-mark-small {
+        font-size: clamp(3rem, 8vw, 4rem);
+    }
+
+    .brand-mark-corner {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+}

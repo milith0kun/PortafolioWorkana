@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { projects, projectCategories } from '../../data/projects';
 import SectionTitle from '../ui/SectionTitle';
-import ProjectCard from '../ProjectCard';import NextSectionButton from '../ui/NextSectionButton';import './Projects.css';
+import ProjectCard from '../ProjectCard';
+import NextSectionButton from '../ui/NextSectionButton';
+import BrandMark from '../ui/BrandMark';
+import './Projects.css';
 
 const Projects = ({ onNext }) => {
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const filteredProjects = activeCategory === 'all' 
-    ? projects 
+  const filteredProjects = activeCategory === 'all'
+    ? projects
     : projects.filter(project => project.category === activeCategory);
 
   const container = {
@@ -28,9 +31,10 @@ const Projects = ({ onNext }) => {
 
   return (
     <section id="projects" className="section projects">
+      <BrandMark variant="small" position="right" />
       <div className="container">
-        <SectionTitle 
-          title="Proyectos" 
+        <SectionTitle
+          title="Proyectos"
           subtitle="Una selección de mis trabajos más destacados"
         />
 
@@ -46,7 +50,7 @@ const Projects = ({ onNext }) => {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           className="projects-grid"
           variants={container}
           initial="hidden"

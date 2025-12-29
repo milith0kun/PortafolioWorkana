@@ -147,7 +147,7 @@ const Hero = ({ onNext }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, delay: 0.5 }}
       >
-        <span className="hero-brand-text">01</span>
+        <span className="hero-brand-text"><span>e</span><span>d</span></span>
       </motion.div>
 
       <div className="hero-container">

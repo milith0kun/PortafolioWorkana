@@ -52,9 +52,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
         </ul>
 
         {/* Download CV Button */}
-        <a 
-          href="/resume.pdf" 
-          download 
+        <a
+          href="/CV-Edmil-Saire.pdf"
+          download
           className="navbar-cta"
         >
           <FileDown size={18} />
@@ -62,7 +62,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
         </a>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="navbar-mobile-toggle"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
@@ -85,9 +85,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             </li>
           ))}
           <li>
-            <a 
-              href="/resume.pdf" 
-              download 
+            <a
+              href="/CV-Edmil-Saire.pdf"
+              download
               className="navbar-mobile-cta"
             >
               <FileDown size={18} />

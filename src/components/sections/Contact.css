@@ -40,11 +40,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, var(--accent-primary-light), var(--accent-primary));
   color: var(--white);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
   border: none;
   box-shadow: var(--shadow-sm);
@@ -97,16 +97,16 @@ a.contact-info-value:hover {
 .contact-social-link {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: 0.75rem 1.5rem;
+  gap: var(--spacing-xs);
+  padding: 0.5rem 1rem;
   background-color: var(--bg-secondary);
   color: var(--text-primary);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   font-weight: 500;
-  font-size: var(--text-sm);
+  font-size: 0.75rem;
   text-decoration: none;
   transition: all var(--ease-out-expo);
-  border: 1.5px solid var(--border-light);
+  border: 1px solid var(--border-light);
 }
 
 .contact-social-link:hover {
@@ -146,13 +146,13 @@ a.contact-info-value:hover {
 
 .form-input,
 .form-textarea {
-  padding: 0.875rem 1.125rem;
-  font-size: var(--text-base);
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
   font-family: var(--font-sans);
   color: var(--text-primary);
   background-color: var(--bg-secondary);
-  border: 1.5px solid var(--border-light);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
   transition: all var(--transition-base);
 }
 
@@ -174,7 +174,7 @@ a.contact-info-value:hover {
 
 .form-textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 100px;
 }
 
 .form-error {

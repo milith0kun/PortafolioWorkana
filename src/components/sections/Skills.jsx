@@ -6,6 +6,7 @@ import SectionTitle from '../ui/SectionTitle';
 import Badge from '../ui/Badge';
 import Card from '../ui/Card';
 import NextSectionButton from '../ui/NextSectionButton';
+import BrandMark from '../ui/BrandMark';
 import './Skills.css';
 
 const iconMap = {
@@ -36,13 +37,14 @@ const Skills = ({ onNext }) => {
 
   return (
     <section id="skills" className="section skills">
+      <BrandMark variant="small" position="left" />
       <div className="container">
-        <SectionTitle 
-          title="Habilidades Técnicas" 
+        <SectionTitle
+          title="Habilidades Técnicas"
           subtitle="Tecnologías y herramientas con las que trabajo"
         />
 
-        <motion.div 
+        <motion.div
           className="skills-grid"
           variants={container}
           initial="hidden"
@@ -51,7 +53,7 @@ const Skills = ({ onNext }) => {
         >
           {skillCategories.map((category) => {
             const IconComponent = iconMap[category.icon];
-            
+
             return (
               <motion.div key={category.id} variants={item}>
                 <Card className="skills-card">
@@ -61,7 +63,7 @@ const Skills = ({ onNext }) => {
                     </div>
                     <h3 className="skills-card-title">{category.name}</h3>
                   </div>
-                  
+
                   <div className="skills-card-content">
                     {category.skills.map((skill, index) => (
                       <motion.div

@@ -5,6 +5,7 @@ import { experiences } from '../../data/experience';
 import SectionTitle from '../ui/SectionTitle';
 import Badge from '../ui/Badge';
 import NextSectionButton from '../ui/NextSectionButton';
+import BrandMark from '../ui/BrandMark';
 import './Experience.css';
 
 const Experience = ({ onNext }) => {
@@ -15,9 +16,10 @@ const Experience = ({ onNext }) => {
 
   return (
     <section id="experience" className="section experience">
+      <BrandMark variant="corner" position="left" />
       <div className="container">
-        <SectionTitle 
-          title="Experiencia" 
+        <SectionTitle
+          title="Experiencia"
           subtitle="Proyectos y trabajos destacados"
         />
 
@@ -86,9 +88,9 @@ const Experience = ({ onNext }) => {
                         <div key={idx} className={`experience-image-wrapper experience-image-${idx + 1}`}>
                           <div className="experience-image-placeholder">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                              <circle cx="8.5" cy="8.5" r="1.5"/>
-                              <polyline points="21 15 16 10 5 21"/>
+                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                              <circle cx="8.5" cy="8.5" r="1.5" />
+                              <polyline points="21 15 16 10 5 21" />
                             </svg>
                             <span>Screenshot {idx + 1}</span>
                           </div>
