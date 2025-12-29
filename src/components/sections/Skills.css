@@ -129,12 +129,76 @@
 }
 
 /* Responsive */
-@media (max-width: 640px) {
+@media (max-width: 968px) {
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
   }
 
   .skills-card {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+
+  .skills-card-header {
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+  }
+
+  .skills-card-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .skills-card-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .skills-card-title {
+    font-size: 0.875rem;
+  }
+
+  .skills-item {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .skills-item-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .skills-item-name {
+    font-size: 0.75rem;
+  }
+
+  .skills-item-level {
+    font-size: 0.5625rem;
+    padding: 0.125rem 0.375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .skills-card {
+    padding: var(--spacing-sm);
+  }
+
+  .skills-card-content {
+    gap: var(--spacing-xs);
+  }
+
+  .skills-item-name {
+    font-size: 0.6875rem;
   }
 }

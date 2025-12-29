@@ -253,17 +253,77 @@
   }
 }
 
-@media (max-width: 640px) {
-  .experience-card {
-    padding: var(--spacing-md);
-  }
-
-  .experience-card-title {
-    font-size: var(--text-lg);
+@media (max-width: 768px) {
+  .experience-timeline::before {
+    left: 12px;
+    width: 1.5px;
   }
 
   .experience-item {
-    margin-bottom: var(--spacing-2xl);
+    grid-template-columns: 28px 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .experience-marker-dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 0 2px var(--border-medium);
+  }
+
+  .experience-card {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .experience-card-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .experience-card-badge {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.5625rem;
+  }
+
+  .experience-card-date {
+    font-size: 0.6875rem;
+  }
+
+  .experience-card-title {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .experience-card-role {
+    font-size: 0.8125rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .experience-card-institution {
+    font-size: 0.75rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .experience-card-description {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .experience-card-achievements li {
+    font-size: 0.75rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .experience-card-achievements li svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .experience-card-technologies {
+    gap: var(--spacing-xs);
+    padding-top: var(--spacing-sm);
   }
 
   .experience-images-collage {
@@ -273,5 +333,48 @@
 
   .experience-images-collage:has(.experience-image-1:only-child) {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-timeline::before {
+    left: 8px;
+  }
+
+  .experience-item {
+    grid-template-columns: 20px 1fr;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .experience-marker-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .experience-card {
+    padding: var(--spacing-sm);
+  }
+
+  .experience-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .experience-card-title {
+    font-size: 0.9375rem;
+  }
+
+  .experience-card-role {
+    font-size: 0.75rem;
+  }
+
+  .experience-card-description {
+    font-size: 0.75rem;
+  }
+
+  .experience-images-collage {
+    min-height: 100px;
   }
 }

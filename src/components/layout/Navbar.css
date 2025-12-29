@@ -5,17 +5,28 @@
   right: 0;
   z-index: 1000;
   background: transparent;
-  transition: all var(--ease-out-expo);
+  transition:
+    background 0.4s var(--ease-out-expo),
+    padding 0.3s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-out-expo),
+    transform 0.3s var(--ease-out-expo);
   padding: 1rem 0;
 }
 
 .navbar-scrolled {
-  background: rgba(254, 252, 249, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1.5px solid var(--border-light);
-  padding: 0.75rem 0;
-  box-shadow: var(--shadow-md);
+  background: rgba(254, 252, 249, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0.625rem 0;
+  box-shadow:
+    0 4px 20px rgba(26, 22, 20, 0.08),
+    0 1px 3px rgba(26, 22, 20, 0.06);
+}
+
+/* Hidden navbar on scroll down */
+.navbar-hidden {
+  transform: translateY(-100%);
 }
 
 .navbar-container {
@@ -199,6 +210,10 @@
   display: none;
 }
 
+.navbar-mobile-overlay {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 968px) {
   .navbar-menu {
@@ -234,6 +249,28 @@
     display: flex;
   }
 
+  .navbar-mobile-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 22, 20, 0.5);
+    z-index: 1001;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
   .navbar-mobile-menu {
     display: block;
     position: fixed;
@@ -241,11 +278,13 @@
     right: -100%;
     width: 320px;
     height: 100vh;
+    height: 100dvh;
     background: var(--bg-primary);
     border-left: 1.5px solid var(--border-light);
     transition: right 0.4s var(--ease-out-expo);
-    box-shadow: -10px 0 40px rgba(var(--shadow-color), 0.15);
+    box-shadow: -10px 0 40px rgba(26, 22, 20, 0.2);
     overflow-y: auto;
+    z-index: 1002;
   }
 
   .navbar-mobile-menu-open {

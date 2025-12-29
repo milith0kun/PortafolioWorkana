@@ -105,7 +105,12 @@ body {
   font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.2;
@@ -119,14 +124,17 @@ h1 {
   font-weight: 800;
   letter-spacing: -0.03em;
 }
+
 h2 {
   font-size: var(--text-h2);
   font-weight: 700;
 }
+
 h3 {
   font-size: var(--text-h3);
   font-weight: 600;
 }
+
 h4 {
   font-size: var(--text-h4);
   font-weight: 600;
@@ -197,16 +205,73 @@ button {
   height: 100%;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background: var(--bg-primary);
+  z-index: 0;
 }
 
 .section-slide-active {
   opacity: 1;
   visibility: visible;
-  z-index: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+/* Transition indicator for mobile auto-scroll */
+.section-transition-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(26, 22, 20, 0.9);
+  color: var(--white);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.section-transition-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 769px) {
+  .section-transition-indicator {
+    display: none;
+  }
 }
 
 .section {
@@ -240,19 +305,17 @@ button {
   position: absolute;
   inset: 0;
   background-image:
-    repeating-linear-gradient(
-      0deg,
+    repeating-linear-gradient(0deg,
       transparent,
       transparent 2px,
       rgba(26, 22, 20, 0.015) 2px,
-      rgba(26, 22, 20, 0.015) 4px
-    );
+      rgba(26, 22, 20, 0.015) 4px);
   pointer-events: none;
   z-index: 0;
   opacity: 0.5;
 }
 
-.section > * {
+.section>* {
   position: relative;
   z-index: 1;
 }

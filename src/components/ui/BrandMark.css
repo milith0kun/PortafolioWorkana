@@ -11,6 +11,19 @@
     pointer-events: none;
     user-select: none;
     z-index: 0;
+    animation: brandMarkFloat 6s ease-in-out infinite;
+}
+
+@keyframes brandMarkFloat {
+
+    0%,
+    100% {
+        transform: translateY(-50%);
+    }
+
+    50% {
+        transform: translateY(calc(-50% - 8px));
+    }
 }
 
 .brand-mark-e,
@@ -19,41 +32,43 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    transition: opacity 0.5s ease;
 }
 
 /* Variantes de tamaño */
 .brand-mark-large {
-    font-size: clamp(8rem, 20vw, 14rem);
-    opacity: 0.04;
+    font-size: clamp(6rem, 18vw, 12rem);
+    opacity: 0.10;
 }
 
 .brand-mark-small {
-    font-size: clamp(4rem, 10vw, 6rem);
-    opacity: 0.06;
+    font-size: clamp(3.5rem, 9vw, 5rem);
+    opacity: 0.12;
 }
 
 .brand-mark-corner {
-    font-size: clamp(3rem, 8vw, 4rem);
-    opacity: 0.08;
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    opacity: 0.15;
 }
 
 .brand-mark-inline {
     position: relative;
     flex-direction: row;
     font-size: 1.5rem;
-    opacity: 0.15;
+    opacity: 0.20;
     gap: 0.1em;
+    animation: none;
 }
 
 /* Posiciones */
 .brand-mark-right {
-    right: 2%;
+    right: 3%;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .brand-mark-left {
-    left: 2%;
+    left: 3%;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -62,32 +77,145 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    animation: brandMarkPulse 4s ease-in-out infinite;
+}
+
+@keyframes brandMarkPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.10;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.02);
+        opacity: 0.14;
+    }
 }
 
 .brand-mark-corner.brand-mark-right {
-    right: 3%;
+    right: 4%;
     top: auto;
-    bottom: 10%;
+    bottom: 12%;
     transform: none;
+    animation: brandMarkBreathe 5s ease-in-out infinite;
+}
+
+@keyframes brandMarkBreathe {
+
+    0%,
+    100% {
+        opacity: 0.15;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.20;
+        transform: scale(1.03);
+    }
 }
 
 .brand-mark-corner.brand-mark-left {
-    left: 3%;
-    top: 10%;
+    left: 4%;
+    top: 12%;
     transform: none;
+    animation: brandMarkBreathe 5s ease-in-out infinite;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive - Tablets */
+@media (max-width: 968px) {
     .brand-mark-large {
-        font-size: clamp(5rem, 15vw, 8rem);
+        font-size: clamp(5rem, 14vw, 9rem);
     }
 
     .brand-mark-small {
-        font-size: clamp(3rem, 8vw, 4rem);
+        font-size: clamp(3rem, 8vw, 4.5rem);
     }
 
     .brand-mark-corner {
         font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .brand-mark-corner.brand-mark-right,
+    .brand-mark-corner.brand-mark-left {
+        bottom: 10%;
+        right: 3%;
+    }
+}
+
+/* Responsive - Móvil */
+@media (max-width: 768px) {
+    .brand-mark-large {
+        font-size: clamp(4rem, 12vw, 7rem);
+        opacity: 0.12;
+    }
+
+    .brand-mark-small {
+        font-size: clamp(2.5rem, 7vw, 3.5rem);
+        opacity: 0.14;
+    }
+
+    .brand-mark-corner {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        opacity: 0.16;
+    }
+
+    .brand-mark-right {
+        right: 2%;
+    }
+
+    .brand-mark-left {
+        left: 2%;
+    }
+
+    .brand-mark-corner.brand-mark-right {
+        bottom: 8%;
+        right: 2%;
+    }
+
+    .brand-mark-corner.brand-mark-left {
+        top: 8%;
+        left: 2%;
+    }
+}
+
+/* Responsive - Móvil pequeño */
+@media (max-width: 480px) {
+    .brand-mark-large {
+        font-size: clamp(3rem, 10vw, 5rem);
+        opacity: 0.10;
+    }
+
+    .brand-mark-small {
+        font-size: clamp(2rem, 6vw, 3rem);
+        opacity: 0.12;
+    }
+
+    .brand-mark-corner {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        opacity: 0.14;
+    }
+
+    /* Mantener animaciones simples en móvil pequeño */
+    .brand-mark,
+    .brand-mark-corner.brand-mark-right,
+    .brand-mark-corner.brand-mark-left {
+        animation: brandMarkBreathe 5s ease-in-out infinite;
+    }
+
+    .brand-mark-center {
+        animation: none;
+    }
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+    .brand-mark,
+    .brand-mark-corner.brand-mark-right,
+    .brand-mark-corner.brand-mark-left,
+    .brand-mark-center {
+        animation: none;
     }
 }
