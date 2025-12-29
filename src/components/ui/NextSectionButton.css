@@ -6,24 +6,27 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: var(--white);
+  border: 2px solid var(--border-medium);
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
+  color: var(--accent-primary);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all var(--ease-out-expo);
   animation: bounce 2s infinite;
   z-index: 10;
+  box-shadow: var(--shadow-md);
 }
 
 .next-section-button:hover {
-  background-color: rgba(14, 165, 233, 0.2);
-  border-color: var(--primary-500);
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--white);
   transform: translateX(-50%) scale(1.1);
   animation: none;
+  box-shadow: var(--shadow-xl);
 }
 
 @keyframes bounce {

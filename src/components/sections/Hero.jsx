@@ -9,7 +9,7 @@ const Hero = ({ onNext }) => {
   const heroRef = useRef(null);
   const gridRef = useRef([]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     let rafId;
     let mouseX = 50;
     let mouseY = 50;
@@ -76,12 +76,12 @@ const Hero = ({ onNext }) => {
       window.removeEventListener('mousemove', handleMouseMove);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, []); */
 
-  const renderGrid = () => {
+  /* const renderGrid = () => {
     const waves = [];
     const waveCount = 5;
-    
+
     const colors = [
       ['#3b82f6', '#0ea5e9'],
       ['#0ea5e9', '#06b6d4'],
@@ -89,7 +89,7 @@ const Hero = ({ onNext }) => {
       ['#6366f1', '#3b82f6'],
       ['#8b5cf6', '#6366f1']
     ];
-    
+
     return (
       <svg className="hero-liquid-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
         <defs>
@@ -105,7 +105,7 @@ const Hero = ({ onNext }) => {
             <feBlend in="SourceGraphic" in2="goo" />
           </filter>
         </defs>
-        
+
         {Array.from({ length: waveCount }).map((_, i) => (
           <path
             key={i}
@@ -117,7 +117,7 @@ const Hero = ({ onNext }) => {
         ))}
       </svg>
     );
-  };
+  }; */
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -128,31 +128,31 @@ const Hero = ({ onNext }) => {
   const socialLinks = [
     { icon: <Github size={24} />, url: 'https://github.com/edmilsaire', label: 'GitHub' },
     { icon: <Linkedin size={24} />, url: 'https://linkedin.com/in/edmilSaire', label: 'LinkedIn' },
-    { icon: <Mail size={24} />, url: 'mailto:174449@unsaac.edu.pe', label: 'Email' }
+    { icon: <Mail size={24} />, url: 'mailto:174449@unsaac.edu.pe', label: '174449@unsaac.edu.pe' }
   ];
 
   return (
     <section id="hero" className="hero" ref={heroRef}>
       <div className="hero-background">
         <div className="hero-gradient"></div>
-        <div className="hero-3d-grid">
+        {/* <div className="hero-3d-grid">
           {renderGrid()}
-        </div>
+        </div> */}
       </div>
 
-      {/* Marca ED minimalista */}
-      <motion.div 
+      {/* Large ornamental number */}
+      <motion.div
         className="hero-brand"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, delay: 0.5 }}
       >
-        <span className="hero-brand-text">ED</span>
+        <span className="hero-brand-text">01</span>
       </motion.div>
 
       <div className="hero-container">
         <motion.div className="hero-content" {...fadeInUp}>
-          <motion.div 
+          <motion.div
             className="hero-badge"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -162,26 +162,35 @@ const Hero = ({ onNext }) => {
             <span>Disponible para proyectos</span>
           </motion.div>
 
-          <motion.p 
+          <motion.h1
+            className="hero-title"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            Edmil Jampier Saire Bustamante
+          </motion.h1>
+
+          <motion.p
             className="hero-subtitle"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Ingeniero de Sistemas | Full Stack Developer
+            Ingeniero de Sistemas e Informática
           </motion.p>
 
-          <motion.p 
+          <motion.p
             className="hero-description"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Desarrollo soluciones tecnológicas escalables con React, Node.js y Flutter.
-            Especializado en aplicaciones web modernas, automatización y sistemas móviles multiplataforma.
+            Desarrollador Full Stack con experiencia en React, Node.js, Flutter y Laravel.
+            Especializado en arquitecturas escalables, desarrollo móvil multiplataforma y soluciones cloud con AWS.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             className="hero-bottom"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

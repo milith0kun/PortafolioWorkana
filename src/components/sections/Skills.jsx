@@ -64,10 +64,24 @@ const Skills = ({ onNext }) => {
                   
                   <div className="skills-card-content">
                     {category.skills.map((skill, index) => (
-                      <div key={index} className="skills-item">
-                        <Badge variant="primary">{skill.name}</Badge>
+                      <motion.div
+                        key={index}
+                        className="skills-item"
+                        whileHover={{ scale: 1.03 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="skills-item-info">
+                          {skill.icon && (
+                            <img
+                              src={skill.icon}
+                              alt={skill.name}
+                              className="skills-item-icon"
+                            />
+                          )}
+                          <span className="skills-item-name">{skill.name}</span>
+                        </div>
                         <span className="skills-item-level">{skill.level}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </Card>

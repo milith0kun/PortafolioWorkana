@@ -26,7 +26,8 @@ const Navbar = ({ activeSection, setActiveSection }) => {
     { index: 2, label: 'Habilidades' },
     { index: 3, label: 'Experiencia' },
     { index: 4, label: 'Proyectos' },
-    { index: 5, label: 'Contacto' }
+    { index: 5, label: 'Certificaciones' },
+    { index: 6, label: 'Contacto' }
   ];
 
   return (

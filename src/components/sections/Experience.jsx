@@ -37,45 +37,66 @@ const Experience = ({ onNext }) => {
               </div>
 
               <div className="experience-card">
-                <div className="experience-card-header">
-                  <div className="experience-card-badge">
-                    <Building2 size={16} />
-                    <span>{exp.type === 'project' ? 'Proyecto' : 'Académico'}</span>
+                <div className="experience-card-content">
+                  <div className="experience-card-header">
+                    <div className="experience-card-badge">
+                      <Building2 size={16} />
+                      <span>{exp.type === 'work' ? 'Trabajo' : 'Académico'}</span>
+                    </div>
+                    <div className="experience-card-date">
+                      <Calendar size={16} />
+                      <span>{exp.date}</span>
+                    </div>
                   </div>
-                  <div className="experience-card-date">
-                    <Calendar size={16} />
-                    <span>{exp.date}</span>
+
+                  <h3 className="experience-card-title">{exp.title}</h3>
+                  <p className="experience-card-role">{exp.role}</p>
+
+                  <div className="experience-card-institution">
+                    <MapPin size={16} />
+                    <span>{exp.institution}</span>
                   </div>
-                </div>
 
-                <h3 className="experience-card-title">{exp.title}</h3>
-                <p className="experience-card-role">{exp.role}</p>
-                
-                <div className="experience-card-institution">
-                  <MapPin size={16} />
-                  <span>{exp.institution}</span>
-                </div>
+                  <p className="experience-card-description">
+                    {exp.description}
+                  </p>
 
-                <p className="experience-card-description">
-                  {exp.description}
-                </p>
+                  {exp.achievements && exp.achievements.length > 0 && (
+                    <ul className="experience-card-achievements">
+                      {exp.achievements.map((achievement, idx) => (
+                        <li key={idx}>
+                          <CheckCircle2 size={16} />
+                          <span>{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-                {exp.achievements && exp.achievements.length > 0 && (
-                  <ul className="experience-card-achievements">
-                    {exp.achievements.map((achievement, idx) => (
-                      <li key={idx}>
-                        <CheckCircle2 size={16} />
-                        <span>{achievement}</span>
-                      </li>
+                  <div className="experience-card-technologies">
+                    {exp.technologies.map((tech, idx) => (
+                      <Badge key={idx} variant="neutral">{tech}</Badge>
                     ))}
-                  </ul>
-                )}
-
-                <div className="experience-card-technologies">
-                  {exp.technologies.map((tech, idx) => (
-                    <Badge key={idx} variant="neutral">{tech}</Badge>
-                  ))}
+                  </div>
                 </div>
+
+                {exp.images && exp.images.length > 0 && (
+                  <div className="experience-card-images">
+                    <div className="experience-images-collage">
+                      {exp.images.map((image, idx) => (
+                        <div key={idx} className={`experience-image-wrapper experience-image-${idx + 1}`}>
+                          <div className="experience-image-placeholder">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                              <circle cx="8.5" cy="8.5" r="1.5"/>
+                              <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                            <span>Screenshot {idx + 1}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

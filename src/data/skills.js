@@ -4,12 +4,12 @@ export const skillCategories = [
     name: "Frontend Development",
     icon: "Layout",
     skills: [
-      { name: "React.js", level: "Avanzado" },
-      { name: "Next.js", level: "Intermedio" },
-      { name: "HTML5", level: "Avanzado" },
-      { name: "CSS3", level: "Avanzado" },
-      { name: "JavaScript (ES6+)", level: "Avanzado" },
-      { name: "Bootstrap", level: "Intermedio" }
+      { name: "React.js", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "HTML5", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "CSS3", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+      { name: "JavaScript (ES6+)", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "Bootstrap", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" }
     ]
   },
   {
@@ -17,11 +17,11 @@ export const skillCategories = [
     name: "Backend Development",
     icon: "ServerCog",
     skills: [
-      { name: "Node.js", level: "Avanzado" },
-      { name: "Express.js", level: "Avanzado" },
-      { name: "PHP", level: "Intermedio" },
-      { name: "Laravel", level: "Intermedio" },
-      { name: "API RESTful", level: "Avanzado" }
+      { name: "Node.js", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Express.js", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+      { name: "PHP", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+      { name: "Laravel", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" },
+      { name: "API RESTful", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" }
     ]
   },
   {
@@ -29,11 +29,11 @@ export const skillCategories = [
     name: "Mobile Development",
     icon: "Smartphone",
     skills: [
-      { name: "Flutter", level: "Avanzado" },
-      { name: "Dart", level: "Avanzado" },
-      { name: "React Native", level: "Intermedio" },
-      { name: "Kotlin", level: "Básico" },
-      { name: "Android", level: "Intermedio" }
+      { name: "Flutter", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+      { name: "Dart", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" },
+      { name: "React Native", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Kotlin", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" },
+      { name: "Android", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" }
     ]
   },
   {
@@ -41,11 +41,11 @@ export const skillCategories = [
     name: "Databases",
     icon: "DatabaseZap",
     skills: [
-      { name: "MySQL", level: "Avanzado" },
-      { name: "PostgreSQL", level: "Intermedio" },
-      { name: "MongoDB", level: "Intermedio" },
-      { name: "SQL Server", level: "Intermedio" },
-      { name: "SQLite", level: "Avanzado" }
+      { name: "MySQL", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+      { name: "PostgreSQL", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "MongoDB", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+      { name: "SQL Server", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
+      { name: "SQLite", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" }
     ]
   },
   {
@@ -53,13 +53,12 @@ export const skillCategories = [
     name: "Tools & DevOps",
     icon: "GitBranch",
     skills: [
-      { name: "Git", level: "Avanzado" },
-      { name: "GitHub", level: "Avanzado" },
-      { name: "Docker", level: "Básico" },
-      { name: "Nginx", level: "Intermedio" },
-      { name: "AWS EC2", level: "Intermedio" },
-      { name: "Vercel", level: "Intermedio" },
-      { name: "Hostinger", level: "Intermedio" }
+      { name: "Git", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "GitHub", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Docker", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+      { name: "Nginx", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" },
+      { name: "AWS", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+      { name: "Vercel", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
     ]
   },
   {
@@ -67,9 +66,9 @@ export const skillCategories = [
     name: "Automation & Integration",
     icon: "Workflow",
     skills: [
-      { name: "n8n", level: "Intermedio" },
-      { name: "WhatsApp Business API", level: "Intermedio" },
-      { name: "Google Apps Script", level: "Básico" }
+      { name: "n8n", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "WhatsApp API", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+      { name: "Google Apps Script", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" }
     ]
   },
   {
@@ -77,12 +76,11 @@ export const skillCategories = [
     name: "Other Skills",
     icon: "Sparkles",
     skills: [
-      { name: "SEO", level: "Intermedio" },
-      { name: "WordPress", level: "Avanzado" },
-      { name: "Scrum", level: "Intermedio" },
-      { name: "Metodologías Ágiles", level: "Intermedio" },
-      { name: "UI/UX", level: "Básico" },
-      { name: "Inteligencia Artificial", level: "Básico" }
+      { name: "SEO", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+      { name: "WordPress", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
+      { name: "Scrum", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
+      { name: "UI/UX", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+      { name: "Python", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" }
     ]
   }
 ];

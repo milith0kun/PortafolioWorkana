@@ -1,114 +1,71 @@
 export const experiences = [
   {
     id: 1,
-    title: "Sistema de Gestión de Portafolios Docentes - UNSAAC",
-    role: "Desarrollador Full Stack",
-    institution: "Universidad Nacional de San Antonio Abad del Cusco",
-    date: "Enero 2025",
-    description: "Desarrollé un sistema web completo para la gestión y verificación de portafolios docentes como parte del proceso de acreditación ICACIT de la UNSAAC utilizando stack tecnológico PHP/Laravel para backend, HTML/CSS/JavaScript para frontend y base de datos MySQL.",
+    title: "Director & Desarrollador Full Stack",
+    role: "Director & Full Stack Developer",
+    institution: "Ecos del SEO - Agencia Digital",
+    date: "2024 - Presente",
+    description: "Liderazgo técnico y desarrollo de soluciones digitales integrales para clientes corporativos. Gestión de proyectos web, estrategias SEO y desarrollo de plataformas escalables.",
     achievements: [
-      "Implementé sistema de roles con tres tipos de usuarios: Verificador, Administrador y Docentes",
-      "Diseñé módulos de verificación para evaluar trabajos de alumnos y portafolios de cursos",
-      "Desarrollé funcionalidades de generación de reportes administrativos",
-      "Aplicé metodología Scrum en el desarrollo con sprints de 2 semanas"
+      "Desarrollé la plataforma corporativa con React, Next.js y MongoDB",
+      "Implementé SSR para optimización SEO alcanzando mejoras del 40% en posicionamiento",
+      "Integré WordPress como Headless CMS para gestión dinámica de contenido",
+      "Desplegué y administré infraestructura en Hostinger con alta disponibilidad"
     ],
-    technologies: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "Scrum"],
-    type: "project"
+    technologies: ["React", "Next.js", "MongoDB", "WordPress", "Node.js", "SEO", "Hostinger"],
+    type: "work",
+    images: ["/experience/ecos-1.jpg", "/experience/ecos-2.jpg", "/experience/ecos-3.jpg"]
   },
   {
     id: 2,
-    title: "Sistema Integral de Gestión HACCP",
-    role: "Desarrollador Full Stack & Mobile",
-    institution: "Proyecto Independiente",
+    title: "Desarrollador Full Stack - Sistema HACCP",
+    role: "Full Stack & Mobile Developer",
+    institution: "Proyecto Cliente Industrial",
     date: "2024",
-    description: "Desarrollo de Arquitectura Escalable: Diseñé e implementé una solución tecnológica integral compuesta por una App Móvil (Operativa), Panel Web (Administrativo) y Backend (API REST), centralizando la lógica de negocio.",
+    description: "Desarrollo de solución integral para control de calidad e inocuidad alimentaria con arquitectura distribuida (App Móvil + Panel Web + Backend API).",
     achievements: [
-      "Desplegué y configuré el entorno de producción en AWS EC2 con Nginx",
-      "Desarrollé el módulo de asistencia con validación de geolocalización (GPS)",
-      "Digitalicé los formularios de control HACCP eliminando el uso de papel",
-      "Automaticé el flujo de control de calidad e inocuidad alimentaria"
+      "Desplegué infraestructura en AWS EC2 con Nginx y SSL",
+      "Desarrollé app móvil nativa con React Native y Kotlin",
+      "Implementé validación GPS para control de asistencia geolocalizada",
+      "Digitalicé procesos HACCP reduciendo costos operativos en 60%"
     ],
     technologies: ["React Native", "Kotlin", "React.js", "Node.js", "AWS EC2", "Nginx", "JWT", "SQL"],
-    type: "project"
+    type: "work",
+    images: ["/experience/haccp-1.jpg", "/experience/haccp-2.jpg", "/experience/haccp-3.jpg"]
   },
   {
     id: 3,
-    title: "Aplicación de Rastreo y Geolocalización en Tiempo Real",
-    role: "Desarrollador de Aplicaciones Móviles",
-    institution: "Proyecto Independiente",
-    date: "2024",
-    description: "Desarrollé la lógica para gestionar y visualizar múltiples objetivos de rastreo (personas/dispositivos) de forma simultánea en la interfaz del mapa, asegurando una representación clara en tiempo real.",
+    title: "Desarrollador Full Stack - UNSAAC",
+    role: "Full Stack Developer",
+    institution: "Universidad Nacional de San Antonio Abad del Cusco",
+    date: "Enero 2025",
+    description: "Desarrollo de sistema web para gestión de portafolios docentes como parte del proceso de acreditación ICACIT utilizando metodología Scrum.",
     achievements: [
-      "Implementé un módulo de búsqueda de lugares mediante geocodificación directa",
-      "Desarrollé una funcionalidad de obtención de coordenadas por interacción (clic) sobre el mapa",
-      "Implementé la función \"copiar al portapapeles\" (Clipboard API)",
-      "Validé la precisión y latencia del sistema mediante pruebas funcionales"
+      "Implementé arquitectura MVC con Laravel y MySQL optimizada",
+      "Diseñé sistema de roles: Verificador, Administrador y Docentes",
+      "Desarrollé módulos de verificación y generación de reportes automáticos",
+      "Apliqué Scrum con sprints de 2 semanas mejorando eficiencia del equipo"
     ],
-    technologies: ["JavaScript", "Leaflet.js", "OpenStreetMap", "Fetch API", "Clipboard API", "Android"],
-    type: "project"
+    technologies: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "Scrum"],
+    type: "work",
+    images: ["/experience/unsaac-1.jpg", "/experience/unsaac-2.jpg"]
   },
   {
     id: 4,
-    title: "Ecos del SEO - Plataforma Corporativa",
-    role: "Desarrollador Full Stack & Web",
-    institution: "Ecos del SEO - Agencia Digital",
-    date: "2024",
-    description: "Desarrollé la plataforma corporativa migrando la arquitectura a React y Next.js, implementando renderizado del lado del servidor (SSR) para optimizar el posicionamiento SEO.",
-    achievements: [
-      "Diseñé e implementé la persistencia de datos utilizando MongoDB",
-      "Programé la lógica de negocio para un sistema dinámico de categorías y servicios",
-      "Integré WordPress como gestor de contenidos (Headless CMS) para el Blog",
-      "Realicé el despliegue del proyecto en Hostinger"
-    ],
-    technologies: ["React", "Next.js", "MongoDB", "WordPress", "Node.js", "Hostinger"],
-    type: "project"
-  },
-  {
-    id: 5,
-    title: "Aprendo Jugando – Aplicación Educativa Interactiva",
-    role: "Desarrollador Mobile & Gamification",
-    institution: "Proyecto Independiente",
-    date: "2024",
-    description: "Desarrollé el prototipo funcional (MVP Beta 1.0) utilizando Flutter y Dart, creando una arquitectura escalable que permite el despliegue simultáneo en Android, iOS y Web.",
-    achievements: [
-      "Implementé actividades tipo quiz y dinámicas visuales interactivas",
-      "Diseñé una interfaz gráfica centrada en el usuario infantil",
-      "Estructuré un sistema de autenticación jerárquico (Padres/Niños)",
-      "Gestioné la persistencia de datos localmente (SQLite/JSON)"
-    ],
-    technologies: ["Flutter", "Dart", "SQLite", "JSON", "Android", "iOS"],
-    type: "project"
-  },
-  {
-    id: 6,
-    title: "Hospital Regional - Modelado y Simulación",
-    role: "Analista de Sistemas",
-    institution: "Proyecto Académico",
-    date: "Febrero 2024",
-    description: "Realicé simulaciones técnicas para optimizar la asignación de citas médicas y mejorar la eficiencia del sistema hospitalario.",
-    achievements: [
-      "Implementé algoritmos de optimización mejorando la eficiencia en un 25%",
-      "Apliqué técnicas de inteligencia artificial básicas para análisis de patrones",
-      "Creé simulaciones de sistemas para evaluar diferentes escenarios de operación"
-    ],
-    technologies: ["Python", "IA", "Modelado", "Simulación"],
-    type: "academic"
-  },
-  {
-    id: 7,
-    title: "Escuela Profesional de Enfermería - Cableado Estructurado",
-    role: "Analista de Infraestructura de Redes",
-    institution: "UNSAAC",
+    title: "Analista de Infraestructura de Redes",
+    role: "Network Infrastructure Analyst",
+    institution: "UNSAAC - Escuela de Enfermería",
     date: "Agosto 2023",
-    description: "Desarrollé el informe técnico de requerimientos para la infraestructura de cableado estructurado de la Escuela Profesional de Enfermería.",
+    description: "Análisis y diseño de infraestructura de cableado estructurado para modernización de conectividad institucional.",
     achievements: [
-      "Analicé y documenté las necesidades de conectividad por piso",
-      "Elaboré cotizaciones detalladas de equipos y materiales",
-      "Diseñé la arquitectura de red especificando requerimientos mínimos",
-      "Realicé simulaciones técnicas para validar la cobertura de red"
+      "Analicé necesidades de conectividad y diseñé arquitectura de red completa",
+      "Elaboré especificaciones técnicas y cotizaciones de equipamiento",
+      "Realicé simulaciones técnicas validando cobertura WiFi del 95%",
+      "Documenté estándares de cableado estructurado categoría 6A"
     ],
     technologies: ["Redes", "Cableado Estructurado", "WiFi", "Análisis de Infraestructura"],
-    type: "academic"
+    type: "work",
+    images: ["/experience/redes-1.jpg"]
   }
 ];
 
