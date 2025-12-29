@@ -387,22 +387,31 @@ button {
 }
 
 /* ==================== SCROLLBAR ==================== */
+/* ==================== SCROLLBAR ==================== */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
+  /* Más delgado */
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-dark);
-  border-radius: var(--radius-sm);
-  border: 3px solid var(--bg-secondary);
+  background-color: var(--border-medium);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-primary);
+  /* Espacio alrededor */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-secondary);
+  background-color: var(--accent-primary);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-medium) var(--bg-primary);
 }
 
 /* ==================== SELECTION ==================== */

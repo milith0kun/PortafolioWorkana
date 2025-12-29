@@ -1,86 +1,70 @@
 .next-section-button {
   position: absolute;
-  bottom: var(--spacing-2xl);
+  bottom: var(--spacing-xl);
   left: 50%;
   transform: translateX(-50%);
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-dark));
-  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  /* Más opaco para ser visible */
+  border: 1.5px solid var(--accent-primary);
+  /* Borde con color de acento */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
+  color: var(--accent-primary);
+  /* Color de acento para el icono */
   cursor: pointer;
   transition: all var(--ease-out-expo);
-  animation: nextBounce 2.5s ease-in-out infinite;
+  animation: pulseAttention 3s infinite;
   z-index: 10;
-  box-shadow:
-    0 4px 20px rgba(199, 90, 62, 0.35),
-    0 0 0 4px rgba(199, 90, 62, 0.15);
-}
-
-.next-section-button::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 2px solid var(--accent-primary);
-  opacity: 0.3;
-  animation: nextPulse 2.5s ease-in-out infinite;
-}
-
-.next-section-button:hover {
-  transform: translateX(-50%) scale(1.1);
-  animation: none;
-  box-shadow:
-    0 8px 30px rgba(199, 90, 62, 0.45),
-    0 0 0 6px rgba(199, 90, 62, 0.2);
-}
-
-.next-section-button:hover::before {
-  animation: none;
-  opacity: 0.5;
+  box-shadow: 0 4px 15px rgba(199, 90, 62, 0.2);
+  /* Sombra suave de color acento */
 }
 
 .next-section-button svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+  /* Icono más grueso */
   transition: transform var(--transition-base);
+}
+
+.next-section-button:hover {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--white);
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+  /* Efecto hover más claro */
+  box-shadow: 0 8px 20px rgba(199, 90, 62, 0.4);
+  animation: none;
 }
 
 .next-section-button:hover svg {
   transform: translateY(3px);
 }
 
-@keyframes nextBounce {
+@keyframes pulseAttention {
 
   0%,
   100% {
     transform: translateX(-50%) translateY(0);
+    box-shadow: 0 0 0 0 rgba(199, 90, 62, 0.4);
   }
 
   50% {
-    transform: translateX(-50%) translateY(-8px);
-  }
-}
-
-@keyframes nextPulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-
-  50% {
-    transform: scale(1.15);
-    opacity: 0.15;
+    transform: translateX(-50%) translateY(5px);
+    box-shadow: 0 0 0 6px rgba(199, 90, 62, 0);
   }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .next-section-button {
+    /* Mantener oculto en móvil si así se prefiere, o mostrarlo pequeño */
     display: none;
   }
 }

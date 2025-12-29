@@ -3,7 +3,9 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Sparkles } from 'lucide-react';
 import Button from '../ui/Button';
 import NextSectionButton from '../ui/NextSectionButton';
+import BrandMark from '../ui/BrandMark';
 import './Hero.css';
+import './HeroScroll.css';
 
 const Hero = ({ onNext }) => {
   const heroRef = useRef(null);
@@ -229,7 +231,20 @@ const Hero = ({ onNext }) => {
         </motion.div>
       </div>
 
-      <NextSectionButton onClick={onNext} />
+      <BrandMark variant="corner" position="right" />
+
+      <motion.div
+        className="hero-scroll-indicator-container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        onClick={onNext}
+      >
+        <div className="hero-mouse">
+          <div className="hero-wheel"></div>
+        </div>
+        <span className="hero-scroll-text">Desliza para explorar</span>
+      </motion.div>
     </section>
   );
 };

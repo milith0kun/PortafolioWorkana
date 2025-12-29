@@ -2,18 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FileDown, Menu, X, Code2 } from 'lucide-react';
 import './Navbar.css';
 
-const Navbar = ({ activeSection, setActiveSection }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = ({ activeSection, setActiveSection, isScrolled, isVisible = true }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const goToSection = (index) => {
     setActiveSection(index);
@@ -31,7 +21,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   ];
 
   return (
-    <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+    <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''} ${!isVisible ? 'navbar-hidden' : ''}`}>
       <div className="navbar-container">
         <div className="navbar-logo" onClick={() => goToSection(0)}>
           <Code2 size={28} strokeWidth={1.5} className="navbar-logo-icon" />
