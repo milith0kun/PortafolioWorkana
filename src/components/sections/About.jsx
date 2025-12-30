@@ -50,7 +50,7 @@ const About = ({ onNext }) => {
                     <img
                       src="/profile-photo.png"
                       alt="Edmil Jampier Saire Bustamante"
-                      className="size-full object-cover"
+                      className="size-full object-cover object-top"
                     />
                   </div>
                 </div>
@@ -138,7 +138,7 @@ const About = ({ onNext }) => {
                 onClick={onNext}
                 className="group font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary p-0"
               >
-                Siguiente: Mis Habilidades
+                Siguiente: Experiencia
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}

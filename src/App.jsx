@@ -23,10 +23,10 @@ function App() {
   const sections = [
     { id: 'hero', component: <Hero onNext={() => setActiveSection(1)} /> },
     { id: 'about', component: <About onNext={() => setActiveSection(2)} /> },
-    { id: 'skills', component: <Skills onNext={() => setActiveSection(3)} /> },
-    { id: 'experience', component: <Experience onNext={() => setActiveSection(4)} /> },
-    { id: 'projects', component: <Projects onNext={() => setActiveSection(5)} /> },
-    { id: 'certifications', component: <Certifications onNext={() => setActiveSection(6)} /> },
+    { id: 'experience', component: <Experience onNext={() => setActiveSection(3)} /> },
+    { id: 'projects', component: <Projects onNext={() => setActiveSection(4)} /> },
+    { id: 'certifications', component: <Certifications onNext={() => setActiveSection(5)} /> },
+    { id: 'skills', component: <Skills onNext={() => setActiveSection(6)} /> },
     { id: 'contact', component: <Contact /> }
   ];
 
@@ -141,10 +141,10 @@ function App() {
             key={section.id}
             ref={el => slideRefs.current[index] = el}
             className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${index === activeSection
-                ? 'opacity-100 pointer-events-auto z-10 translate-y-0'
-                : index < activeSection
-                  ? 'opacity-0 pointer-events-none z-0 -translate-y-full'
-                  : 'opacity-0 pointer-events-none z-0 translate-y-full'
+              ? 'opacity-100 pointer-events-auto z-10 translate-y-0'
+              : index < activeSection
+                ? 'opacity-0 pointer-events-none z-0 -translate-y-full'
+                : 'opacity-0 pointer-events-none z-0 translate-y-full'
               } overflow-y-auto`}
           >
             {section.component}

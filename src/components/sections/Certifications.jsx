@@ -97,7 +97,7 @@ const Certifications = ({ onNext }) => {
             onClick={onNext}
             className="group font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
           >
-            Siguiente: Contacto
+            Siguiente: Habilidades
             <motion.span
               animate={{ y: [0, 5, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
