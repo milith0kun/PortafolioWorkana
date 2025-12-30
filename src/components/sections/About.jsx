@@ -1,159 +1,156 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, Rocket, Mail, MapPin, GraduationCap, Github, Linkedin } from 'lucide-react';
-import SectionTitle from '../ui/SectionTitle';
-import Button from '../ui/Button';
-import NextSectionButton from '../ui/NextSectionButton';
-import BrandMark from '../ui/BrandMark';
-import './About.css';
+import { User, Rocket, Mail, MapPin, GraduationCap, Github, Linkedin, ExternalLink, Download } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
+import { Card, CardContent } from '@/components/ui/Card';
 
 const About = ({ onNext }) => {
   const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
+    initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
     transition: { duration: 0.6 }
   };
 
   const socialLinks = [
-    {
-      icon: <Github size={20} />,
-      url: 'https://github.com/edmilsaire',
-      label: 'GitHub',
-      variant: 'github'
-    },
-    {
-      icon: <Linkedin size={20} />,
-      url: 'https://linkedin.com/in/edmilSaire',
-      label: 'LinkedIn',
-      variant: 'linkedin'
-    },
-    {
-      icon: <Mail size={20} />,
-      url: 'mailto:174449@unsaac.edu.pe',
-      label: 'Email',
-      variant: 'email'
-    }
+    { icon: <Github className="size-5" />, url: 'https://github.com/edmilsaire', label: 'GitHub' },
+    { icon: <Linkedin className="size-5" />, url: 'https://linkedin.com/in/edmilSaire', label: 'LinkedIn' },
+    { icon: <Mail className="size-5" />, url: 'mailto:174449@unsaac.edu.pe', label: 'Email' }
   ];
 
   return (
-    <section id="about" className="section about">
-      <BrandMark variant="corner" position="right" />
-      <div className="about-container">
+    <section id="about" className="relative min-h-screen w-full bg-background py-24 px-6 overflow-y-auto">
+      <div className="container mx-auto max-w-6xl">
         <motion.div
-          className="about-header"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+          {...fadeInUp}
         >
-          <h2 className="about-title">Sobre Mí</h2>
-          <p className="about-subtitle">Conoce mi trayectoria y experiencia</p>
+          <Badge variant="outline" className="mb-4 px-4 py-1 border-primary/30 text-primary">
+            Mi Trayectoria
+          </Badge>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">Sobre Mí</h2>
+          <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
         </motion.div>
 
-        <div className="about-content">
-          {/* Profile Card - Left Side */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Profile Card */}
           <motion.div
-            className="about-profile"
-            initial={{ opacity: 0, x: -30 }}
+            className="lg:col-span-4"
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="about-profile-image">
-              <img src="/profile-photo.png" alt="Edmil Jampier Saire Bustamante" />
-            </div>
-            <h3 className="about-profile-title">Edmil Jampier Saire Bustamante</h3>
-            <p className="about-profile-role">Ingeniero de Sistemas e Informática</p>
+            <Card className="overflow-hidden border-border/40 bg-card/50 backdrop-blur-sm sticky top-24">
+              <CardContent className="p-8 flex flex-col items-center text-center">
+                <div className="relative mb-6">
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-primary to-accent-tertiary blur opacity-25 group-hover:opacity-50 transition duration-1000" />
+                  <div className="relative size-32 md:size-40 rounded-full overflow-hidden border-4 border-background shadow-xl">
+                    <img
+                      src="/profile-photo.png"
+                      alt="Edmil Jampier Saire Bustamante"
+                      className="size-full object-cover"
+                    />
+                  </div>
+                </div>
 
-            <a href="/CV-Edmil-Saire.pdf" download className="about-profile-cta">
-              <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                <path d="M10 13L5 8H15L10 13Z" fill="currentColor" />
-                <path d="M4 16H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-              <span>Descargar CV</span>
-            </a>
+                <h3 className="text-xl font-bold text-foreground mb-1">Edmil Saire</h3>
+                <p className="text-sm text-primary font-medium mb-6">Ingeniero de Sistemas e Informática</p>
+
+                <div className="flex gap-3 mb-8">
+                  {socialLinks.map((link, index) => (
+                    <Button key={index} variant="outline" size="icon" className="rounded-full size-10 hover:border-primary/50 hover:text-primary" asChild>
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+                        {link.icon}
+                      </a>
+                    </Button>
+                  ))}
+                </div>
+
+                <Button className="w-full rounded-xl gap-2 shadow-lg shadow-primary/20" asChild>
+                  <a href="/CV-Edmil-Saire.pdf" download>
+                    <Download className="size-4" />
+                    Descargar CV
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
           </motion.div>
 
-          {/* Main Content - Right Side */}
+          {/* Main Content */}
           <motion.div
-            className="about-main"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="lg:col-span-8 space-y-8"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6 }}
           >
-
-            <div className="about-description">
-              <p>
-                Ingeniero de Sistemas con sólidos conocimientos en <strong>desarrollo Full Stack</strong> y fundamentos de inteligencia artificial.
-                Experiencia práctica en desarrollo web con tecnologías modernas como React.js, Node.js, PHP, Laravel y Flutter.
+            <div className="prose prose-neutral max-w-none">
+              <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+                Ingeniero de Sistemas con sólidos conocimientos en <strong className="text-primary font-semibold">desarrollo Full Stack</strong> y fundamentos de inteligencia artificial.
+                Experiencia práctica en el ecosistema de JavaScript y frameworks modernos.
               </p>
-
-              <p>
-                Especializado en la creación de soluciones web completas, desde frontend hasta backend, con enfoque en la
-                optimización de procesos y la implementación de sistemas escalables. Competencia en desarrollo de APIs RESTful,
-                gestión de bases de datos y trabajo colaborativo con metodologías ágiles.
+              <p className="text-foreground/70 leading-relaxed mb-8">
+                Especializado en transformar requerimientos complejos en aplicaciones escalables y eficientes. Mi enfoque combina la rigurosidad técnica de la ingeniería con una visión creativa para el diseño de interfaces de usuario excepcionales.
               </p>
             </div>
 
-            <div className="about-highlights">
-              <div className="about-highlight-item">
-                <GraduationCap size={24} strokeWidth={1.5} />
-                <div>
-                  <h4>Educación</h4>
-                  <p>Universidad Nacional de San Antonio Abad del Cusco</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { icon: <GraduationCap className="text-primary" />, title: "Educación", desc: "UNSAAC - Cusco" },
+                { icon: <MapPin className="text-primary" />, title: "Ubicación", desc: "Cusco, Perú" },
+                { icon: <Rocket className="text-primary" />, title: "Actual", desc: "Freelance / Director @ Ecos SEO" }
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col gap-2 p-4 rounded-xl border border-border/40 bg-accent/5">
+                  <div className="flex items-center gap-3">
+                    {item.icon}
+                    <h4 className="font-bold text-sm">{item.title}</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
                 </div>
-              </div>
-              <div className="about-highlight-item">
-                <MapPin size={24} strokeWidth={1.5} />
-                <div>
-                  <h4>Ubicación</h4>
-                  <p>Cusco, Perú</p>
-                </div>
-              </div>
-              <div className="about-highlight-item">
-                <Rocket size={24} strokeWidth={1.5} />
-                <div>
-                  <h4>Enfoque Actual</h4>
-                  <p>Director en Ecos del SEO</p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="about-card">
-              <h4 className="about-card-title">Conéctate Conmigo</h4>
-              <div className="about-social-links">
-                {socialLinks.map((link, index) => (
-                  <motion.a
-                    key={index}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="about-social-link"
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {link.icon}
-                    <span>{link.label}</span>
-                  </motion.a>
+            <div className="space-y-6">
+              <h4 className="text-lg font-bold flex items-center gap-2">
+                <span className="size-2 bg-primary rounded-full" />
+                Áreas de Especialización
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  "Arquitecturas de Microservicios",
+                  "Desarrollo Móvil Multiplataforma",
+                  "Optimización de Rendimiento (SEO)",
+                  "Integración de IA en Aplicaciones"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border/20">
+                    <div className="size-1.5 bg-primary/40 rounded-full" />
+                    <span className="text-sm font-medium">{item}</span>
+                  </div>
                 ))}
               </div>
             </div>
 
-            <div className="about-card">
-              <h4 className="about-card-title">Proyectos Destacados</h4>
-              <ul className="about-achievements">
-                <li>Sistemas de gestión empresarial completos</li>
-                <li>Apps móviles educativas con Flutter</li>
-                <li>Plataformas de geolocalización en tiempo real</li>
-                <li>Sistemas HACCP desplegados en AWS</li>
-              </ul>
+            <div className="pt-8">
+              <Button
+                variant="ghost"
+                onClick={onNext}
+                className="group font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary p-0"
+              >
+                Siguiente: Mis Habilidades
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                  className="ml-2"
+                >
+                  →
+                </motion.span>
+              </Button>
             </div>
           </motion.div>
         </div>
       </div>
-      <NextSectionButton onClick={onNext} />
     </section>
   );
 };

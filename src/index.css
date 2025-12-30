@@ -1,5 +1,10 @@
-/* ==================== RESET Y VARIABLES ==================== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================== RESET Y VARIABLES ==================== */
 
 * {
   margin: 0;
@@ -387,31 +392,45 @@ button {
 }
 
 /* ==================== SCROLLBAR ==================== */
-/* ==================== SCROLLBAR ==================== */
-::-webkit-scrollbar {
-  width: 8px;
-  /* Más delgado */
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--border-medium);
-  border-radius: var(--radius-full);
-  border: 2px solid var(--bg-primary);
-  /* Espacio alrededor */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--accent-primary);
-}
-
-/* Firefox */
+/* Force styles globally including the root */
+html,
+body,
 * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-medium) var(--bg-primary);
+  scrollbar-width: thin !important;
+  scrollbar-color: #555555 #F2EDE8 !important;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 14px !important;
+  height: 14px !important;
+  display: block !important;
+}
+
+*::-webkit-scrollbar-track {
+  background: #F2EDE8 !important;
+  border-left: 1px solid #D4CEC6 !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #555555 !important;
+  /* Darker for high contrast */
+  border-radius: 0 !important;
+  border: 3px solid #F2EDE8 !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-primary) !important;
+}
+
+/* Specific target for the main scrollable slides */
+.section-slide::-webkit-scrollbar {
+  width: 14px !important;
+  display: block !important;
+}
+
+.section-slide::-webkit-scrollbar-thumb {
+  background-color: #555555 !important;
 }
 
 /* ==================== SELECTION ==================== */

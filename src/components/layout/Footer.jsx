@@ -1,126 +1,70 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
-import './Footer.css';
+import { Github, Linkedin, Mail, Heart, Code2 } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const socialLinks = [
-    {
-      icon: <Github size={20} />,
-      url: 'https://github.com/edmilsaire',
-      label: 'GitHub'
-    },
-    {
-      icon: <Linkedin size={20} />,
-      url: 'https://linkedin.com/in/edmilSaire',
-      label: 'LinkedIn'
-    },
-    {
-      icon: <Mail size={20} />,
-      url: 'mailto:174449@unsaac.edu.pe',
-      label: 'Email'
-    }
-  ];
-
-  const navLinks = [
-    { id: 'hero', label: 'Inicio' },
-    { id: 'about', label: 'Sobre mí' },
-    { id: 'skills', label: 'Habilidades' },
-    { id: 'experience', label: 'Experiencia' },
-    { id: 'projects', label: 'Proyectos' },
-    { id: 'contact', label: 'Contacto' }
+    { icon: <Github size={18} />, url: 'https://github.com/edmilsaire', label: 'GitHub' },
+    { icon: <Linkedin size={18} />, url: 'https://linkedin.com/in/edmilSaire', label: 'LinkedIn' },
+    { icon: <Mail size={18} />, url: 'mailto:174449@unsaac.edu.pe', label: 'Email' }
   ];
 
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <div className="footer-content">
-          {/* Logo y descripción */}
-          <div className="footer-brand">
-            <div className="footer-logo">
-              <Heart size={32} />
-              <span className="footer-logo-text">Edmil Saire</span>
+    <footer className="w-full bg-card border-t border-border/40 py-12 px-6">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          {/* Brand */}
+          <div className="md:col-span-5 space-y-6">
+            <div className="flex items-center gap-2">
+              <Code2 size={24} className="text-primary" />
+              <span className="font-display font-bold text-xl tracking-tight">Edmil Saire</span>
             </div>
-            <p className="footer-description">
-              Ingeniero de Sistemas Full Stack Developer especializado en crear soluciones tecnológicas modernas y escalables.
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+              Ingeniero de Sistemas apasionado por el desarrollo de software de alta calidad, combinando diseño intuitivo con arquitecturas robustas.
             </p>
-            <div className="footer-social">
+            <div className="flex gap-3">
               {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-link"
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </a>
+                <Button key={index} variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary" asChild>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+                    {link.icon}
+                  </a>
+                </Button>
               ))}
             </div>
           </div>
 
-          {/* Links de navegación */}
-          <div className="footer-links">
-            <h4 className="footer-links-title">Navegación</h4>
-            <ul className="footer-links-list">
-              {navLinks.map((link) => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => scrollToSection(link.id)}
-                    className="footer-link"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
+          {/* Contacto Directo */}
+          <div className="md:col-span-4 space-y-4">
+            <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Contacto</h4>
+            <div className="space-y-2">
+              <a href="mailto:174449@unsaac.edu.pe" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                174449@unsaac.edu.pe
+              </a>
+              <a href="tel:+51901246936" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                +51 901 246 936
+              </a>
+              <p className="text-sm text-muted-foreground">Cusco, Perú</p>
+            </div>
           </div>
 
-          {/* Contacto */}
-          <div className="footer-contact">
-            <h4 className="footer-contact-title">Contacto</h4>
-            <ul className="footer-contact-list">
-              <li>
-                <a href="mailto:174449@unsaac.edu.pe" className="footer-contact-item">
-                  174449@unsaac.edu.pe
-                </a>
-              </li>
-              <li>
-                <a href="tel:+51901246936" className="footer-contact-item">
-                  +51 901 246 936
-                </a>
-              </li>
-              <li className="footer-contact-item">
-                Cusco, Perú
-              </li>
-            </ul>
+          {/* Quick Info */}
+          <div className="md:col-span-3 space-y-4 text-right md:text-left">
+            <h4 className="text-sm font-bold uppercase tracking-widest text-foreground">Inspiración</h4>
+            <p className="text-[10px] text-muted-foreground font-mono leading-relaxed italic">
+              "El código es poesía escrita para ser entendida por máquinas, pero apreciada por humanos."
+            </p>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="footer-bottom">
-          <p className="footer-copyright">
-            © {currentYear} Edmil Saire. Todos los derechos reservados.
+        <div className="mt-12 pt-8 border-t border-border/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest">
+            © {currentYear} Edmil Saire. Reservados todos los derechos.
           </p>
-          <p className="footer-tech">
-            Desarrollado con React + CSS
-          </p>
+          <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground font-medium uppercase tracking-widest">
+            Hecho con <Heart size={10} className="text-primary animate-pulse fill-primary" /> usando React & Tailwind
+          </div>
         </div>
       </div>
     </footer>
