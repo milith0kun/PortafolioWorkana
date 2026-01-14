@@ -68,11 +68,37 @@ export const skillCategories = [
     skills: [
       { name: "n8n", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
       { name: "WhatsApp API", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
-      { name: "Google Apps Script", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" }
+      { name: "Google Apps Script", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+      { name: "Puppeteer", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/puppeteer/puppeteer-original.svg" },
+      { name: "Celery", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" }
     ]
   },
   {
     id: 7,
+    name: "IoT & Embedded",
+    icon: "Cpu",
+    skills: [
+      { name: "ESP32", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" },
+      { name: "Arduino/C++", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+      { name: "BLE (Bluetooth LE)", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bluetooth/bluetooth-original.svg" },
+      { name: "RTMP/HTTP-FLV", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "VoIP/SIP", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" }
+    ]
+  },
+  {
+    id: 8,
+    name: "AI & Data Science",
+    icon: "Brain",
+    skills: [
+      { name: "Python", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "FastAPI", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+      { name: "OpenAI GPT-4", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "Qdrant (Vector DB)", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "RAG Architecture", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" }
+    ]
+  },
+  {
+    id: 9,
     name: "Other Skills",
     icon: "Sparkles",
     skills: [
@@ -80,7 +106,7 @@ export const skillCategories = [
       { name: "WordPress", level: "Avanzado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
       { name: "Scrum", level: "Intermedio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
       { name: "UI/UX", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-      { name: "Python", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" }
+      { name: "Electrónica Digital", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" }
     ]
   }
 ];

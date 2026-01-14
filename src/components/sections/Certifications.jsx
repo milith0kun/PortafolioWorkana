@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Calendar, CheckCircle2 } from 'lucide-react';
+import { Award, Calendar, CheckCircle2, ExternalLink } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/Card';
-import { certifications } from '../../data/experience';
+import { certifications, workCertifications } from '../../data/experience';
 
 const Certifications = ({ onNext }) => {
   return (
@@ -56,10 +56,23 @@ const Certifications = ({ onNext }) => {
                     <span>{cert.date}</span>
                   </div>
                   {cert.credentialId && (
-                    <div className="flex items-center gap-2 text-[10px] text-primary/70 font-mono">
-                      <CheckCircle2 className="size-3" />
-                      <span className="truncate">ID: {cert.credentialId}</span>
-                    </div>
+                    cert.credentialUrl ? (
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-[10px] text-primary/70 font-mono hover:text-primary transition-colors"
+                      >
+                        <CheckCircle2 className="size-3" />
+                        <span className="truncate">ID: {cert.credentialId}</span>
+                        <ExternalLink className="size-3" />
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-2 text-[10px] text-primary/70 font-mono">
+                        <CheckCircle2 className="size-3" />
+                        <span className="truncate">ID: {cert.credentialId}</span>
+                      </div>
+                    )
                   )}
                 </CardFooter>
               </Card>
@@ -75,18 +88,16 @@ const Certifications = ({ onNext }) => {
         >
           <h4 className="font-display text-xl font-bold mb-6 flex items-center gap-3">
             <span className="size-1.5 bg-primary rounded-full" />
-            Reconocimientos Adicionales
+            Certificados de Trabajo
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              "Capacitación en Procesos Electorales - ONPE",
-              "Sistemas de Información Electoral - ONPE",
-              "Tecnologías Aplicadas a Procesos Democráticos - ONPE",
-              "Colaboración en proyectos gubernamentales de alta escala"
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3 text-sm text-foreground/70 bg-background/40 p-3 rounded-lg border border-border/10">
-                <CheckCircle2 className="size-4 text-accent-tertiary" />
-                <span>{item}</span>
+            {workCertifications.map((cert) => (
+              <div key={cert.id} className="flex items-center gap-3 text-sm text-foreground/70 bg-background/40 p-3 rounded-lg border border-border/10">
+                <CheckCircle2 className="size-4 text-accent-tertiary flex-shrink-0" />
+                <div className="flex flex-col">
+                  <span className="font-medium">{cert.name}</span>
+                  <span className="text-xs text-muted-foreground">{cert.issuer} ({cert.date})</span>
+                </div>
               </div>
             ))}
           </div>

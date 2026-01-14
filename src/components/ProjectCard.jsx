@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Smartphone, Globe } from 'lucide-react';
+import { ExternalLink, Github, Smartphone, Globe, Download, Play, Video } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -15,6 +15,15 @@ const ProjectCard = ({ project }) => {
     if (project.category === 'mobile') return <Smartphone className="size-12 opacity-20" />;
     return <Globe className="size-12 opacity-20" />;
   };
+
+  // Contador de enlaces disponibles
+  const availableLinks = [
+    project.demoUrl,
+    project.githubUrl,
+    project.playStoreUrl,
+    project.apkUrl,
+    project.videoUrl
+  ].filter(Boolean).length;
 
   return (
     <Card className="group overflow-hidden border-border/40 bg-card/50 backdrop-blur-sm transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 h-full flex flex-col">
@@ -74,26 +83,29 @@ const ProjectCard = ({ project }) => {
         </div>
       </CardContent>
 
-      <CardFooter className="p-5 pt-0 gap-3">
+      <CardFooter className="p-5 pt-0 gap-2 flex-wrap">
+        {/* Demo en vivo */}
         {project.demoUrl && (
           <Button
             variant="default"
             size="sm"
             asChild
-            className="flex-1 rounded-full text-xs font-bold"
+            className="flex-1 min-w-[120px] rounded-full text-xs font-bold"
           >
             <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="mr-2 size-3" />
-              Demo
+              Ver Demo
             </a>
           </Button>
         )}
+
+        {/* GitHub */}
         {project.githubUrl && (
           <Button
             variant="outline"
             size="sm"
             asChild
-            className="flex-1 rounded-full text-xs font-bold border-border/60 hover:border-primary/40"
+            className="flex-1 min-w-[120px] rounded-full text-xs font-bold border-border/60 hover:border-primary/40"
           >
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 size-3" />
@@ -101,7 +113,54 @@ const ProjectCard = ({ project }) => {
             </a>
           </Button>
         )}
-        {!project.demoUrl && !project.githubUrl && (
+
+        {/* Play Store */}
+        {project.playStoreUrl && (
+          <Button
+            variant="default"
+            size="sm"
+            asChild
+            className="flex-1 min-w-[120px] rounded-full text-xs font-bold bg-green-600 hover:bg-green-700"
+          >
+            <a href={project.playStoreUrl} target="_blank" rel="noopener noreferrer">
+              <Play className="mr-2 size-3" />
+              Play Store
+            </a>
+          </Button>
+        )}
+
+        {/* APK Download */}
+        {project.apkUrl && !project.playStoreUrl && (
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="flex-1 min-w-[120px] rounded-full text-xs font-bold border-green-600/60 text-green-600 hover:border-green-600 hover:bg-green-600/10"
+          >
+            <a href={project.apkUrl} target="_blank" rel="noopener noreferrer">
+              <Download className="mr-2 size-3" />
+              Descargar APK
+            </a>
+          </Button>
+        )}
+
+        {/* Video Demo */}
+        {project.videoUrl && (
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="flex-1 min-w-[120px] rounded-full text-xs font-bold border-red-600/60 text-red-600 hover:border-red-600 hover:bg-red-600/10"
+          >
+            <a href={project.videoUrl} target="_blank" rel="noopener noreferrer">
+              <Video className="mr-2 size-3" />
+              Ver Video
+            </a>
+          </Button>
+        )}
+
+        {/* Si no hay enlaces */}
+        {availableLinks === 0 && (
           <span className="text-[10px] uppercase tracking-widest font-mono text-muted-foreground italic w-full text-center py-2 bg-muted/50 rounded-lg">
             Proyecto Privado
           </span>

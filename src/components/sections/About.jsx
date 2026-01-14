@@ -88,11 +88,11 @@ const About = ({ onNext }) => {
           >
             <div className="prose prose-neutral max-w-none">
               <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                Ingeniero de Sistemas con sólidos conocimientos en <strong className="text-primary font-semibold">desarrollo Full Stack</strong> y fundamentos de inteligencia artificial.
-                Experiencia práctica en el ecosistema de JavaScript y frameworks modernos.
+                Ingeniero de Sistemas e Informática con sólidos conocimientos en <strong className="text-primary font-semibold">desarrollo Full Stack</strong> y fundamentos de inteligencia artificial.
+                Experiencia práctica en desarrollo web con tecnologías modernas como JavaScript, React.js, Node.js, PHP, WordPress, gestión de bases de datos SQL Server, MySQL y PostgreSQL.
               </p>
               <p className="text-foreground/70 leading-relaxed mb-8">
-                Especializado en transformar requerimientos complejos en aplicaciones escalables y eficientes. Mi enfoque combina la rigurosidad técnica de la ingeniería con una visión creativa para el diseño de interfaces de usuario excepcionales.
+                Especializado en crear soluciones web desde el frontend hasta el backend, con enfoque en la optimización de procesos y la implementación de sistemas escalables. Competencia en desarrollo de APIs RESTful, manejo de frameworks modernos y experiencia en herramientas de control de versiones como Git. Apasionado por la tecnología emergente, el aprendizaje continuo y la aplicación de IA en soluciones empresariales.
               </p>
             </div>
 
@@ -119,10 +119,12 @@ const About = ({ onNext }) => {
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  "Arquitecturas de Microservicios",
+                  "Desarrollo Full Stack (MERN/PERN)",
                   "Desarrollo Móvil Multiplataforma",
-                  "Optimización de Rendimiento (SEO)",
-                  "Integración de IA en Aplicaciones"
+                  "Sistemas RAG con IA (GPT-4)",
+                  "Infraestructura Cloud (AWS)",
+                  "IoT & Sistemas Embebidos",
+                  "Optimización SEO"
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border/20">
                     <div className="size-1.5 bg-primary/40 rounded-full" />

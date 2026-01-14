@@ -1,74 +1,152 @@
 export const projects = [
   {
     id: 1,
-    title: "Sistema Integral de Gestión HACCP",
-    description: "Sistema integral de gestión de calidad e inocuidad alimentaria con app móvil y panel administrativo web.",
-    longDescription: "Desarrollo completo de arquitectura escalable con validación GPS, digitalización de formularios de control HACCP y automatización del flujo de control de calidad.",
-    image: "/projects/haccp.jpg", // Puedes agregar tu imagen aquí
-    technologies: ["React Native", "Kotlin", "React.js", "Node.js", "AWS EC2", "Nginx", "JWT", "SQL"],
-    demoUrl: null, // Agrega la URL si tienes demo desplegado
-    githubUrl: null, // Agrega tu repo de GitHub si es público
+    title: "ChatPDF – Sistema RAG con IA",
+    description: "Sistema de IA para comprensión documental con arquitectura RAG híbrida y GPT-4 Turbo.",
+    longDescription: "Diseñé un sistema de inteligencia artificial que combina búsqueda semántica vectorial y búsqueda léxica (BM25) con fusión de rangos (RRF), logrando un Hit Rate@10 del 94%. Arquitectura de microservicios con procesamiento asíncrono y mecanismos de validación multicapa que reducen alucinaciones al 0%.",
+    image: "/projects/chatpdf.jpg",
+    technologies: ["Python", "FastAPI", "React", "Qdrant", "Redis", "Celery", "Docker", "OpenAI GPT-4"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/ChatPDF",
     featured: true,
-    category: "full-stack",
-    date: "2024"
+    category: "data-science",
+    date: "Octubre 2025"
   },
   {
     id: 2,
+    title: "Sistema Integral de Gestión HACCP",
+    description: "Sistema integral de gestión de calidad e inocuidad alimentaria con app móvil y panel administrativo web.",
+    longDescription: "Desarrollo completo de arquitectura escalable con validación GPS, digitalización de formularios de control HACCP y automatización del flujo de control de calidad. Desplegué el entorno de producción en AWS EC2 con Nginx como proxy inverso.",
+    image: "/projects/haccp.jpg",
+    technologies: ["React Native", "Kotlin", "React.js", "Node.js", "AWS EC2", "Nginx", "JWT", "SQL"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/Sistema-de-Calidad",
+    featured: true,
+    category: "full-stack",
+    date: "Marzo 2025"
+  },
+  {
+    id: 3,
+    title: "Plataforma de Denuncias Ciudadanas",
+    description: "Plataforma web MERN para la denuncia de problemas urbanos con geolocalización interactiva.",
+    longDescription: "Implementé el módulo de reportes integrando Leaflet.js y Geolocation API para captura precisa de coordenadas. Arquitectura backend RESTful segura con JWT y Bcrypt, sistema RBAC, y Dashboard con KPIs en tiempo real.",
+    image: "/projects/denuncias.jpg",
+    technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "Leaflet.js", "JWT", "JMeter"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/Plataforma-de-Denuncias",
+    featured: true,
+    category: "full-stack",
+    date: "Noviembre 2025"
+  },
+  {
+    id: 4,
     title: "Sistema de Gestión de Portafolios Docentes",
     description: "Sistema web completo para la gestión y verificación de portafolios docentes UNSAAC - Acreditación ICACIT.",
-    longDescription: "Sistema con roles (Verificador, Administrador, Docentes), módulos de verificación y generación de reportes administrativos.",
+    longDescription: "Sistema con roles (Verificador, Administrador, Docentes), módulos de verificación y generación de reportes administrativos. Desarrollo con metodología Scrum en sprints de 2 semanas.",
     image: "/projects/portafolios.jpg",
-    technologies: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript"],
-    demoUrl: null, // Puedes agregar URL del sistema si está desplegado
-    githubUrl: null,
+    technologies: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "Scrum"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/Portafolio-Docente-Metodologia",
     featured: true,
     category: "full-stack",
     date: "Enero 2025"
   },
   {
-    id: 3,
-    title: "Rastreo GPS en Tiempo Real",
-    description: "Aplicación de rastreo y geolocalización en tiempo real con múltiples objetivos simultáneos.",
-    longDescription: "Sistema con geocodificación directa e inversa, visualización en mapas interactivos con Leaflet.js y OpenStreetMap.",
-    image: "/projects/gps.jpg",
-    technologies: ["JavaScript", "Leaflet.js", "OpenStreetMap", "Fetch API", "Clipboard API"],
-    demoUrl: null, // Agrega URL si tienes demo
-    githubUrl: null,
-    featured: true,
-    category: "mobile",
-    date: "2024"
-  },
-  {
-    id: 4,
-    title: "Ecos del SEO - Plataforma Corporativa",
-    description: "Plataforma corporativa con arquitectura moderna para agencia digital integral.",
-    longDescription: "Desarrollo con SSR, arquitectura NoSQL, integración de WordPress como Headless CMS para blog.",
-    image: "/projects/ecos.jpg",
-    technologies: ["React", "Next.js", "MongoDB", "WordPress", "Node.js", "Hostinger"],
-    demoUrl: "https://ecosdelseo.com", // Ejemplo: reemplaza con tu URL real
-    githubUrl: null,
+    id: 5,
+    title: "Web Scraping para Prospección Comercial",
+    description: "Sistema de scraping automatizado para extracción de datos comerciales con tasa de éxito del 94.3%.",
+    longDescription: "Motor de extracción híbrido combinando Google Places API con Puppeteer. Generación dinámica de reportes Excel con ExcelJS, procesando más de 1,300 negocios. Infraestructura en AWS EC2 con Nginx y PM2.",
+    image: "/projects/scraping.jpg",
+    technologies: ["Node.js", "React", "Puppeteer", "PostgreSQL", "AWS EC2", "Nginx", "ExcelJS", "Google Places API"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/EcosdelSeoWebscraping",
     featured: true,
     category: "full-stack",
-    date: "2024"
-  },
-  {
-    id: 5,
-    title: "Aprendo Jugando - App Educativa",
-    description: "Aplicación educativa interactiva multiplataforma con gamificación para niños de primaria.",
-    longDescription: "MVP con actividades tipo quiz, dinámicas visuales interactivas, sistema de autenticación jerárquico (Padres/Niños).",
-    image: "/projects/aprendo.jpg",
-    technologies: ["Flutter", "Dart", "SQLite", "JSON", "Android", "iOS"],
-    demoUrl: null, // Si tienes en Play Store o App Store, agrega el link
-    githubUrl: null,
-    featured: true,
-    category: "mobile",
-    date: "2024"
+    date: "Diciembre 2025"
   },
   {
     id: 6,
+    title: "Streaming de Video en Vivo IoT",
+    description: "Sistema de streaming de video en vivo con latencia de 2-3 segundos para dispositivos IoT.",
+    longDescription: "Aplicación nativa Android con aceleración por hardware para codificación H.264/AAC y transmisión RTMP. Infraestructura de baja latencia en AWS EC2 con Node Media Server y protocolo HTTP-FLV.",
+    image: "/projects/streaming.jpg",
+    technologies: ["Kotlin", "Jetpack Compose", "Node.js", "AWS EC2", "RTMP", "HTTP-FLV", "H.264/AAC"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/SistemaStraming",
+    featured: true,
+    category: "mobile",
+    date: "Diciembre 2025"
+  },
+  {
+    id: 7,
+    title: "Rastreo GPS en Tiempo Real",
+    description: "Aplicación de rastreo y geolocalización en tiempo real con múltiples objetivos simultáneos.",
+    longDescription: "Sistema con geocodificación directa e inversa, visualización en mapas interactivos con Leaflet.js y OpenStreetMap. Función copiar al portapapeles para extracción rápida de coordenadas.",
+    image: "/projects/gps.jpg",
+    technologies: ["JavaScript", "Leaflet.js", "OpenStreetMap", "Fetch API", "Clipboard API", "Android"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/ServidorGps",
+    featured: true,
+    category: "mobile",
+    date: "Mayo 2025"
+  },
+  {
+    id: 8,
+    title: "Ecos del SEO - Plataforma Corporativa",
+    description: "Plataforma corporativa con arquitectura moderna para agencia digital integral.",
+    longDescription: "Desarrollo con SSR en Next.js para optimización SEO, arquitectura NoSQL con MongoDB, integración de WordPress como Headless CMS para blog. Despliegue en Hostinger.",
+    image: "/projects/ecos.jpg",
+    technologies: ["React", "Next.js", "MongoDB", "WordPress", "Node.js", "Hostinger"],
+    demoUrl: "https://ecosdelseo.com",
+    githubUrl: null,
+    featured: true,
+    category: "full-stack",
+    date: "Julio 2025"
+  },
+  {
+    id: 9,
+    title: "Sistema IoT con ESP32 y BLE",
+    description: "Sistema de escaneo IoT y geolocalización con ESP32 y Bluetooth Low Energy.",
+    longDescription: "Firmware ESP32 para escaneos activos de espectro BLE, capturando MAC y RSSI. Backend en AWS EC2 con Node.js y PM2. Interfaz web con visualización en mapa interactivo en tiempo real.",
+    image: "/projects/esp32.jpg",
+    technologies: ["ESP32", "C++", "Node.js", "AWS EC2", "BLE", "PM2"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/Esp32-Server",
+    featured: false,
+    category: "iot",
+    date: "Enero 2026"
+  },
+  {
+    id: 10,
+    title: "Central Telefónica IP - Issabel PBX",
+    description: "Implementación de sistema de telefonía IP con Issabel PBX y protocolos VoIP.",
+    longDescription: "Servidor de telefonía IP sobre entorno virtualizado con VirtualBox. Configuración de extensiones PJSIP, optimización NAT/UDP, y gestión integral de la central telefónica.",
+    image: "/projects/voip.jpg",
+    technologies: ["Issabel PBX", "Asterisk", "VirtualBox", "Linux", "SIP/PJSIP", "VoIP"],
+    demoUrl: null,
+    githubUrl: null,
+    featured: false,
+    category: "infrastructure",
+    date: "Enero 2026"
+  },
+  {
+    id: 11,
+    title: "Aprendo Jugando - App Educativa",
+    description: "Aplicación educativa interactiva multiplataforma con gamificación para niños de primaria.",
+    longDescription: "MVP con actividades tipo quiz y dinámicas visuales interactivas. Sistema de autenticación jerárquico (Padres/Niños) con seguridad PIN. Interfaz UX/UI optimizada para usuarios infantiles.",
+    image: "/projects/aprendo.jpg",
+    technologies: ["Flutter", "Dart", "SQLite", "JSON", "Android", "iOS"],
+    demoUrl: null,
+    githubUrl: "https://github.com/milith0kun/aprendo_jugando",
+    featured: true,
+    category: "mobile",
+    date: "Agosto 2025"
+  },
+  {
+    id: 12,
     title: "Hospital Regional - Modelado y Simulación",
-    description: "Sistema de simulación y optimización para gestión hospitalaria.",
-    longDescription: "Algoritmos de optimización para asignación de citas médicas, análisis de patrones con IA básica, simulaciones de operación hospitalaria.",
+    description: "Sistema de simulación y optimización para gestión hospitalaria con IA básica.",
+    longDescription: "Algoritmos de optimización para asignación de citas médicas mejorando eficiencia en 25%. Técnicas de IA para análisis de patrones y predicción de demanda de servicios.",
     image: "/projects/hospital.jpg",
     technologies: ["Python", "IA", "Modelado", "Simulación"],
     demoUrl: null,
@@ -76,6 +154,32 @@ export const projects = [
     featured: false,
     category: "data-science",
     date: "Febrero 2024"
+  },
+  {
+    id: 13,
+    title: "Sumador Digital con Contadores",
+    description: "Circuito digital sumador utilizando contadores y lógica secuencial.",
+    longDescription: "Diseño e implementación de circuito sumador con lógica de entrada mediante switches y pulsadores. Visualización en displays de 7 segmentos. Aplicación de electrónica digital y álgebra booleana.",
+    image: "/projects/sumador.jpg",
+    technologies: ["Electrónica Digital", "Circuitos Lógicos", "Álgebra Booleana", "Display 7 Segmentos"],
+    demoUrl: null,
+    githubUrl: null,
+    featured: false,
+    category: "electronics",
+    date: "2021"
+  },
+  {
+    id: 14,
+    title: "Booking Inca Trail - Plataforma de Reservas",
+    description: "Plataforma de reservas turísticas con diseño premium, integración de pagos digitales y estrategia SEO.",
+    longDescription: "Diseñé identidad visual moderna con Dark Mode e implementé componentes interactivos complejos (Mega Menús, efectos de pulso, transiciones slide-in). Integración de pasarelas de pago Yape y Nuvei. Estrategia SEO 2026 para dominar búsquedas del sector turismo Inca Trail.",
+    image: "/projects/booking.jpg",
+    technologies: ["WordPress", "PHP", "CSS3", "JavaScript", "API Yape", "API Nuvei", "SEO"],
+    demoUrl: "https://bookingincatrail.com",
+    githubUrl: null,
+    featured: true,
+    category: "full-stack",
+    date: "Febrero 2026"
   }
 ];
 
@@ -83,5 +187,8 @@ export const projectCategories = [
   { id: 'all', name: 'Todos' },
   { id: 'full-stack', name: 'Full Stack' },
   { id: 'mobile', name: 'Mobile' },
-  { id: 'data-science', name: 'Data Science' }
+  { id: 'data-science', name: 'Data Science & IA' },
+  { id: 'iot', name: 'IoT' },
+  { id: 'infrastructure', name: 'Infraestructura' },
+  { id: 'electronics', name: 'Electrónica' }
 ];

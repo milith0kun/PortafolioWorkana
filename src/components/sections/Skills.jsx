@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Layout, ServerCog, Smartphone, DatabaseZap, GitBranch, Workflow, Sparkles } from 'lucide-react';
+import { Layout, ServerCog, Smartphone, DatabaseZap, GitBranch, Workflow, Sparkles, Cpu, Brain } from 'lucide-react';
 import { skillCategories } from '../../data/skills';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
@@ -12,7 +12,9 @@ const iconMap = {
   DatabaseZap: DatabaseZap,
   GitBranch: GitBranch,
   Workflow: Workflow,
-  Sparkles: Sparkles
+  Sparkles: Sparkles,
+  Cpu: Cpu,
+  Brain: Brain
 };
 
 const Skills = ({ onNext }) => {
