@@ -15,11 +15,10 @@ const Navbar = ({ activeSection, setActiveSection, isScrolled, isVisible = true 
   const navItems = [
     { index: 0, label: 'Inicio' },
     { index: 1, label: 'Sobre mí' },
-    { index: 2, label: 'Experiencia' },
-    { index: 3, label: 'Proyectos' },
+    { index: 2, label: 'Proyectos' },
+    { index: 3, label: 'Habilidades' },
     { index: 4, label: 'Certificaciones' },
-    { index: 5, label: 'Habilidades' },
-    { index: 6, label: 'Contacto' }
+    { index: 5, label: 'Contacto' }
   ];
 
   return (

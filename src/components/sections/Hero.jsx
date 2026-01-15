@@ -12,9 +12,9 @@ const Hero = ({ onNext }) => {
   };
 
   const socialLinks = [
-    { icon: <Github className="size-5" />, url: 'https://github.com/edmilsaire', label: 'GitHub' },
+    { icon: <Github className="size-5" />, url: 'https://github.com/milith0kun', label: 'GitHub' },
     { icon: <Linkedin className="size-5" />, url: 'https://linkedin.com/in/edmilSaire', label: 'LinkedIn' },
-    { icon: <Mail className="size-5" />, url: 'mailto:174449@unsaac.edu.pe', label: 'Email' }
+    { icon: <Mail className="size-5" />, url: '#contact', label: 'Email' }
   ];
 
   return (
@@ -26,17 +26,6 @@ const Hero = ({ onNext }) => {
 
       {/* Hero Content */}
       <div className="container relative z-10 flex flex-col items-center text-center max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <Badge variant="secondary" className="mb-8 px-4 py-1.5 gap-2 border-primary/20 bg-primary/5 text-primary hover:bg-primary/10 transition-colors">
-            <Sparkles className="size-4" />
-            <span>Freelance Disponible</span>
-          </Badge>
-        </motion.div>
-
         <motion.h1
           className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-6"
           {...fadeInUp}
@@ -87,7 +76,11 @@ const Hero = ({ onNext }) => {
                 asChild
                 className="rounded-full hover:bg-primary/10 hover:text-primary transition-all active:scale-90"
               >
-                <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+                <a
+                  href={link.url}
+                  {...(link.url.startsWith('mailto:') ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+                  aria-label={link.label}
+                >
                   {link.icon}
                 </a>
               </Button>

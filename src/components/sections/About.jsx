@@ -14,9 +14,9 @@ const About = ({ onNext }) => {
   };
 
   const socialLinks = [
-    { icon: <Github className="size-5" />, url: 'https://github.com/edmilsaire', label: 'GitHub' },
+    { icon: <Github className="size-5" />, url: 'https://github.com/milith0kun', label: 'GitHub' },
     { icon: <Linkedin className="size-5" />, url: 'https://linkedin.com/in/edmilSaire', label: 'LinkedIn' },
-    { icon: <Mail className="size-5" />, url: 'mailto:174449@unsaac.edu.pe', label: 'Email' }
+    { icon: <Mail className="size-5" />, url: '#contact', label: 'Email' }
   ];
 
   return (
@@ -60,8 +60,12 @@ const About = ({ onNext }) => {
 
                 <div className="flex gap-3 mb-8">
                   {socialLinks.map((link, index) => (
-                    <Button key={index} variant="outline" size="icon" className="rounded-full size-10 hover:border-primary/50 hover:text-primary" asChild>
-                      <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+                    <Button key={index} variant="ghost" size="icon" className="rounded-full hover:bg-primary/10 hover:text-primary transition-all active:scale-90" asChild>
+                      <a
+                        href={link.url}
+                        {...(link.url.startsWith('mailto:') ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+                        aria-label={link.label}
+                      >
                         {link.icon}
                       </a>
                     </Button>

@@ -5,7 +5,6 @@ import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Skills from './components/sections/Skills';
 import Experience from './components/sections/Experience';
-import Projects from './components/sections/Projects';
 import Certifications from './components/sections/Certifications';
 import Contact from './components/sections/Contact';
 
@@ -23,10 +22,9 @@ function App() {
   const sections = [
     { id: 'hero', component: <Hero onNext={() => setActiveSection(1)} /> },
     { id: 'about', component: <About onNext={() => setActiveSection(2)} /> },
-    { id: 'experience', component: <Experience onNext={() => setActiveSection(3)} /> },
-    { id: 'projects', component: <Projects onNext={() => setActiveSection(4)} /> },
+    { id: 'projects', component: <Experience onNext={() => setActiveSection(3)} /> },
+    { id: 'skills', component: <Skills onNext={() => setActiveSection(4)} /> },
     { id: 'certifications', component: <Certifications onNext={() => setActiveSection(5)} /> },
-    { id: 'skills', component: <Skills onNext={() => setActiveSection(6)} /> },
     { id: 'contact', component: <Contact /> }
   ];
 
