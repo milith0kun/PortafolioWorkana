@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Calendar, Code2, ExternalLink, Github, Monitor, Smartphone, Tablet, Layout, Palette, Download } from 'lucide-react';
 import { projects } from '../../data/projects';
 import { Badge } from '@/components/ui/Badge';
@@ -89,8 +89,12 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
     return 'w-full rounded-xl border-4 border-zinc-800 shadow-2xl bg-zinc-950';
   };
 
+  // Ref para detectar visibilidad y reiniciar animación
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.3 });
+
   return (
-    <div className={`mt-6 ${getContainerClass()} overflow-hidden`}>
+    <div ref={containerRef} className={`mt-6 ${getContainerClass()} overflow-hidden`}>
       <AnimatePresence mode="wait">
         {/* Renderizado condicional para Grid de Escritorio vs Scroll/Carrusel Único */}
         {/* Para simplificar y mantener consistencia visual, usaremos el carrusel único para todo por ahora,
@@ -162,7 +166,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
                         key={`${activeDevice}-${currentIndex}`}
                         src={currentImage.image}
                         alt={currentImage.label || 'Screenshot'}
-                        className={`${shouldScroll
+                        className={`${shouldScroll && isInView
                           ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
                           : 'w-full h-full object-contain'
                           }`}
@@ -173,6 +177,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
+                        loading="lazy"
+                        decoding="async"
                         onLoad={(e) => setImageHeight(e.target.naturalHeight)}
                       />
                     )}
@@ -268,8 +274,8 @@ const Experience = ({ onNext }) => {
                   className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-6 lg:pr-8' : 'md:pl-6 lg:pl-8'} ml-20 md:ml-0`}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   <Card className="border-border/40 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all shadow-sm h-full">
                     <CardContent className="p-4 md:p-6">
@@ -347,8 +353,8 @@ const Experience = ({ onNext }) => {
                     className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-6 lg:pl-8' : 'md:pr-6 lg:pr-8'} ml-20 md:ml-0`}
                     initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                   >
                     <DeviceScreenshotViewer screenshotsByDevice={project.screenshotsByDevice} />
                   </motion.div>
