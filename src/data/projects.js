@@ -50,7 +50,12 @@ export const projects = [
     githubUrl: "https://github.com/milith0kun/EcosdelSeoWebscraping",
     featured: true,
     category: "full-stack",
-    date: "Diciembre 2025"
+    date: "Diciembre 2025",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/scraping/desktop-1.png", label: "Resultados del Scraping" }
+      ]
+    }
   },
   {
     id: 4,

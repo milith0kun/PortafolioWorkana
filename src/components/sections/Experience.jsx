@@ -42,13 +42,13 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
   const currentScreenshots = screenshotsByDevice[activeDevice] || [];
   const currentImage = currentScreenshots[currentIndex];
 
-  // Carrusel automático cada 2 segundos (Ultra rápido)
+  // Carrusel automático cada 10 segundos (sincronizado con scroll de 10s)
   useEffect(() => {
     if (currentScreenshots.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % currentScreenshots.length);
-    }, 2000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [activeDevice, currentScreenshots.length]);
@@ -72,8 +72,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
   const getScrollThreshold = () => {
     // Mobile/Tablet: Umbral bajo (800px) para que las Apps hagan scroll y se vean bien
     if (activeDevice === 'mobile' || activeDevice === 'tablet') return 800;
-    // Desktop: Umbral alto (1400px) para que Dashboards/Sistemas se vean estáticos
-    return 1400;
+    // Desktop: Umbral bajo (600px) para asegurar que casi todo haga scroll salvo imágenes muy pequeñas
+    return 600;
   };
 
   const shouldScroll = imageHeight > getScrollThreshold();

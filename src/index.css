@@ -445,7 +445,7 @@ body,
 }
 
 /* ==================== SCREENSHOT SCROLL ANIMATION ==================== */
-/* Animación Ultra Rápida: Total 2s */
+/* Animación Suave: Total 10s (ritmo pausado y elegante) */
 @keyframes screenshot-scroll-3-stages {
   0% {
     transform: translateY(0);
@@ -453,25 +453,30 @@ body,
 
   18% {
     transform: translateY(0);
+    /* ARRIBA */
   }
 
   37% {
     transform: translateY(calc(var(--scroll-distance) * -0.5));
+    /* Scroll al centro */
   }
 
   56% {
     transform: translateY(calc(var(--scroll-distance) * -0.5));
+    /* CENTRO */
   }
 
   75% {
     transform: translateY(calc(var(--scroll-distance) * -1));
+    /* Scroll abajo */
   }
 
   100% {
     transform: translateY(calc(var(--scroll-distance) * -1));
+    /* ABAJO */
   }
 }
 
 .screenshot-scroll-stages {
-  animation: screenshot-scroll-3-stages 2s ease-in-out forwards;
+  animation: screenshot-scroll-3-stages 10s ease-in-out forwards;
 }
