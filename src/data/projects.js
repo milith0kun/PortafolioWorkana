@@ -79,8 +79,8 @@ export const projects = [
     date: "Diciembre 2025",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/streaming-iot/desktop-1.png", label: "Web Streaming" },
-        { image: "/projects/screenshots/streaming-iot/desktop-2.png", label: "Dashboard Web" }
+        { image: "/projects/screenshots/streaming-iot/desktop-1.png", label: "Web Streaming", disableScroll: true },
+        { image: "/projects/screenshots/streaming-iot/desktop-2.png", label: "Dashboard Web", disableScroll: true }
       ],
       mobile: [
         { image: "/projects/screenshots/streaming-iot/app-1.jpeg", label: "App Streaming" },
