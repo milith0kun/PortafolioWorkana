@@ -72,27 +72,38 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
   const getScrollThreshold = () => {
     // Mobile/Tablet: Umbral bajo (800px) para que las Apps hagan scroll y se vean bien
     if (activeDevice === 'mobile' || activeDevice === 'tablet') return 800;
-    // Desktop: Umbral bajo (600px) para asegurar que casi todo haga scroll salvo imágenes muy pequeñas
-    return 600;
+    // Desktop: Umbral alto (1000px). Evita que casi todas las capturas de pantalla de laptop se muevan.
+    return 1000;
   };
 
-  const shouldScroll = imageHeight > getScrollThreshold();
+  const shouldScroll = !currentImage?.disableScroll && (imageHeight > getScrollThreshold());
 
   const getContainerClass = () => {
     if (activeDevice === 'mobile') {
-      return 'max-w-[280px] mx-auto'; // Móvil real (muy angosto)
+      return 'max-w-[280px] w-full mx-auto rounded-[2rem] border-4 border-zinc-800 shadow-xl';
     }
     if (activeDevice === 'tablet') {
-      return 'max-w-sm mx-auto'; // Tablet más angosto
+      return 'max-w-[500px] w-full mx-auto rounded-xl border-2 border-zinc-700 shadow-lg';
     }
-    return 'max-w-xl mx-auto'; // Desktop normal
+    // Desktop: Marco estilo monitor (Rectangular con borde grueso y sombra)
+    return 'w-full rounded-xl border-4 border-zinc-800 shadow-2xl bg-zinc-950';
   };
 
   return (
-    <div className="w-full">
-      {/* Card con tabs integrados arriba */}
-      <div className={getContainerClass()}>
-        <div className="rounded-lg overflow-hidden bg-card/50 border border-border/40 shadow-sm">
+    <div className={`mt-6 ${getContainerClass()} overflow-hidden`}>
+      <AnimatePresence mode="wait">
+        {/* Renderizado condicional para Grid de Escritorio vs Scroll/Carrusel Único */}
+        {/* Para simplificar y mantener consistencia visual, usaremos el carrusel único para todo por ahora,
+            pero adaptado al dispositivo */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Si es Desktop y tiene MÚLTIPLES imágenes que se benefician de grid... No, el usuario prefiere carrusel.
+              Mantendremos el carrusel pero con scroll inteligente. */}
+
           {/* Tabs dentro de la card */}
           <div className="flex justify-center gap-1 p-2 bg-muted/30 border-b border-border/20">
             {devices.map((device) => (
@@ -140,9 +151,9 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
           ) : (
             /* Layout normal: 1 imagen con scroll condicional */
             <div className="p-3">
-              <div className="group relative rounded overflow-hidden bg-muted/50 border border-border/20">
+              <div className="group relative rounded overflow-hidden bg-zinc-900/50 border border-border/20">
                 <div
-                  className="relative overflow-hidden bg-muted/20 transition-all duration-300 flex flex-col items-center justify-center"
+                  className="relative overflow-hidden bg-zinc-900/50 transition-all duration-300 flex flex-col items-center justify-center"
                   style={{ height: `${viewportHeight}px` }}
                 >
                   <AnimatePresence mode="wait">
@@ -157,7 +168,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
                           }`}
                         style={shouldScroll ? {
                           '--scroll-distance': `calc(100% - ${viewportHeight}px)`
-                        } : {}}
+                        } : undefined}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -211,8 +222,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
               )}
             </div>
           )}
-        </div>
-      </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

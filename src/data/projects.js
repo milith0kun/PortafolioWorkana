@@ -10,7 +10,15 @@ export const projects = [
     githubUrl: "https://github.com/milith0kun/ChatPDF",
     featured: true,
     category: "data-science",
-    date: "Octubre 2025"
+    date: "Octubre 2025",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/chat-pdf/desktop-1.jpeg", label: "Interfaz de Chat", disableScroll: true },
+        { image: "/projects/screenshots/chat-pdf/desktop-2.jpeg", label: "Procesamiento de Documentos", disableScroll: true },
+        { image: "/projects/screenshots/chat-pdf/desktop-3.jpeg", label: "Análisis de Contenido", disableScroll: true },
+        { image: "/projects/screenshots/chat-pdf/desktop-4.jpeg", label: "Respuesta Generada" }
+      ]
+    }
   },
   {
     id: 2,
@@ -27,8 +35,8 @@ export const projects = [
     screenshotsByDevice: {
       desktop: [
         { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-home-desktop.png", label: "Vista Principal" },
-        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-2.png", label: "Dashboard" },
-        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-3.png", label: "Gestión de Reportes" }
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-2.png", label: "Dashboard", disableScroll: true },
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-3.png", label: "Gestión de Reportes", disableScroll: true }
       ],
       tablet: [
         { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-tablet-1.png", label: "Vista Tablet 1" },
