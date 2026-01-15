@@ -23,7 +23,21 @@ export const projects = [
     githubUrl: "https://github.com/milith0kun/Plataforma-de-Denuncias",
     featured: true,
     category: "full-stack",
-    date: "Noviembre 2025"
+    date: "Noviembre 2025",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-home-desktop.png", label: "Vista Principal" },
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-2.png", label: "Dashboard" },
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-3.png", label: "Gestión de Reportes" }
+      ],
+      tablet: [
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-tablet-1.png", label: "Vista Tablet 1" },
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-tablet-2.png", label: "Vista Tablet 2" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-mobile-1.png", label: "App Móvil" }
+      ]
+    }
   },
   {
     id: 3,
@@ -49,7 +63,17 @@ export const projects = [
     githubUrl: "https://github.com/milith0kun/SistemaStraming",
     featured: true,
     category: "mobile",
-    date: "Diciembre 2025"
+    date: "Diciembre 2025",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/streaming-iot/desktop-1.png", label: "Web Streaming" },
+        { image: "/projects/screenshots/streaming-iot/desktop-2.png", label: "Dashboard Web" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/streaming-iot/app-1.jpeg", label: "App Streaming" },
+        { image: "/projects/screenshots/streaming-iot/app-2.jpeg", label: "App Control" }
+      ]
+    }
   },
   {
     id: 5,
@@ -88,7 +112,24 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Julio 2025"
+    date: "Julio 2025",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/ecos-del-seo/desktop-1.png", label: "Home - Servicios" },
+        { image: "/projects/screenshots/ecos-del-seo/desktop-2.png", label: "Portafolio" },
+        { image: "/projects/screenshots/ecos-del-seo/desktop-3.png", label: "Blog y Contacto" }
+      ],
+      tablet: [
+        { image: "/projects/screenshots/ecos-del-seo/tablet-1.png", label: "Vista Tablet Home" },
+        { image: "/projects/screenshots/ecos-del-seo/tablet-2.png", label: "Vista Tablet Servicios" },
+        { image: "/projects/screenshots/ecos-del-seo/tablet-3.png", label: "Vista Tablet Blog" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/ecos-del-seo/mobile-1.png", label: "Mobile Home" },
+        { image: "/projects/screenshots/ecos-del-seo/mobile-2.png", label: "Mobile Servicios" },
+        { image: "/projects/screenshots/ecos-del-seo/mobile-3.png", label: "Mobile Blog" }
+      ]
+    }
   },
   {
     id: 8,
@@ -127,7 +168,23 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026"
+    date: "Febrero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/booking-incatrail/desktop-1.png", label: "Página Principal" },
+        { image: "/projects/screenshots/booking-incatrail/desktop-2.png", label: "Tours y Paquetes" },
+        { image: "/projects/screenshots/booking-incatrail/desktop-3.png", label: "Sistema de Reservas" }
+      ],
+      tablet: [
+        { image: "/projects/screenshots/booking-incatrail/tablet-1.png", label: "Vista Tablet 1" },
+        { image: "/projects/screenshots/booking-incatrail/tablet-2.png", label: "Vista Tablet 2" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/booking-incatrail/mobile-1.png", label: "Home Móvil" },
+        { image: "/projects/screenshots/booking-incatrail/mobile-2.png", label: "Tours Móvil" },
+        { image: "/projects/screenshots/booking-incatrail/mobile-3.png", label: "Reserva Móvil" }
+      ]
+    }
   },
   {
     id: 11,
