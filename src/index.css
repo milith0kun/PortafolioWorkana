@@ -445,39 +445,33 @@ body,
 }
 
 /* ==================== SCREENSHOT SCROLL ANIMATION ==================== */
-/* Animación: ARRIBA 2s → scroll 2.5s → CENTRO 2s → scroll 2s → ABAJO 1.5s = 10s */
+/* Animación Ultra Rápida: Total 2s */
 @keyframes screenshot-scroll-3-stages {
   0% {
     transform: translateY(0);
   }
 
-  20% {
+  18% {
     transform: translateY(0);
-    /* ARRIBA: 0-20% = 2s */
   }
 
-  45% {
+  37% {
     transform: translateY(calc(var(--scroll-distance) * -0.5));
-    /* Scroll al centro: 20-45% = 2.5s */
   }
 
-  65% {
+  56% {
     transform: translateY(calc(var(--scroll-distance) * -0.5));
-    /* CENTRO: 45-65% = 2s */
   }
 
-  85% {
+  75% {
     transform: translateY(calc(var(--scroll-distance) * -1));
-    /* Scroll abajo: 65-85% = 2s */
   }
 
   100% {
     transform: translateY(calc(var(--scroll-distance) * -1));
-    /* ABAJO: 85-100% = 1.5s */
   }
 }
 
 .screenshot-scroll-stages {
-  animation: screenshot-scroll-3-stages 10s ease-in-out forwards;
-  /* forwards: se queda en la posición final sin volver al inicio */
+  animation: screenshot-scroll-3-stages 2s ease-in-out forwards;
 }

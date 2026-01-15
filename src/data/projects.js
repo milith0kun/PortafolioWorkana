@@ -86,7 +86,17 @@ export const projects = [
     githubUrl: "https://github.com/milith0kun/Sistema-de-Calidad",
     featured: true,
     category: "full-stack",
-    date: "Marzo 2025"
+    date: "Marzo 2025",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.sistemahaccp.calidad&pcampaignid=web_share",
+    screenshotsByDevice: {
+      mobile: [
+        { image: "/projects/screenshots/haccp-system/mobile-1.png", label: "Login Seguro" },
+        { image: "/projects/screenshots/haccp-system/mobile-2.png", label: "Menú de Módulos" },
+        { image: "/projects/screenshots/haccp-system/mobile-3.png", label: "Registro de Control" },
+        { image: "/projects/screenshots/haccp-system/mobile-4.png", label: "Validación GPS" },
+        { image: "/projects/screenshots/haccp-system/mobile-5.png", label: "Historial de Registros" }
+      ]
+    }
   },
   {
     id: 6,
@@ -142,7 +152,20 @@ export const projects = [
     githubUrl: "https://github.com/milith0kun/aprendo_jugando",
     featured: true,
     category: "mobile",
-    date: "Agosto 2025"
+    date: "Agosto 2025",
+    screenshotsByDevice: {
+      mobile: [
+        { image: "/projects/screenshots/aprendo-jugando/mobile-1.jpeg", label: "Pantalla de Inicio" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-2.jpeg", label: "Login / Acceso" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-3.jpeg", label: "Selección de Perfil" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-4.jpeg", label: "Menú Principal" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-5.jpeg", label: "Niveles de Juego" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-6.jpeg", label: "Juego Matemáticas" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-7.jpeg", label: "Progreso del Alumno" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-8.jpeg", label: "Logros y Recompensas" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-9.jpeg", label: "Configuración" }
+      ]
+    }
   },
   {
     id: 9,
@@ -151,11 +174,24 @@ export const projects = [
     longDescription: "Desarrollé un sistema web completo para la gestión y verificación de portafolios docentes como parte del proceso de acreditación ICACIT de la UNSAAC utilizando stack tecnológico PHP/Laravel para backend, HTML/CSS/JavaScript para frontend y MySQL. Implementé sistema de roles con tres tipos de usuarios: Verificador, Administrador y Docentes, cada uno con permisos específicos según sus funciones. Diseñé módulos de verificación para evaluar trabajos de alumnos y portafolios de cursos, facilitando el proceso de acreditación institucional. Desarrollé funcionalidades de generación de reportes administrativos. Apliqué metodología Scrum en el desarrollo, documentando el progreso mediante sprints de 2 semanas.",
     image: "/projects/portafolios.jpg",
     technologies: ["PHP", "Laravel", "MySQL", "HTML", "CSS", "JavaScript", "Scrum", "RBAC"],
-    demoUrl: null,
+    demoUrl: "https://miro.com/welcomeonboard/cXFmUXRrOXRSSjlDQW80QW9tc1I0UTEzUEFqL0FRMFlhUHNJZkh1RzBkaGgyWmdIQ25PZ05CMVNVWGZXMUFyVGprSXNYQVVpUU5CTkViRWlsSFRJcDFXODVNUnhLQ3pydGZwQVpaeVpnQ3JrNjNxZDU2ZGFuaGorM2crUFlnQllNakdSWkpBejJWRjJhRnhhb1UwcS9BPT0hdjE=?share_link_id=631395697573",
     githubUrl: "https://github.com/milith0kun/Portafolio-Docente-Metodologia",
     featured: true,
     category: "full-stack",
-    date: "Enero 2025"
+    date: "Enero 2025",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/sistema-portafolios/desktop-1.png", label: "Login Docente" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-2.png", label: "Dashboard Principal" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-3.png", label: "Gestión de Cursos" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-4.png", label: "Subida de Evidencias" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-5.png", label: "Evaluación de Portafolios" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-6.png", label: "Reportes de Cumplimiento" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-7.png", label: "Vista de Administrador" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-8.png", label: "Verificación ICACIT" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-9.png", label: "Configuración del Sistema" }
+      ]
+    }
   },
   {
     id: 10,
@@ -197,7 +233,17 @@ export const projects = [
     githubUrl: "https://github.com/milith0kun/Esp32-Server",
     featured: true,
     category: "iot",
-    date: "Enero 2026"
+    date: "Enero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/esp32-iot/desktop-1.png", label: "Dashboard de Monitoreo" },
+        { image: "/projects/screenshots/esp32-iot/desktop-2.png", label: "Gestión de Dispositivos" },
+        { image: "/projects/screenshots/esp32-iot/desktop-3.png", label: "Configuración de Red" },
+        { image: "/projects/screenshots/esp32-iot/desktop-4.png", label: "Análisis de Señal RSSI" },
+        { image: "/projects/screenshots/esp32-iot/desktop-5.png", label: "Visualización de Datos" },
+        { image: "/projects/screenshots/esp32-iot/desktop-6.png", label: "Alertas y Notificaciones" }
+      ]
+    }
   },
   {
     id: 12,
@@ -210,7 +256,19 @@ export const projects = [
     githubUrl: null,
     featured: false,
     category: "infrastructure",
-    date: "Enero 2026"
+    date: "Enero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/issabel-pbx/desktop-1.png", label: "Dashboard Principal" },
+        { image: "/projects/screenshots/issabel-pbx/desktop-2.png", label: "Configuración de Extensiones" },
+        { image: "/projects/screenshots/issabel-pbx/desktop-3.png", label: "Panel de Operador" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/issabel-pbx/mobile-1.png", label: "Login Móvil" },
+        { image: "/projects/screenshots/issabel-pbx/mobile-2.png", label: "Menú Principal" },
+        { image: "/projects/screenshots/issabel-pbx/mobile-3.png", label: "Estado del Sistema" }
+      ]
+    }
   },
   {
     id: 13,

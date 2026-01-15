@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Smartphone, Globe, Download, Play, Video } from 'lucide-react';
+import { ExternalLink, Github, Smartphone, Globe, Download, Play, Video, Palette } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -93,8 +93,8 @@ const ProjectCard = ({ project }) => {
             className="flex-1 min-w-[120px] rounded-full text-xs font-bold"
           >
             <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="mr-2 size-3" />
-              Ver Demo
+              {project.demoUrl.includes('miro.com') ? <Palette className="mr-2 size-3" /> : <ExternalLink className="mr-2 size-3" />}
+              {project.demoUrl.includes('miro.com') ? 'Diseño UI/UX' : 'Visitar Sitio'}
             </a>
           </Button>
         )}

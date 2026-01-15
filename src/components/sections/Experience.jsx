@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Code2, ExternalLink, Github, Monitor, Smartphone, Tablet, Layout } from 'lucide-react';
+import { Calendar, Code2, ExternalLink, Github, Monitor, Smartphone, Tablet, Layout, Palette, Download } from 'lucide-react';
 import { projects } from '../../data/projects';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent } from '@/components/ui/Card';
@@ -19,7 +19,12 @@ const getIcon = (iconType) => {
 
 // Componente de visualización con tabs y carrusel MEJORADO
 const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
-  const [activeDevice, setActiveDevice] = useState('desktop');
+  const [activeDevice, setActiveDevice] = useState(() => {
+    if (screenshotsByDevice.desktop && screenshotsByDevice.desktop.length > 0) return 'desktop';
+    if (screenshotsByDevice.tablet && screenshotsByDevice.tablet.length > 0) return 'tablet';
+    if (screenshotsByDevice.mobile && screenshotsByDevice.mobile.length > 0) return 'mobile';
+    return 'desktop';
+  });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageHeight, setImageHeight] = useState(0);
 
@@ -37,13 +42,13 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
   const currentScreenshots = screenshotsByDevice[activeDevice] || [];
   const currentImage = currentScreenshots[currentIndex];
 
-  // Carrusel automático cada 10 segundos (justo cuando termina el scroll)
+  // Carrusel automático cada 2 segundos (Ultra rápido)
   useEffect(() => {
     if (currentScreenshots.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % currentScreenshots.length);
-    }, 10000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [activeDevice, currentScreenshots.length]);
@@ -56,9 +61,22 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
 
   if (!screenshotsByDevice) return null;
 
-  // Determinar si hacer scroll basado en la altura de la imagen
-  // Solo screenshots COMPLETOS de páginas largas (> 1500px) hacen scroll
-  const shouldScroll = imageHeight > 1500;
+  // Altura del viewport unificada para evitar desproporciones visuales
+  const getViewportHeight = () => {
+    return 400; // Altura estándar para todos los dispositivos
+  };
+
+  const viewportHeight = getViewportHeight();
+
+  // Umbral inteligente según dispositivo para no romper experiencias previas
+  const getScrollThreshold = () => {
+    // Mobile/Tablet: Umbral bajo (800px) para que las Apps hagan scroll y se vean bien
+    if (activeDevice === 'mobile' || activeDevice === 'tablet') return 800;
+    // Desktop: Umbral alto (1400px) para que Dashboards/Sistemas se vean estáticos
+    return 1400;
+  };
+
+  const shouldScroll = imageHeight > getScrollThreshold();
 
   const getContainerClass = () => {
     if (activeDevice === 'mobile') {
@@ -69,17 +87,6 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
     }
     return 'max-w-xl mx-auto'; // Desktop normal
   };
-
-  // Altura del viewport según el dispositivo para respetar proporciones
-  const getViewportHeight = () => {
-    switch (activeDevice) {
-      case 'mobile': return 550; // Más alto para formato celular
-      case 'tablet': return 500; // Alto intermedio
-      default: return 400;       // Desktop panorámico
-    }
-  };
-
-  const viewportHeight = getViewportHeight();
 
   return (
     <div className="w-full">
@@ -135,8 +142,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
             <div className="p-3">
               <div className="group relative rounded overflow-hidden bg-muted/50 border border-border/20">
                 <div
-                  className={`relative overflow-hidden bg-muted/20 ${shouldScroll ? 'flex flex-col justify-start' : 'h-auto'}`}
-                  style={shouldScroll ? { height: `${viewportHeight}px` } : {}}
+                  className="relative overflow-hidden bg-muted/20 transition-all duration-300 flex flex-col items-center justify-center"
+                  style={{ height: `${viewportHeight}px` }}
                 >
                   <AnimatePresence mode="wait">
                     {currentImage && (
@@ -145,8 +152,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
                         src={currentImage.image}
                         alt={currentImage.label || 'Screenshot'}
                         className={`${shouldScroll
-                          ? 'w-full h-auto object-cover object-top screenshot-scroll-stages'
-                          : 'w-full h-auto'
+                          ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
+                          : 'w-full h-full object-contain'
                           }`}
                         style={shouldScroll ? {
                           '--scroll-distance': `calc(100% - ${viewportHeight}px)`
@@ -284,7 +291,7 @@ const Experience = ({ onNext }) => {
                       </div>
 
                       {/* Enlaces */}
-                      {(project.demoUrl || project.githubUrl) && (
+                      {(project.demoUrl || project.githubUrl || project.playStoreUrl) && (
                         <div className="flex flex-wrap gap-2 pt-3 md:pt-4 border-t border-border/20">
                           {project.githubUrl && (
                             <Button variant="outline" size="sm" className="gap-2 text-xs flex-1 sm:flex-none" asChild>
@@ -295,12 +302,25 @@ const Experience = ({ onNext }) => {
                               </a>
                             </Button>
                           )}
+                          {project.playStoreUrl && (
+                            <Button size="sm" className="gap-2 text-xs flex-1 sm:flex-none" asChild>
+                              <a href={project.playStoreUrl} target="_blank" rel="noopener noreferrer">
+                                <Download size={14} />
+                                <span className="hidden sm:inline">Descargar App</span>
+                                <span className="sm:hidden">App</span>
+                              </a>
+                            </Button>
+                          )}
                           {project.demoUrl && (
                             <Button size="sm" className="gap-2 text-xs flex-1 sm:flex-none" asChild>
                               <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink size={14} />
-                                <span className="hidden sm:inline">Ver Demo</span>
-                                <span className="sm:hidden">Demo</span>
+                                {project.demoUrl.includes('miro.com') ? <Palette size={14} /> : <ExternalLink size={14} />}
+                                <span className="hidden sm:inline">
+                                  {project.demoUrl.includes('miro.com') ? 'Diseño UI/UX' : 'Visitar Sitio'}
+                                </span>
+                                <span className="sm:hidden">
+                                  {project.demoUrl.includes('miro.com') ? 'Diseño' : 'Visitar'}
+                                </span>
                               </a>
                             </Button>
                           )}
