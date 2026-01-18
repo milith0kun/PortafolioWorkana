@@ -48,9 +48,8 @@ const Hero = ({ onNext }) => {
           {...fadeInUp}
           transition={{ delay: 0.5 }}
         >
-          Desarrollador Full Stack especializado en arquitecturas escalables,
-          desarrollo móvil multiplataforma y soluciones cloud.
-          Transformando ideas complejas en experiencias digitales excepcionales.
+          Desarrollo soluciones Full Stack con React, Node.js y FastAPI, aplicaciones móviles multiplataforma con Flutter y React Native, e integración de inteligencia artificial con arquitecturas RAG.
+          Creo productos digitales completos: desde chatbots con IA hasta plataformas de turismo y sistemas de gestión empresarial.
         </motion.p>
 
         <motion.div

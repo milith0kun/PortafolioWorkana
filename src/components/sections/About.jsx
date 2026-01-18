@@ -92,11 +92,18 @@ const About = ({ onNext }) => {
           >
             <div className="prose prose-neutral max-w-none">
               <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                Ingeniero de Sistemas e Informática con sólidos conocimientos en <strong className="text-primary font-semibold">desarrollo Full Stack</strong> y fundamentos de inteligencia artificial.
-                Experiencia práctica en desarrollo web con tecnologías modernas como JavaScript, React.js, Node.js, PHP, WordPress, gestión de bases de datos SQL Server, MySQL y PostgreSQL.
+                Ingeniero de Sistemas e Informática con sólidos conocimientos en
+                <strong className="text-primary font-semibold">desarrollo Full Stack</strong>
+                y fundamentos de inteligencia artificial.
+                Experiencia práctica en desarrollo web con tecnologías modernas
+                como JavaScript, React.js, Node.js, PHP, WordPress, gestión de bases
+                de datos SQL Server, MySQL y MongoDB.
               </p>
               <p className="text-foreground/70 leading-relaxed mb-8">
-                Especializado en crear soluciones web desde el frontend hasta el backend, con enfoque en la optimización de procesos y la implementación de sistemas escalables. Competencia en desarrollo de APIs RESTful, manejo de frameworks modernos y experiencia en herramientas de control de versiones como Git. Apasionado por la tecnología emergente, el aprendizaje continuo y la aplicación de IA en soluciones empresariales.
+                Especializado en crear soluciones web desde el frontend hasta el backend, con enfoque en la optimización
+                de procesos y la implementación de sistemas escalables. Competencia en desarrollo de APIs RESTful, manejo
+                de frameworks modernos y experiencia en herramientas de control de versiones como Git. Apasionado por la
+                tecnología emergente, el aprendizaje continuo y la aplicación de IA en soluciones empresariales.
               </p>
             </div>
 
