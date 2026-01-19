@@ -92,18 +92,15 @@ const About = ({ onNext }) => {
           >
             <div className="prose prose-neutral max-w-none">
               <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                Ingeniero de Sistemas e Informática con sólidos conocimientos en
-                <strong className="text-primary font-semibold">desarrollo Full Stack</strong>
-                y fundamentos de inteligencia artificial.
-                Experiencia práctica en desarrollo web con tecnologías modernas
-                como JavaScript, React.js, Node.js, PHP, WordPress, gestión de bases
-                de datos SQL Server, MySQL y MongoDB.
+                Ingeniero de Sistemas e Informática especializado en
+                <strong className="text-primary font-semibold">desarrollo Full Stack</strong> con
+                React, Node.js y FastAPI. Desarrollo aplicaciones móviles multiplataforma con
+                Flutter y React Native, e integro inteligencia artificial mediante arquitecturas RAG y GPT-4.
               </p>
               <p className="text-foreground/70 leading-relaxed mb-8">
-                Especializado en crear soluciones web desde el frontend hasta el backend, con enfoque en la optimización
-                de procesos y la implementación de sistemas escalables. Competencia en desarrollo de APIs RESTful, manejo
-                de frameworks modernos y experiencia en herramientas de control de versiones como Git. Apasionado por la
-                tecnología emergente, el aprendizaje continuo y la aplicación de IA en soluciones empresariales.
+                Creo productos digitales completos: desde chatbots con IA hasta plataformas de turismo
+                y sistemas de gestión empresarial. Experiencia con sistemas embebidos, streaming en tiempo real,
+                y despliegue en AWS. Me apasiona transformar ideas complejas en soluciones funcionales y escalables.
               </p>
             </div>
 
@@ -111,7 +108,7 @@ const About = ({ onNext }) => {
               {[
                 { icon: <GraduationCap className="text-primary" />, title: "Educación", desc: "UNSAAC - Cusco" },
                 { icon: <MapPin className="text-primary" />, title: "Ubicación", desc: "Cusco, Perú" },
-                { icon: <Rocket className="text-primary" />, title: "Actual", desc: "Freelance / Director @ Ecos SEO" }
+                { icon: <Rocket className="text-primary" />, title: "Actual", desc: "@ Ecos SEO /@ BookingIncaTrail " }
               ].map((item, i) => (
                 <div key={i} className="flex flex-col gap-2 p-4 rounded-xl border border-border/40 bg-accent/5">
                   <div className="flex items-center gap-3">
@@ -130,12 +127,12 @@ const About = ({ onNext }) => {
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  "Desarrollo Full Stack (MERN/PERN)",
-                  "Desarrollo Móvil Multiplataforma",
-                  "Sistemas RAG con IA (GPT-4)",
-                  "Infraestructura Cloud (AWS)",
-                  "IoT & Sistemas Embebidos",
-                  "Optimización SEO"
+                  "Full Stack (React, Node.js, FastAPI)",
+                  "Apps Móviles (Flutter, React Native)",
+                  "Chatbots e IA con RAG y GPT-4",
+                  "Plataformas de Turismo y Reservas",
+                  "IoT y Streaming en Tiempo Real",
+                  "Despliegue Cloud en AWS"
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border/20">
                     <div className="size-1.5 bg-primary/40 rounded-full" />
