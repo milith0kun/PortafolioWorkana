@@ -94,11 +94,42 @@ function App() {
 
   useEffect(() => {
     const activeSlide = slideRefs.current[activeSection];
+
+    // Función para manejar el evento wheel (rueda del ratón)
+    const handleWheel = (e) => {
+      // Si hay una transición en curso, ignorar
+      if (!canChangeSection.current) return;
+
+      const element = e.currentTarget;
+      const isAtBottom = Math.abs(element.scrollHeight - element.scrollTop - element.clientHeight) < 2;
+      const isAtTop = element.scrollTop === 0;
+
+      // Detectar dirección del scroll
+      if (e.deltaY > 0) {
+        // Hacia abajo
+        if (isAtBottom && activeSection < sections.length - 1) {
+          triggerSectionChange(activeSection + 1, 'Siguiente...');
+        }
+      } else if (e.deltaY < 0) {
+        // Hacia arriba
+        if (isAtTop && activeSection > 0) {
+          triggerSectionChange(activeSection - 1, 'Anterior...');
+        }
+      }
+    };
+
     if (activeSlide) {
       activeSlide.addEventListener('scroll', handleScroll);
-      return () => activeSlide.removeEventListener('scroll', handleScroll);
+      // Agregar listener de wheel no pasivo para poder controlar el comportamiento si fuera necesario,
+      // aunque aquí solo leemos.
+      activeSlide.addEventListener('wheel', handleWheel, { passive: true });
+
+      return () => {
+        activeSlide.removeEventListener('scroll', handleScroll);
+        activeSlide.removeEventListener('wheel', handleWheel);
+      };
     }
-  }, [activeSection, handleScroll]);
+  }, [activeSection, handleScroll, sections.length]);
 
   useEffect(() => {
     const activeSlide = slideRefs.current[activeSection];
