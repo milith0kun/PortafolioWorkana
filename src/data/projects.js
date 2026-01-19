@@ -321,6 +321,19 @@ export const projects = [
     featured: false,
     category: "electronics",
     date: "Julio 2021"
+  },
+  {
+    id: 16,
+    title: "Bot Inmobiliario con IA - Sistema Omnicanal",
+    description: "Sistema omnicanal de atención inmobiliaria con IA: bot de Telegram + chat web + dashboard de leads.",
+    longDescription: "Desarrollé un sistema completo de atención al cliente inmobiliario utilizando inteligencia artificial con arquitectura omnicanal. Implementé un bot de Telegram y un chat web en React que comparten el mismo backend FastAPI con OpenAI GPT-4 Turbo. El agente de IA cualifica leads de forma conversacional (sin formularios), extrae información automáticamente, busca propiedades relevantes en base de datos y recomienda las mejores opciones. Desarrollé un sistema de clasificación automática de leads (frío/tibio/caliente) basado en scoring de 0-100 puntos según información capturada. Creé un dashboard React con Tailwind CSS que muestra todos los leads de ambos canales unificados, con filtros por canal, temperatura y búsqueda. Implementé webhook para Telegram Bot API y endpoints RESTful para el chat web. El sistema garantiza que ambos canales procesen la información con la misma lógica, almacenan leads en formato JSON, y se despliegan en producción (Railway/Render + Vercel).",
+    image: "/projects/bot-inmobiliario.jpg",
+    technologies: ["Python", "FastAPI", "React", "Telegram Bot API", "OpenAI GPT-4", "Tailwind CSS", "Vite", "Railway", "Vercel"],
+    demoUrl: null,
+    githubUrl: null,
+    featured: true,
+    category: "full-stack",
+    date: "Enero 2026"
   }
 ];
 
