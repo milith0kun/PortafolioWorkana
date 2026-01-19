@@ -83,7 +83,7 @@ const ProjectCard = ({ project }) => {
         </div>
       </CardContent>
 
-      <CardFooter className="p-5 pt-0 gap-2 flex-wrap">
+      <CardFooter className="p-5 pt-0 gap-3 flex flex-wrap justify-center items-center">
         {/* Demo en vivo */}
         {project.demoUrl && (
           <Button
