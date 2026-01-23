@@ -13,10 +13,10 @@ export const projects = [
     date: "Octubre 2025",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/chat-pdf/desktop-1.jpeg", label: "Interfaz de Chat", disableScroll: true },
-        { image: "/projects/screenshots/chat-pdf/desktop-2.jpeg", label: "Procesamiento de Documentos", disableScroll: true },
-        { image: "/projects/screenshots/chat-pdf/desktop-3.jpeg", label: "Análisis de Contenido", disableScroll: true },
-        { image: "/projects/screenshots/chat-pdf/desktop-4.jpeg", label: "Respuesta Generada" }
+        { image: "/projects/screenshots/chat-pdf/desktop-1.webp", label: "Interfaz de Chat", disableScroll: true },
+        { image: "/projects/screenshots/chat-pdf/desktop-2.webp", label: "Procesamiento de Documentos", disableScroll: true },
+        { image: "/projects/screenshots/chat-pdf/desktop-3.webp", label: "Análisis de Contenido", disableScroll: true },
+        { image: "/projects/screenshots/chat-pdf/desktop-4.webp", label: "Respuesta Generada" }
       ]
     }
   },
@@ -34,16 +34,16 @@ export const projects = [
     date: "Noviembre 2025",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-home-desktop.png", label: "Vista Principal" },
-        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-2.png", label: "Dashboard", disableScroll: true },
-        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-3.png", label: "Gestión de Reportes", disableScroll: true }
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-home-desktop.webp", label: "Vista Principal" },
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-2.webp", label: "Dashboard", disableScroll: true },
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-desktop-3.webp", label: "Gestión de Reportes", disableScroll: true }
       ],
       tablet: [
-        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-tablet-1.png", label: "Vista Tablet 1" },
-        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-tablet-2.png", label: "Vista Tablet 2" }
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-tablet-1.webp", label: "Vista Tablet 1" },
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-tablet-2.webp", label: "Vista Tablet 2" }
       ],
       mobile: [
-        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-mobile-1.png", label: "App Móvil" }
+        { image: "/projects/screenshots/denuncias-ciudadanas/denuncias-mobile-1.webp", label: "App Móvil" }
       ]
     }
   },
@@ -61,7 +61,7 @@ export const projects = [
     date: "Diciembre 2025",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/scraping/desktop-1.png", label: "Resultados del Scraping" }
+        { image: "/projects/screenshots/scraping/desktop-1.webp", label: "Resultados del Scraping" }
       ]
     }
   },
@@ -79,12 +79,12 @@ export const projects = [
     date: "Diciembre 2025",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/streaming-iot/desktop-1.png", label: "Web Streaming", disableScroll: true },
-        { image: "/projects/screenshots/streaming-iot/desktop-2.png", label: "Dashboard Web", disableScroll: true }
+        { image: "/projects/screenshots/streaming-iot/desktop-1.webp", label: "Web Streaming", disableScroll: true },
+        { image: "/projects/screenshots/streaming-iot/desktop-2.webp", label: "Dashboard Web", disableScroll: true }
       ],
       mobile: [
-        { image: "/projects/screenshots/streaming-iot/app-1.jpeg", label: "App Streaming" },
-        { image: "/projects/screenshots/streaming-iot/app-2.jpeg", label: "App Control" }
+        { image: "/projects/screenshots/streaming-iot/app-1.webp", label: "App Streaming" },
+        { image: "/projects/screenshots/streaming-iot/app-2.webp", label: "App Control" }
       ]
     }
   },
@@ -103,11 +103,11 @@ export const projects = [
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.sistemahaccp.calidad&pcampaignid=web_share",
     screenshotsByDevice: {
       mobile: [
-        { image: "/projects/screenshots/haccp-system/mobile-1.png", label: "Login Seguro" },
-        { image: "/projects/screenshots/haccp-system/mobile-2.png", label: "Menú de Módulos" },
-        { image: "/projects/screenshots/haccp-system/mobile-3.png", label: "Registro de Control" },
-        { image: "/projects/screenshots/haccp-system/mobile-4.png", label: "Validación GPS" },
-        { image: "/projects/screenshots/haccp-system/mobile-5.png", label: "Historial de Registros" }
+        { image: "/projects/screenshots/haccp-system/mobile-1.webp", label: "Login Seguro" },
+        { image: "/projects/screenshots/haccp-system/mobile-2.webp", label: "Menú de Módulos" },
+        { image: "/projects/screenshots/haccp-system/mobile-3.webp", label: "Registro de Control" },
+        { image: "/projects/screenshots/haccp-system/mobile-4.webp", label: "Validación GPS" },
+        { image: "/projects/screenshots/haccp-system/mobile-5.webp", label: "Historial de Registros" }
       ]
     }
   },
@@ -138,19 +138,19 @@ export const projects = [
     date: "Julio 2025",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/ecos-del-seo/desktop-1.png", label: "Home - Servicios" },
-        { image: "/projects/screenshots/ecos-del-seo/desktop-2.png", label: "Portafolio" },
-        { image: "/projects/screenshots/ecos-del-seo/desktop-3.png", label: "Blog y Contacto" }
+        { image: "/projects/screenshots/ecos-del-seo/desktop-1.webp", label: "Home - Servicios" },
+        { image: "/projects/screenshots/ecos-del-seo/desktop-2.webp", label: "Portafolio" },
+        { image: "/projects/screenshots/ecos-del-seo/desktop-3.webp", label: "Blog y Contacto" }
       ],
       tablet: [
-        { image: "/projects/screenshots/ecos-del-seo/tablet-1.png", label: "Vista Tablet Home" },
-        { image: "/projects/screenshots/ecos-del-seo/tablet-2.png", label: "Vista Tablet Servicios" },
-        { image: "/projects/screenshots/ecos-del-seo/tablet-3.png", label: "Vista Tablet Blog" }
+        { image: "/projects/screenshots/ecos-del-seo/tablet-1.webp", label: "Vista Tablet Home" },
+        { image: "/projects/screenshots/ecos-del-seo/tablet-2.webp", label: "Vista Tablet Servicios" },
+        { image: "/projects/screenshots/ecos-del-seo/tablet-3.webp", label: "Vista Tablet Blog" }
       ],
       mobile: [
-        { image: "/projects/screenshots/ecos-del-seo/mobile-1.png", label: "Mobile Home" },
-        { image: "/projects/screenshots/ecos-del-seo/mobile-2.png", label: "Mobile Servicios" },
-        { image: "/projects/screenshots/ecos-del-seo/mobile-3.png", label: "Mobile Blog" }
+        { image: "/projects/screenshots/ecos-del-seo/mobile-1.webp", label: "Mobile Home" },
+        { image: "/projects/screenshots/ecos-del-seo/mobile-2.webp", label: "Mobile Servicios" },
+        { image: "/projects/screenshots/ecos-del-seo/mobile-3.webp", label: "Mobile Blog" }
       ]
     }
   },
@@ -168,15 +168,15 @@ export const projects = [
     date: "Agosto 2025",
     screenshotsByDevice: {
       mobile: [
-        { image: "/projects/screenshots/aprendo-jugando/mobile-1.jpeg", label: "Pantalla de Inicio" },
-        { image: "/projects/screenshots/aprendo-jugando/mobile-2.jpeg", label: "Login / Acceso" },
-        { image: "/projects/screenshots/aprendo-jugando/mobile-3.jpeg", label: "Selección de Perfil" },
-        { image: "/projects/screenshots/aprendo-jugando/mobile-4.jpeg", label: "Menú Principal" },
-        { image: "/projects/screenshots/aprendo-jugando/mobile-5.jpeg", label: "Niveles de Juego" },
-        { image: "/projects/screenshots/aprendo-jugando/mobile-6.jpeg", label: "Juego Matemáticas" },
-        { image: "/projects/screenshots/aprendo-jugando/mobile-7.jpeg", label: "Progreso del Alumno" },
-        { image: "/projects/screenshots/aprendo-jugando/mobile-8.jpeg", label: "Logros y Recompensas" },
-        { image: "/projects/screenshots/aprendo-jugando/mobile-9.jpeg", label: "Configuración" }
+        { image: "/projects/screenshots/aprendo-jugando/mobile-1.webp", label: "Pantalla de Inicio" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-2.webp", label: "Login / Acceso" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-3.webp", label: "Selección de Perfil" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-4.webp", label: "Menú Principal" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-5.webp", label: "Niveles de Juego" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-6.webp", label: "Juego Matemáticas" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-7.webp", label: "Progreso del Alumno" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-8.webp", label: "Logros y Recompensas" },
+        { image: "/projects/screenshots/aprendo-jugando/mobile-9.webp", label: "Configuración" }
       ]
     }
   },
@@ -194,15 +194,15 @@ export const projects = [
     date: "Enero 2025",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/sistema-portafolios/desktop-1.png", label: "Login Docente" },
-        { image: "/projects/screenshots/sistema-portafolios/desktop-2.png", label: "Dashboard Principal" },
-        { image: "/projects/screenshots/sistema-portafolios/desktop-3.png", label: "Gestión de Cursos" },
-        { image: "/projects/screenshots/sistema-portafolios/desktop-4.png", label: "Subida de Evidencias" },
-        { image: "/projects/screenshots/sistema-portafolios/desktop-5.png", label: "Evaluación de Portafolios" },
-        { image: "/projects/screenshots/sistema-portafolios/desktop-6.png", label: "Reportes de Cumplimiento" },
-        { image: "/projects/screenshots/sistema-portafolios/desktop-7.png", label: "Vista de Administrador" },
-        { image: "/projects/screenshots/sistema-portafolios/desktop-8.png", label: "Verificación ICACIT" },
-        { image: "/projects/screenshots/sistema-portafolios/desktop-9.png", label: "Configuración del Sistema" }
+        { image: "/projects/screenshots/sistema-portafolios/desktop-1.webp", label: "Login Docente" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-2.webp", label: "Dashboard Principal" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-3.webp", label: "Gestión de Cursos" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-4.webp", label: "Subida de Evidencias" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-5.webp", label: "Evaluación de Portafolios" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-6.webp", label: "Reportes de Cumplimiento" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-7.webp", label: "Vista de Administrador" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-8.webp", label: "Verificación ICACIT" },
+        { image: "/projects/screenshots/sistema-portafolios/desktop-9.webp", label: "Configuración del Sistema" }
       ]
     }
   },
@@ -220,18 +220,18 @@ export const projects = [
     date: "Febrero 2026",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/booking-incatrail/desktop-1.png", label: "Página Principal" },
-        { image: "/projects/screenshots/booking-incatrail/desktop-2.png", label: "Tours y Paquetes" },
-        { image: "/projects/screenshots/booking-incatrail/desktop-3.png", label: "Sistema de Reservas" }
+        { image: "/projects/screenshots/booking-incatrail/desktop-1.webp", label: "Página Principal" },
+        { image: "/projects/screenshots/booking-incatrail/desktop-2.webp", label: "Tours y Paquetes" },
+        { image: "/projects/screenshots/booking-incatrail/desktop-3.webp", label: "Sistema de Reservas" }
       ],
       tablet: [
-        { image: "/projects/screenshots/booking-incatrail/tablet-1.png", label: "Vista Tablet 1" },
-        { image: "/projects/screenshots/booking-incatrail/tablet-2.png", label: "Vista Tablet 2" }
+        { image: "/projects/screenshots/booking-incatrail/tablet-1.webp", label: "Vista Tablet 1" },
+        { image: "/projects/screenshots/booking-incatrail/tablet-2.webp", label: "Vista Tablet 2" }
       ],
       mobile: [
-        { image: "/projects/screenshots/booking-incatrail/mobile-1.png", label: "Home Móvil" },
-        { image: "/projects/screenshots/booking-incatrail/mobile-2.png", label: "Tours Móvil" },
-        { image: "/projects/screenshots/booking-incatrail/mobile-3.png", label: "Reserva Móvil" }
+        { image: "/projects/screenshots/booking-incatrail/mobile-1.webp", label: "Home Móvil" },
+        { image: "/projects/screenshots/booking-incatrail/mobile-2.webp", label: "Tours Móvil" },
+        { image: "/projects/screenshots/booking-incatrail/mobile-3.webp", label: "Reserva Móvil" }
       ]
     }
   },
@@ -249,12 +249,12 @@ export const projects = [
     date: "Enero 2026",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/esp32-iot/desktop-1.png", label: "Dashboard de Monitoreo" },
-        { image: "/projects/screenshots/esp32-iot/desktop-2.png", label: "Gestión de Dispositivos" },
-        { image: "/projects/screenshots/esp32-iot/desktop-3.png", label: "Configuración de Red" },
-        { image: "/projects/screenshots/esp32-iot/desktop-4.png", label: "Análisis de Señal RSSI" },
-        { image: "/projects/screenshots/esp32-iot/desktop-5.png", label: "Visualización de Datos" },
-        { image: "/projects/screenshots/esp32-iot/desktop-6.png", label: "Alertas y Notificaciones" }
+        { image: "/projects/screenshots/esp32-iot/desktop-1.webp", label: "Dashboard de Monitoreo" },
+        { image: "/projects/screenshots/esp32-iot/desktop-2.webp", label: "Gestión de Dispositivos" },
+        { image: "/projects/screenshots/esp32-iot/desktop-3.webp", label: "Configuración de Red" },
+        { image: "/projects/screenshots/esp32-iot/desktop-4.webp", label: "Análisis de Señal RSSI" },
+        { image: "/projects/screenshots/esp32-iot/desktop-5.webp", label: "Visualización de Datos" },
+        { image: "/projects/screenshots/esp32-iot/desktop-6.webp", label: "Alertas y Notificaciones" }
       ]
     }
   },
@@ -272,14 +272,14 @@ export const projects = [
     date: "Enero 2026",
     screenshotsByDevice: {
       desktop: [
-        { image: "/projects/screenshots/issabel-pbx/desktop-1.png", label: "Dashboard Principal" },
-        { image: "/projects/screenshots/issabel-pbx/desktop-2.png", label: "Configuración de Extensiones" },
-        { image: "/projects/screenshots/issabel-pbx/desktop-3.png", label: "Panel de Operador" }
+        { image: "/projects/screenshots/issabel-pbx/desktop-1.webp", label: "Dashboard Principal" },
+        { image: "/projects/screenshots/issabel-pbx/desktop-2.webp", label: "Configuración de Extensiones" },
+        { image: "/projects/screenshots/issabel-pbx/desktop-3.webp", label: "Panel de Operador" }
       ],
       mobile: [
-        { image: "/projects/screenshots/issabel-pbx/mobile-1.png", label: "Login Móvil" },
-        { image: "/projects/screenshots/issabel-pbx/mobile-2.png", label: "Menú Principal" },
-        { image: "/projects/screenshots/issabel-pbx/mobile-3.png", label: "Estado del Sistema" }
+        { image: "/projects/screenshots/issabel-pbx/mobile-1.webp", label: "Login Móvil" },
+        { image: "/projects/screenshots/issabel-pbx/mobile-2.webp", label: "Menú Principal" },
+        { image: "/projects/screenshots/issabel-pbx/mobile-3.webp", label: "Estado del Sistema" }
       ]
     }
   },
