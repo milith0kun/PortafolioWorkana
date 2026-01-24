@@ -351,6 +351,19 @@ export const projects = [
         { image: "/projects/screenshots/bot-inmobiliario/mobile-3.webp", label: "App Móvil Conversación" }
       ]
     }
+  },
+  {
+    id: 17,
+    title: "Valle Sagrado Transport – Plataforma de Transporte y Turismo",
+    description: "Plataforma integral de servicios turísticos con +50 rutas dinámicas, SEO optimizado y sistema de captación de conductores.",
+    longDescription: "Diseñé y desarrollé una plataforma integral de servicios turísticos con una jerarquía de navegación optimizada, logrando una estructura de +50 rutas dinámicas para traslados, tours de aventura y servicios multi-día. Implementé una auditoría técnica de contenido con enfoque en palabras clave de alta competencia (Cusco, Machu Picchu, Rainbow Mountain), integrando Meta Tags dinámicos y Schema Markup para maximizar la visibilidad orgánica en buscadores. Desarrollé un módulo especializado para la gestión de flota independiente, incluyendo flujos de registro, validación de documentación técnica (MTC/SOAT) y paneles de beneficios para optimizar la oferta operativa. Configuré una paleta de colores corporativa mediante variables CSS y componentes reutilizables, integrando elementos de urgencia (Barra de ofertas, Exit Intent pop-ups) y automatización de reservas vía WhatsApp API para reducir la fricción en el embudo de ventas.",
+    image: "/projects/valle-sagrado.jpg",
+    technologies: ["Next.js 16", "MongoDB", "CSS Modules", "Vercel", "Google Search Console", "Schema Markup", "WhatsApp API", "SEO"],
+    demoUrl: "https://vallesagradotransport.com",
+    githubUrl: null,
+    featured: true,
+    category: "full-stack",
+    date: "Febrero 2026"
   }
 ];
 
