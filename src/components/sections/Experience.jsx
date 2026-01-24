@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Calendar, Code2, ExternalLink, Github, Monitor, Smartphone, Tablet, Layout, Palette, Download, X, ChevronLeft, ChevronRight, Maximize2, Eye } from 'lucide-react';
 import { projects } from '../../data/projects';
@@ -13,7 +14,7 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
   const [activeDevice, setActiveDevice] = useState('desktop');
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Resetear al abrir
+  // Resetear al abrir y bloquear scroll
   useEffect(() => {
     if (isOpen) {
       // Determinar el dispositivo inicial
@@ -21,13 +22,37 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
       else if (screenshotsByDevice?.tablet?.length > 0) setActiveDevice('tablet');
       else if (screenshotsByDevice?.mobile?.length > 0) setActiveDevice('mobile');
       setCurrentIndex(0);
-      // Prevenir scroll del body
+
+      // Prevenir scroll del body y html - más robusto
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      // Restaurar scroll
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
+
     return () => {
-      document.body.style.overflow = 'unset';
+      // Cleanup
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [isOpen, screenshotsByDevice]);
 
@@ -79,11 +104,13 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
     setCurrentIndex(0);
   };
 
-  return (
+  // Usar Portal para renderizar fuera del árbol de componentes
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center"
+          className="fixed inset-0 z-[99999] flex items-center justify-center"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -91,12 +118,21 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
         >
           {/* Backdrop oscuro */}
           <motion.div
-            className="absolute inset-0 bg-black/90 backdrop-blur-md"
+            className="absolute inset-0 bg-black/95 backdrop-blur-md cursor-pointer"
             onClick={onClose}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
+
+          {/* Botón de cerrar flotante - MÁS VISIBLE */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-50 p-3 rounded-full bg-red-600 hover:bg-red-500 text-white transition-all shadow-2xl hover:scale-110"
+            aria-label="Cerrar"
+          >
+            <X size={28} />
+          </button>
 
           {/* Contenido del Modal */}
           <motion.div
@@ -246,6 +282,9 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
       )}
     </AnimatePresence>
   );
+
+  // Renderizar usando Portal para que aparezca fuera del contenedor scrollable
+  return createPortal(modalContent, document.body);
 };
 
 // Helper para convertir iconType a componente
