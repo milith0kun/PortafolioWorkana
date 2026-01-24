@@ -333,7 +333,24 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Enero 2026"
+    date: "Enero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/bot-inmobiliario/desktop-1.webp", label: "Asistente Inmobiliario", disableScroll: true },
+        { image: "/projects/screenshots/bot-inmobiliario/desktop-2.webp", label: "Chat en Tiempo Real", disableScroll: true },
+        { image: "/projects/screenshots/bot-inmobiliario/desktop-3.webp", label: "Conversación con IA", disableScroll: true }
+      ],
+      tablet: [
+        { image: "/projects/screenshots/bot-inmobiliario/tablet-1.webp", label: "Vista Tablet Home" },
+        { image: "/projects/screenshots/bot-inmobiliario/tablet-2.webp", label: "Vista Tablet Chat" },
+        { image: "/projects/screenshots/bot-inmobiliario/tablet-3.webp", label: "Vista Tablet Conversación" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/bot-inmobiliario/mobile-1.webp", label: "App Móvil Home" },
+        { image: "/projects/screenshots/bot-inmobiliario/mobile-2.webp", label: "App Móvil Chat" },
+        { image: "/projects/screenshots/bot-inmobiliario/mobile-3.webp", label: "App Móvil Conversación" }
+      ]
+    }
   }
 ];
 

@@ -25,6 +25,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
     if (screenshotsByDevice.mobile && screenshotsByDevice.mobile.length > 0) return 'mobile';
     return 'desktop';
   });
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageHeight, setImageHeight] = useState(0);
 
@@ -57,7 +58,13 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice }) => {
   useEffect(() => {
     setCurrentIndex(0);
     setImageHeight(0);
+    setIsImageLoaded(false);
   }, [activeDevice]);
+
+  // Reset carga al cambiar de imagen
+  useEffect(() => {
+    setIsImageLoaded(false);
+  }, [currentIndex]);
 
   if (!screenshotsByDevice) return null;
 
