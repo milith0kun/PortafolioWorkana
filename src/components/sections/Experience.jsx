@@ -579,6 +579,7 @@ const Experience = ({ onNext }) => {
     <>
       {/* Modal Lightbox */}
       <ScreenshotLightbox
+        key={lightboxState.project?.title || 'lightbox'}
         isOpen={lightboxState.isOpen}
         onClose={closeLightbox}
         screenshotsByDevice={lightboxState.project?.screenshotsByDevice}
