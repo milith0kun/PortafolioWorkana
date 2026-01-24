@@ -363,7 +363,21 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Enero 2026"
+    date: "Enero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/valle-sagrado-transport/desktop-1.webp", label: "Página Principal" },
+        { image: "/projects/screenshots/valle-sagrado-transport/desktop-2.webp", label: "Servicios y Tours" }
+      ],
+      tablet: [
+        { image: "/projects/screenshots/valle-sagrado-transport/tablet-1.webp", label: "Vista Tablet Home" },
+        { image: "/projects/screenshots/valle-sagrado-transport/tablet-2.webp", label: "Vista Tablet Servicios" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/valle-sagrado-transport/mobile-1.webp", label: "App Móvil Home" },
+        { image: "/projects/screenshots/valle-sagrado-transport/mobile-2.webp", label: "App Móvil Tours" }
+      ]
+    }
   }
 ];
 
