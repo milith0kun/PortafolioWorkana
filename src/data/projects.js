@@ -217,7 +217,7 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026",
+    date: "Enero 2026",
     screenshotsByDevice: {
       desktop: [
         { image: "/projects/screenshots/booking-incatrail/desktop-1.webp", label: "Página Principal" },
@@ -363,7 +363,7 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026"
+    date: "Enero 2026"
   }
 ];
 
