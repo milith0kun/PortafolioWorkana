@@ -27,7 +27,7 @@ export const projects = [
     longDescription: "Implementé el módulo de reportes integrando Leaflet.js y Geolocation API para captura precisa de coordenadas. Diseñé una arquitectura backend RESTful segura con JWT y Bcrypt, estableciendo un sistema de control de acceso basado en roles (RBAC) para segregar permisos entre ciudadanos y autoridades. Desarrollé el Dashboard de Autoridades con lógica de agregación en MongoDB para cálculo de KPIs en tiempo real (Tasa de Resolución, Tiempos Promedio).",
     image: "/projects/denuncias.jpg",
     technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "Leaflet.js", "JWT", "Bcrypt", "JMeter"],
-    demoUrl: "https://plataformadenuncias.myvnc.com",
+    demoUrl: "https://plataformadedenuncias.ecosdelseo.com",
     githubUrl: "https://github.com/milith0kun/Plataforma-de-Denuncias",
     featured: true,
     category: "full-stack",
