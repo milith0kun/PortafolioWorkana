@@ -378,6 +378,58 @@ export const projects = [
         { image: "/projects/screenshots/valle-sagrado-transport/mobile-2.webp", label: "App Móvil Tours" }
       ]
     }
+  },
+  {
+    id: 18,
+    title: "SFIT — Sistema de Fiscalización Inteligente de Transporte",
+    description: "Plataforma multi-tenant para la fiscalización del transporte público en municipalidades peruanas.",
+    longDescription: "Desarrollé un sistema monorepo con NestJS y React 18 para la fiscalización del transporte en municipalidades de Apurímac y Cusco. Implementé arquitectura multi-tenant con RBAC, motor de evaluación de fatiga para conductores, y un sistema antifraude de 5 capas para reportes ciudadanos. El backend utiliza PostgreSQL y Redis, con comunicación en tiempo real vía Socket.io para notificaciones multicanal. El sistema permite la gestión de empresas, conductores, vehículos con códigos QR cifrados (HMAC), control de rutas y emisión de sanciones con cálculo de reputación ponderada.",
+    image: "/projects/sfit.jpg",
+    technologies: ["NestJS", "React 18", "TypeScript", "PostgreSQL", "Redis", "Socket.io", "Tailwind CSS", "Docker"],
+    demoUrl: null,
+    githubUrl: null,
+    featured: true,
+    category: "full-stack",
+    date: "Febrero 2026"
+  },
+  {
+    id: 19,
+    title: "Peru Andean Adventures – Plataforma de Turismo Premium",
+    description: "Plataforma web de turismo con sistema de gestión de paquetes, categorías y destinos.",
+    longDescription: "Desarrollé una plataforma de turismo premium utilizando Next.js 14 y MongoDB. Implementé un dashboard administrativo personalizado para la gestión integral de paquetes turísticos, categorías dinámicas y destinos. El frontend público fue construido estrictamente con CSS Modules (sin Tailwind) aplicando un sistema de diseño propio basado en variables CSS y diseño responsive Mobile First. El sistema incluye filtrado avanzado, SEO técnico con URLs semánticas generadas dinámicamente y una arquitectura de base de datos optimizada con Mongoose.",
+    image: "/projects/peru-andean.jpg",
+    technologies: ["Next.js 14", "React 18", "MongoDB", "Mongoose", "CSS Modules", "NextAuth.js"],
+    demoUrl: null,
+    githubUrl: null,
+    featured: true,
+    category: "full-stack",
+    date: "Febrero 2026"
+  },
+  {
+    id: 20,
+    title: "JudiScribe – Sistema de Transcripción Judicial con IA",
+    description: "Plataforma de transcripción en tiempo real para digitadores judiciales con Deepgram y Claude.",
+    longDescription: "Diseñé e implementé un sistema de transcripción en tiempo real para el Poder Judicial, resolviendo el problema de la fatiga del digitador y la pérdida de información. El sistema utiliza una arquitectura híbrida: procesamiento en streaming con Deepgram Nova-3 vía WebSockets para transcripción instantánea y diarización en vivo, complementado con procesamiento batch post-audiencia usando Faster-Whisper y Pyannote (vía Celery) para máxima precisión. Desarrollé un editor de texto avanzado basado en TipTap (Canvas) que permite al digitador mantener el control total, incorporando un motor de sugerencias jurídicas con fuzzy matching, atajos de teclado y marcadores cronológicos. Al finalizar la audiencia, el sistema genera automáticamente el acta oficial utilizando Claude Sonnet 4, estructurando la información según los formatos de la Corte Superior de Justicia, y exportándola a Word/PDF.",
+    image: "/projects/judiscribe.jpg",
+    technologies: ["FastAPI", "Next.js 14", "TipTap", "Deepgram Nova-3", "Faster-Whisper", "Celery", "PostgreSQL", "Claude Sonnet 4"],
+    demoUrl: null,
+    githubUrl: null,
+    featured: true,
+    category: "data-science",
+    date: "Febrero 2026"
+  },
+  {
+    id: 21,
+    title: "Andina Adventures – Sistema de Gestión Operativa",
+    description: "Plataforma de gestión operativa turística con dashboard web y aplicación móvil para guías.",
+    longDescription: "Desarrollé un sistema integral de gestión operativa para una operadora turística en Cusco, reemplazando procesos manuales por dos interfaces digitales sincronizadas en tiempo real. La arquitectura consiste en un monorepo donde Next.js 14 actúa como backend completo (API Routes) y frontend administrativo, integrado con una base de datos MongoDB Atlas. Además, desarrollé una aplicación móvil nativa con Flutter para los guías de campo, la cual consume las mismas API Routes. El sistema permite el control en tiempo real de cupos, gestión de reservas, asignación de transporte, reportes de incidencias con geolocalización, y liquidaciones automatizadas, optimizando la operativa diaria de la empresa.",
+    image: "/projects/andina.jpg",
+    technologies: ["Next.js 14", "Flutter", "MongoDB", "Tailwind CSS", "Zustand", "Riverpod"],
+    demoUrl: "https://andinaadventure.tech",
+    githubUrl: null,
+    featured: true,
+    category: "full-stack",
+    date: "Febrero 2026"
   }
 ];
 
