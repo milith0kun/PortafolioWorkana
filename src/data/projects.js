@@ -412,7 +412,7 @@ export const projects = [
     longDescription: "Diseñé e implementé un sistema de transcripción en tiempo real para el Poder Judicial, resolviendo el problema de la fatiga del digitador y la pérdida de información. El sistema utiliza una arquitectura híbrida: procesamiento en streaming con Deepgram Nova-3 vía WebSockets para transcripción instantánea y diarización en vivo, complementado con procesamiento batch post-audiencia usando Faster-Whisper y Pyannote (vía Celery) para máxima precisión. Desarrollé un editor de texto avanzado basado en TipTap (Canvas) que permite al digitador mantener el control total, incorporando un motor de sugerencias jurídicas con fuzzy matching, atajos de teclado y marcadores cronológicos. Al finalizar la audiencia, el sistema genera automáticamente el acta oficial utilizando Claude Sonnet 4, estructurando la información según los formatos de la Corte Superior de Justicia, y exportándola a Word/PDF.",
     image: "/projects/judiscribe.jpg",
     technologies: ["FastAPI", "Next.js 14", "TipTap", "Deepgram Nova-3", "Faster-Whisper", "Celery", "PostgreSQL", "Claude Sonnet 4"],
-    demoUrl: null,
+    demoUrl: "https://judiscribe.tech/",
     githubUrl: null,
     featured: true,
     category: "data-science",
