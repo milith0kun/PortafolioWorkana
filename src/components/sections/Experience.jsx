@@ -366,180 +366,289 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
 
   const shouldScroll = !currentImage?.disableScroll && (imageHeight > getScrollThreshold());
 
-  const getContainerClass = () => {
-    if (activeDevice === 'mobile') {
-      return 'max-w-[280px] w-full mx-auto rounded-[2rem] border-4 border-zinc-800 shadow-xl';
-    }
-    if (activeDevice === 'tablet') {
-      return 'max-w-[500px] w-full mx-auto rounded-xl border-2 border-zinc-700 shadow-lg';
-    }
-    // Desktop: Marco estilo monitor (Rectangular con borde grueso y sombra)
-    return 'w-full rounded-xl border-4 border-zinc-800 shadow-2xl bg-zinc-950';
-  };
-
   // Ref para detectar visibilidad y reiniciar animación
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
 
   return (
-    <div ref={containerRef} className={`mt-6 ${getContainerClass()} overflow-hidden`}>
+    <div ref={containerRef} className="mt-6">
       <AnimatePresence mode="wait">
-        {/* Renderizado condicional para Grid de Escritorio vs Scroll/Carrusel Único */}
-        {/* Para simplificar y mantener consistencia visual, usaremos el carrusel único para todo por ahora,
-            pero adaptado al dispositivo */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Si es Desktop y tiene MÚLTIPLES imágenes que se benefician de grid... No, el usuario prefiere carrusel.
-              Mantendremos el carrusel pero con scroll inteligente. */}
-
-          {/* Tabs dentro de la card */}
-          <div className="flex justify-center gap-1 p-2 bg-muted/30 border-b border-border/20">
+          {/* Tabs de dispositivo - estilo pastilla */}
+          <div className="flex justify-center gap-1.5 mb-4">
             {devices.map((device) => (
               <button
                 key={device.key}
                 onClick={() => setActiveDevice(device.key)}
                 className={`
-                  flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-medium transition-all
+                  flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-200
                   ${activeDevice === device.key
-                    ? 'bg-primary text-primary-foreground shadow-sm'
-                    : 'text-muted-foreground hover:bg-muted/50'
+                    ? 'bg-primary text-primary-foreground shadow-md shadow-primary/30'
+                    : 'text-muted-foreground bg-muted/40 hover:bg-muted/70 hover:text-foreground'
                   }
                 `}
               >
                 {device.icon}
-                <span className="hidden sm:inline text-[10px]">{device.label}</span>
+                <span className="hidden sm:inline">{device.label}</span>
               </button>
             ))}
           </div>
 
-          {/* Visualizador: 1 imagen */}
-          {false ? (
-            /* Layout móvil: 2 verticales lado a lado */
-            <div className="grid grid-cols-2 gap-1 p-3">
-              {currentScreenshots.slice(0, 2).map((screenshot, idx) => (
-                <div
-                  key={idx}
-                  className="group relative rounded overflow-hidden bg-muted/50 border border-border/20"
-                >
-                  <div className="relative h-[350px] overflow-hidden">
-                    <img
-                      src={screenshot.image}
-                      alt={screenshot.label || `Screenshot ${idx + 1}`}
-                      className="w-full h-full object-cover object-top"
-                    />
+          {/* ===== MARCO DE DISPOSITIVO ===== */}
+          <div className={`${
+            activeDevice === 'desktop' && currentImage?.disableScroll
+              ? 'md:w-[125%] md:-ml-[12.5%]'
+              : ''
+          }`}>
+
+            {/* --- DESKTOP: Marco estilo laptop --- */}
+            {activeDevice === 'desktop' && (
+              <div className="w-full">
+                {/* Barra superior del navegador */}
+                <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-2 left-2">
-                      <span className="text-[9px] font-medium text-white">{screenshot.label}</span>
+                  <div className="flex-1 mx-2">
+                    <div className="bg-zinc-700/60 rounded-md px-3 py-0.5 text-[9px] text-zinc-400 font-mono truncate text-center">
+                      {currentImage?.label || 'Vista Desktop'}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            /* Layout normal: 1 imagen con scroll condicional */
-            <div className="p-3">
-              <div
-                className={`group relative rounded overflow-hidden bg-zinc-900/50 border border-border/20 cursor-pointer transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 ${
-                  activeDevice === 'desktop' && currentImage?.disableScroll
-                    ? 'md:scale-[1.15] md:origin-center md:my-6'
-                    : ''
-                }`}
-                onClick={onOpenLightbox}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}
-              >
+                {/* Pantalla */}
                 <div
-                  className="relative overflow-hidden bg-zinc-900/50 transition-all duration-300 flex flex-col items-center justify-center"
-                  style={{
-                    height: (activeDevice === 'desktop' && currentImage?.disableScroll)
-                      ? 'auto'
-                      : `${viewportHeight}px`
-                  }}
+                  className="group relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10"
+                  onClick={onOpenLightbox}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}
                 >
-                  <AnimatePresence mode="wait">
-                    {currentImage && (
-                      <motion.img
-                        key={`${activeDevice}-${currentIndex}`}
-                        src={currentImage.image}
-                        alt={currentImage.label || 'Screenshot'}
-                        className={`${shouldScroll && isInView
-                          ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
-                          : (activeDevice === 'desktop' && currentImage?.disableScroll)
-                            ? 'w-full h-auto object-contain'
-                            : 'w-full h-full object-contain'
+                  <div
+                    className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center"
+                    style={{
+                      height: currentImage?.disableScroll ? 'auto' : `${viewportHeight}px`,
+                      maxHeight: currentImage?.disableScroll ? `${viewportHeight}px` : undefined
+                    }}
+                  >
+                    <AnimatePresence mode="wait">
+                      {currentImage && (
+                        <motion.img
+                          key={`${activeDevice}-${currentIndex}`}
+                          src={currentImage.image}
+                          alt={currentImage.label || 'Screenshot'}
+                          className={`${shouldScroll && isInView
+                            ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
+                            : currentImage?.disableScroll
+                              ? 'w-full h-auto object-contain'
+                              : 'w-full h-full object-contain'
                           }`}
-                        style={shouldScroll ? {
-                          '--scroll-distance': `calc(100% - ${viewportHeight}px)`
-                        } : undefined}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        loading="lazy"
-                        decoding="async"
-                        onLoad={(e) => setImageHeight(e.target.naturalHeight)}
-                      />
+                          style={shouldScroll ? {
+                            '--scroll-distance': `calc(100% - ${viewportHeight}px)`
+                          } : undefined}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          loading="lazy"
+                          decoding="async"
+                          onLoad={(e) => setImageHeight(e.target.naturalHeight)}
+                        />
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Overlay hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <div className="p-3 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                        <Maximize2 size={20} className="text-white" />
+                      </div>
+                    </div>
+                    {shouldScroll && (
+                      <div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5">
+                        <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                        Scroll
+                      </div>
                     )}
-                  </AnimatePresence>
+                  </div>
                 </div>
-
-                {/* Overlay con info y botón de expandir */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  <div className="absolute bottom-2 left-2">
-                    <span className="text-[10px] font-medium text-white">{currentImage?.label}</span>
-                  </div>
-
-                  {/* Botón de expandir/maximizar */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
-                    <div className="p-3 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                      <Maximize2 size={24} className="text-white" />
-                    </div>
-                    <span className="text-white text-xs font-medium bg-black/50 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity delay-100">
-                      Ver en grande
-                    </span>
-                  </div>
-
-                  {/* Indicador de scroll solo si es scrolleable */}
-                  {shouldScroll && (
-                    <div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5">
-                      <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                      </svg>
-                      Scroll
-                    </div>
-                  )}
-                </div>
-
-                {/* Indicadores de carrusel */}
-                {currentScreenshots.length > 1 && (
-                  <div className="absolute bottom-2 right-2 flex gap-1 z-10">
-                    {currentScreenshots.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
-                        className={`
-                          w-2.5 h-2.5 rounded-full transition-all cursor-pointer
-                          ${idx === currentIndex ? 'bg-white w-5' : 'bg-white/40 hover:bg-white/70'}
-                        `}
-                        aria-label={`Ver imagen ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
+                {/* Base del laptop */}
+                <div className="mx-auto w-[60%] h-1 bg-gradient-to-r from-transparent via-zinc-600 to-transparent rounded-b-full" />
               </div>
+            )}
 
-              {/* Contador solo si hay múltiples imágenes */}
-              {currentScreenshots.length > 1 && (
-                <div className="text-center mt-1.5 text-[9px] text-muted-foreground">
-                  {currentIndex + 1} / {currentScreenshots.length}
+            {/* --- MOBILE: Marco estilo teléfono --- */}
+            {activeDevice === 'mobile' && (
+              <div className="max-w-[280px] mx-auto">
+                <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 overflow-hidden">
+                  {/* Notch */}
+                  <div className="relative flex justify-center">
+                    <div className="absolute top-0 z-10 w-24 h-5 bg-zinc-800 rounded-b-2xl flex items-center justify-center">
+                      <div className="w-12 h-1 bg-zinc-600 rounded-full" />
+                    </div>
+                  </div>
+                  {/* Pantalla */}
+                  <div
+                    className="group relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer"
+                    onClick={onOpenLightbox}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}
+                  >
+                    <div
+                      className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center"
+                      style={{ height: `${viewportHeight}px` }}
+                    >
+                      <AnimatePresence mode="wait">
+                        {currentImage && (
+                          <motion.img
+                            key={`${activeDevice}-${currentIndex}`}
+                            src={currentImage.image}
+                            alt={currentImage.label || 'Screenshot'}
+                            className={`${shouldScroll && isInView
+                              ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
+                              : 'w-full h-full object-contain'
+                            }`}
+                            style={shouldScroll ? {
+                              '--scroll-distance': `calc(100% - ${viewportHeight}px)`
+                            } : undefined}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            loading="lazy"
+                            decoding="async"
+                            onLoad={(e) => setImageHeight(e.target.naturalHeight)}
+                          />
+                        )}
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Overlay hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                          <Maximize2 size={18} className="text-white" />
+                        </div>
+                      </div>
+                      {shouldScroll && (
+                        <div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5">
+                          <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          </svg>
+                          Scroll
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {/* Home bar */}
+                  <div className="flex justify-center py-1.5">
+                    <div className="w-20 h-1 bg-zinc-600 rounded-full" />
+                  </div>
                 </div>
-              )}
+              </div>
+            )}
+
+            {/* --- TABLET: Marco estilo tablet --- */}
+            {activeDevice === 'tablet' && (
+              <div className="max-w-[480px] mx-auto">
+                <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 overflow-hidden">
+                  {/* Cámara */}
+                  <div className="flex justify-center mb-1">
+                    <div className="w-2 h-2 bg-zinc-600 rounded-full" />
+                  </div>
+                  {/* Pantalla */}
+                  <div
+                    className="group relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer"
+                    onClick={onOpenLightbox}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}
+                  >
+                    <div
+                      className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center"
+                      style={{ height: `${viewportHeight}px` }}
+                    >
+                      <AnimatePresence mode="wait">
+                        {currentImage && (
+                          <motion.img
+                            key={`${activeDevice}-${currentIndex}`}
+                            src={currentImage.image}
+                            alt={currentImage.label || 'Screenshot'}
+                            className={`${shouldScroll && isInView
+                              ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
+                              : 'w-full h-full object-contain'
+                            }`}
+                            style={shouldScroll ? {
+                              '--scroll-distance': `calc(100% - ${viewportHeight}px)`
+                            } : undefined}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            loading="lazy"
+                            decoding="async"
+                            onLoad={(e) => setImageHeight(e.target.naturalHeight)}
+                          />
+                        )}
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Overlay hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                          <Maximize2 size={18} className="text-white" />
+                        </div>
+                      </div>
+                      {shouldScroll && (
+                        <div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5">
+                          <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          </svg>
+                          Scroll
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {/* Home button */}
+                  <div className="flex justify-center py-1.5">
+                    <div className="w-8 h-1 bg-zinc-600 rounded-full" />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* ===== INDICADORES DE CARRUSEL (fuera del marco) ===== */}
+          {currentScreenshots.length > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-4">
+              {currentScreenshots.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
+                  className={`
+                    rounded-full transition-all duration-200 cursor-pointer
+                    ${idx === currentIndex
+                      ? 'bg-primary w-6 h-3 shadow-sm shadow-primary/40'
+                      : 'bg-muted-foreground/30 w-3 h-3 hover:bg-muted-foreground/60 hover:scale-110'
+                    }
+                  `}
+                  aria-label={`Ver imagen ${idx + 1}`}
+                />
+              ))}
+              <span className="text-[10px] text-muted-foreground ml-2 font-mono">
+                {currentIndex + 1}/{currentScreenshots.length}
+              </span>
             </div>
           )}
         </motion.div>
