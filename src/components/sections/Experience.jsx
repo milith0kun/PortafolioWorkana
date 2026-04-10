@@ -299,7 +299,7 @@ const getIcon = (iconType) => {
 };
 
 // Componente de visualización con tabs y carrusel MEJORADO
-const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
+const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSide = true }) => {
   const [activeDevice, setActiveDevice] = useState(() => {
     if (screenshotsByDevice.desktop && screenshotsByDevice.desktop.length > 0) return 'desktop';
     if (screenshotsByDevice.tablet && screenshotsByDevice.tablet.length > 0) return 'tablet';
@@ -349,9 +349,11 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
 
   if (!screenshotsByDevice) return null;
 
-  // Altura del viewport unificada para evitar desproporciones visuales
+  // Altura del viewport diferenciada por dispositivo
   const getViewportHeight = () => {
-    return 400; // Altura estándar para todos los dispositivos
+    if (activeDevice === 'mobile') return 310;
+    if (activeDevice === 'tablet') return 380;
+    return 480; // Desktop: alineado al alto de la card
   };
 
   const viewportHeight = getViewportHeight();
@@ -371,7 +373,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
 
   return (
-    <div ref={containerRef} className="mt-6">
+    <div ref={containerRef} className="mt-2">
       <AnimatePresence mode="wait">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -380,7 +382,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
           transition={{ duration: 0.3 }}
         >
           {/* Tabs de dispositivo - estilo pastilla */}
-          <div className="flex justify-center gap-1.5 mb-4">
+          <div className="flex justify-center gap-1.5 mb-2">
             {devices.map((device) => (
               <button
                 key={device.key}
@@ -402,7 +404,9 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
           {/* ===== MARCO DE DISPOSITIVO ===== */}
           <div className={`${
             activeDevice === 'desktop' && currentImage?.disableScroll
-              ? 'md:w-[125%] md:-ml-[12.5%]'
+              ? isRightSide
+                ? 'md:w-[125%] md:ml-0'
+                : 'md:w-[125%] md:mr-0 md:ml-auto md:-translate-x-0'
               : ''
           }`}>
 
@@ -631,7 +635,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
 
           {/* ===== INDICADORES DE CARRUSEL (fuera del marco) ===== */}
           {currentScreenshots.length > 1 && (
-            <div className="flex items-center justify-center gap-2 mt-4">
+            <div className="flex items-center justify-center gap-2 mt-2">
               {currentScreenshots.map((_, idx) => (
                 <button
                   key={idx}
@@ -821,6 +825,7 @@ const Experience = ({ onNext }) => {
                       <DeviceScreenshotViewer
                         screenshotsByDevice={project.screenshotsByDevice}
                         onOpenLightbox={() => handleScreenshotClick(project)}
+                        isRightSide={index % 2 === 0}
                       />
                     </motion.div>
                   )}
