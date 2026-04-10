@@ -428,6 +428,12 @@ export const projects = [
         { image: "/projects/screenshots/peru-andean/desktop-3.webp", label: "Detalles del Paquete" },
         { image: "/projects/screenshots/peru-andean/desktop-4.webp", label: "Itinerarios de Viaje" },
         { image: "/projects/screenshots/peru-andean/desktop-5.webp", label: "Página de Contacto" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/peru-andean/mobile-1.webp", label: "Home Móvil" },
+        { image: "/projects/screenshots/peru-andean/mobile-3.webp", label: "Detalle Tour" },
+        { image: "/projects/screenshots/peru-andean/mobile-4.webp", label: "Reserva Móvil" },
+        { image: "/projects/screenshots/peru-andean/mobile-5.webp", label: "Contacto Móvil" }
       ]
     }
   },

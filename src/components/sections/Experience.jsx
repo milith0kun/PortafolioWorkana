@@ -508,14 +508,14 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
 
                 {/* Indicadores de carrusel */}
                 {currentScreenshots.length > 1 && (
-                  <div className="absolute bottom-2 right-2 flex gap-1">
+                  <div className="absolute bottom-2 right-2 flex gap-1 z-10">
                     {currentScreenshots.map((_, idx) => (
                       <button
                         key={idx}
-                        onClick={() => setCurrentIndex(idx)}
+                        onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
                         className={`
-                          w-1.5 h-1.5 rounded-full transition-all
-                          ${idx === currentIndex ? 'bg-white w-3' : 'bg-white/40 hover:bg-white/60'}
+                          w-2.5 h-2.5 rounded-full transition-all cursor-pointer
+                          ${idx === currentIndex ? 'bg-white w-5' : 'bg-white/40 hover:bg-white/70'}
                         `}
                         aria-label={`Ver imagen ${idx + 1}`}
                       />
