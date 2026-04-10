@@ -448,7 +448,15 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "data-science",
-    date: "Febrero 2026"
+    date: "Febrero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/judiscribe/desktop-1.webp", label: "Página de Inicio", disableScroll: true },
+        { image: "/projects/screenshots/judiscribe/desktop-2.webp", label: "Panel de Audiencias", disableScroll: true },
+        { image: "/projects/screenshots/judiscribe/desktop-3.webp", label: "Editor de Transcripción" },
+        { image: "/projects/screenshots/judiscribe/desktop-5.webp", label: "Generación de Actas", disableScroll: true }
+      ]
+    }
   },
   {
     id: 21,

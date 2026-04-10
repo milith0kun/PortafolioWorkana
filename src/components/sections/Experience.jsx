@@ -452,7 +452,11 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
               >
                 <div
                   className="relative overflow-hidden bg-zinc-900/50 transition-all duration-300 flex flex-col items-center justify-center"
-                  style={{ height: `${viewportHeight}px` }}
+                  style={{
+                    height: (activeDevice === 'desktop' && currentImage?.disableScroll)
+                      ? 'auto'
+                      : `${viewportHeight}px`
+                  }}
                 >
                   <AnimatePresence mode="wait">
                     {currentImage && (
@@ -462,7 +466,9 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
                         alt={currentImage.label || 'Screenshot'}
                         className={`${shouldScroll && isInView
                           ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
-                          : 'w-full h-full object-contain'
+                          : (activeDevice === 'desktop' && currentImage?.disableScroll)
+                            ? 'w-full h-auto object-contain'
+                            : 'w-full h-full object-contain'
                           }`}
                         style={shouldScroll ? {
                           '--scroll-distance': `calc(100% - ${viewportHeight}px)`
