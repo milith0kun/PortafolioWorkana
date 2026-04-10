@@ -399,6 +399,13 @@ export const projects = [
         { image: "/projects/screenshots/sfit/desktop-4.webp", label: "Dashboard Administrativo", disableScroll: true },
         { image: "/projects/screenshots/sfit/desktop-5.webp", label: "Registro de Auditoría", disableScroll: true },
         { image: "/projects/screenshots/sfit/desktop-6.webp", label: "Detalle de Sistema", disableScroll: true }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/sfit/mobile-1.webp", label: "Inicio Móvil" },
+        { image: "/projects/screenshots/sfit/mobile-2.webp", label: "Menú Móvil" },
+        { image: "/projects/screenshots/sfit/mobile-3.webp", label: "Gestión Móvil" },
+        { image: "/projects/screenshots/sfit/mobile-4.webp", label: "Alerta Móvil" },
+        { image: "/projects/screenshots/sfit/mobile-5.webp", label: "Perfil Móvil" }
       ]
     }
   },
