@@ -451,8 +451,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox }) => {
                 onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}
               >
                 <div
-                  className="relative overflow-hidden bg-zinc-900/50 transition-all duration-300 flex flex-col items-center justify-center"
-                  style={{ height: `${viewportHeight}px` }}
+                  className={`relative overflow-hidden bg-zinc-900/50 transition-all duration-300 flex flex-col items-center justify-center ${activeDevice === 'desktop' ? 'aspect-video' : ''}`}
+                  style={activeDevice === 'desktop' ? { height: 'auto' } : { height: `${viewportHeight}px` }}
                 >
                   <AnimatePresence mode="wait">
                     {currentImage && (
