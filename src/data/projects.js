@@ -420,7 +420,16 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026"
+    date: "Febrero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/peru-andean/desktop-1.webp", label: "Página de Inicio" },
+        { image: "/projects/screenshots/peru-andean/desktop-2.webp", label: "Experiencias y Tours" },
+        { image: "/projects/screenshots/peru-andean/desktop-3.webp", label: "Detalles del Paquete" },
+        { image: "/projects/screenshots/peru-andean/desktop-4.webp", label: "Itinerarios de Viaje" },
+        { image: "/projects/screenshots/peru-andean/desktop-5.webp", label: "Página de Contacto" }
+      ]
+    }
   },
   {
     id: 20,
