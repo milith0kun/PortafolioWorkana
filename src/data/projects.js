@@ -386,7 +386,7 @@ export const projects = [
     longDescription: "Desarrollé un sistema monorepo con NestJS y React 18 para la fiscalización del transporte en municipalidades de Apurímac y Cusco. Implementé arquitectura multi-tenant con RBAC, motor de evaluación de fatiga para conductores, y un sistema antifraude de 5 capas para reportes ciudadanos. El backend utiliza PostgreSQL y Redis, con comunicación en tiempo real vía Socket.io para notificaciones multicanal. El sistema permite la gestión de empresas, conductores, vehículos con códigos QR cifrados (HMAC), control de rutas y emisión de sanciones con cálculo de reputación ponderada.",
     image: "/projects/sfit.jpg",
     technologies: ["NestJS", "React 18", "TypeScript", "PostgreSQL", "Redis", "Socket.io", "Tailwind CSS", "Docker"],
-    demoUrl: "https://sfit.gob.pe",
+    demoUrl: "https://sfit.ecosdelseo.com",
     githubUrl: null,
     featured: true,
     category: "full-stack",
