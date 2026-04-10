@@ -390,7 +390,17 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026"
+    date: "Febrero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/sfit/desktop-1.webp", label: "Gestión de Usuarios", disableScroll: true },
+        { image: "/projects/screenshots/sfit/desktop-2.webp", label: "Registro de Ciudadano", disableScroll: true },
+        { image: "/projects/screenshots/sfit/desktop-3.webp", label: "Acceso Ciudadano", disableScroll: true },
+        { image: "/projects/screenshots/sfit/desktop-4.webp", label: "Dashboard Administrativo", disableScroll: true },
+        { image: "/projects/screenshots/sfit/desktop-5.webp", label: "Registro de Auditoría", disableScroll: true },
+        { image: "/projects/screenshots/sfit/desktop-6.webp", label: "Detalle de Sistema", disableScroll: true }
+      ]
+    }
   },
   {
     id: 19,
