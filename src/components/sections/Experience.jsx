@@ -737,8 +737,8 @@ const Experience = ({ onNext }) => {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    <Card className="border-border/40 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all shadow-sm h-full">
-                      <CardContent className="p-4 md:p-6">
+                    <Card className="border-border/40 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all shadow-sm">
+                      <CardContent className="p-4 md:p-6 flex flex-col" style={{ height: '420px' }}>
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                           <time className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-primary font-bold bg-primary/5 px-2 py-0.5 rounded-full flex items-center gap-1">
                             <Calendar className="size-3" /> {project.date}
@@ -755,11 +755,11 @@ const Experience = ({ onNext }) => {
 
                         <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 font-display">{project.title}</h3>
 
-                        <p className="text-xs md:text-sm text-foreground/70 leading-relaxed mb-4">
+                        <p className="text-xs md:text-sm text-foreground/70 leading-relaxed mb-4 line-clamp-5 flex-1">
                           {project.longDescription || project.description}
                         </p>
 
-                        <div className="flex flex-wrap gap-1.5 mb-4">
+                        <div className="flex flex-wrap gap-1.5 mb-4 max-h-[52px] overflow-hidden">
                           {project.technologies.map((tech, idx) => (
                             <Badge key={idx} variant="outline" className="text-[9px] md:text-[10px] bg-background/50 border-border/60">
                               {tech}
