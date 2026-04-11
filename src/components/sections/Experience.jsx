@@ -373,285 +373,125 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
 
   return (
-    <div ref={containerRef} className="h-full flex flex-col">
+    <div ref={containerRef}>
+      {/* Tabs - FUERA del contenedor de altura */}
+      <div className="flex justify-center gap-1.5 mb-2">
+        {devices.map((device) => (
+          <button
+            key={device.key}
+            onClick={() => setActiveDevice(device.key)}
+            className={`
+              flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-200
+              ${activeDevice === device.key
+                ? 'bg-primary text-primary-foreground shadow-md shadow-primary/30'
+                : 'text-muted-foreground bg-muted/40 hover:bg-muted/70 hover:text-foreground'
+              }
+            `}
+          >
+            {device.icon}
+            <span className="hidden sm:inline">{device.label}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Marco - contenedor que iguala el alto de la card */}
       <AnimatePresence mode="wait">
         <motion.div
-          className="flex flex-col flex-1"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Tabs de dispositivo - estilo pastilla */}
-          <div className="flex justify-center gap-1.5 mb-2">
-            {devices.map((device) => (
-              <button
-                key={device.key}
-                onClick={() => setActiveDevice(device.key)}
-                className={`
-                  flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-200
-                  ${activeDevice === device.key
-                    ? 'bg-primary text-primary-foreground shadow-md shadow-primary/30'
-                    : 'text-muted-foreground bg-muted/40 hover:bg-muted/70 hover:text-foreground'
-                  }
-                `}
-              >
-                {device.icon}
-                <span className="hidden sm:inline">{device.label}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* ===== MARCO DE DISPOSITIVO ===== */}
-          <div className="flex-1 flex flex-col justify-center">
-
-            {/* --- DESKTOP: Marco estilo laptop --- */}
-            {activeDevice === 'desktop' && (
-              <div className="w-full">
-                {/* Barra superior del navegador */}
-                <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                  </div>
-                  <div className="flex-1 mx-2">
-                    <div className="bg-zinc-700/60 rounded-md px-3 py-0.5 text-[9px] text-zinc-400 font-mono truncate text-center">
-                      {currentImage?.label || 'Vista Desktop'}
-                    </div>
+          {activeDevice === 'desktop' && (
+            <div className="w-full">
+              <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                </div>
+                <div className="flex-1 mx-2">
+                  <div className="bg-zinc-700/60 rounded-md px-3 py-0.5 text-[9px] text-zinc-400 font-mono truncate text-center">
+                    {currentImage?.label || 'Vista Desktop'}
                   </div>
                 </div>
-                {/* Pantalla */}
-                <div
-                  className="group relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10"
-                  onClick={onOpenLightbox}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}
-                >
-                  <div
-                    className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center"
-                    style={{
-                      height: currentImage?.disableScroll ? 'auto' : `${viewportHeight}px`,
-                      maxHeight: currentImage?.disableScroll ? `${viewportHeight}px` : undefined
-                    }}
-                  >
+              </div>
+              <div className="group relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                <div className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ height: currentImage?.disableScroll ? 'auto' : `${viewportHeight}px`, maxHeight: currentImage?.disableScroll ? `${viewportHeight}px` : undefined }}>
+                  <AnimatePresence mode="wait">
+                    {currentImage && (
+                      <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
+                    )}
+                  </AnimatePresence>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="p-3 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                      <Maximize2 size={20} className="text-white" />
+                    </div>
+                  </div>
+                  {shouldScroll && (<div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
+                </div>
+              </div>
+              <div className="mx-auto w-[60%] h-1 bg-gradient-to-r from-transparent via-zinc-600 to-transparent rounded-b-full" />
+            </div>
+          )}
+
+          {activeDevice === 'mobile' && (
+            <div className="max-w-[280px] mx-auto">
+              <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 overflow-hidden">
+                <div className="relative flex justify-center"><div className="absolute top-0 z-10 w-24 h-5 bg-zinc-800 rounded-b-2xl flex items-center justify-center"><div className="w-12 h-1 bg-zinc-600 rounded-full" /></div></div>
+                <div className="group relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                  <div className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ height: `${viewportHeight}px` }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
-                        <motion.img
-                          key={`${activeDevice}-${currentIndex}`}
-                          src={currentImage.image}
-                          alt={currentImage.label || 'Screenshot'}
-                          className={`${shouldScroll && isInView
-                            ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
-                            : currentImage?.disableScroll
-                              ? 'w-full h-auto object-contain'
-                              : 'w-full h-full object-contain'
-                          }`}
-                          style={shouldScroll ? {
-                            '--scroll-distance': `calc(100% - ${viewportHeight}px)`
-                          } : undefined}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          loading="lazy"
-                          decoding="async"
-                          onLoad={(e) => setImageHeight(e.target.naturalHeight)}
-                        />
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
                       )}
                     </AnimatePresence>
                   </div>
-
-                  {/* Overlay hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div className="p-3 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                        <Maximize2 size={20} className="text-white" />
-                      </div>
-                    </div>
-                    {shouldScroll && (
-                      <div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5">
-                        <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                        </svg>
-                        Scroll
-                      </div>
-                    )}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300"><Maximize2 size={18} className="text-white" /></div></div>
+                    {shouldScroll && (<div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
                   </div>
                 </div>
-                {/* Base del laptop */}
-                <div className="mx-auto w-[60%] h-1 bg-gradient-to-r from-transparent via-zinc-600 to-transparent rounded-b-full" />
+                <div className="flex justify-center py-1.5"><div className="w-20 h-1 bg-zinc-600 rounded-full" /></div>
               </div>
-            )}
+            </div>
+          )}
 
-            {/* --- MOBILE: Marco estilo teléfono --- */}
-            {activeDevice === 'mobile' && (
-              <div className="max-w-[280px] mx-auto">
-                <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 overflow-hidden">
-                  {/* Notch */}
-                  <div className="relative flex justify-center">
-                    <div className="absolute top-0 z-10 w-24 h-5 bg-zinc-800 rounded-b-2xl flex items-center justify-center">
-                      <div className="w-12 h-1 bg-zinc-600 rounded-full" />
-                    </div>
-                  </div>
-                  {/* Pantalla */}
-                  <div
-                    className="group relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer"
-                    onClick={onOpenLightbox}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}
-                  >
-                    <div
-                      className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center"
-                      style={{ height: `${viewportHeight}px` }}
-                    >
-                      <AnimatePresence mode="wait">
-                        {currentImage && (
-                          <motion.img
-                            key={`${activeDevice}-${currentIndex}`}
-                            src={currentImage.image}
-                            alt={currentImage.label || 'Screenshot'}
-                            className={`${shouldScroll && isInView
-                              ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
-                              : 'w-full h-full object-contain'
-                            }`}
-                            style={shouldScroll ? {
-                              '--scroll-distance': `calc(100% - ${viewportHeight}px)`
-                            } : undefined}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            loading="lazy"
-                            decoding="async"
-                            onLoad={(e) => setImageHeight(e.target.naturalHeight)}
-                          />
-                        )}
-                      </AnimatePresence>
-                    </div>
-
-                    {/* Overlay hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                          <Maximize2 size={18} className="text-white" />
-                        </div>
-                      </div>
-                      {shouldScroll && (
-                        <div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5">
-                          <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                          </svg>
-                          Scroll
-                        </div>
+          {activeDevice === 'tablet' && (
+            <div className="max-w-[480px] mx-auto">
+              <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 overflow-hidden">
+                <div className="flex justify-center mb-1"><div className="w-2 h-2 bg-zinc-600 rounded-full" /></div>
+                <div className="group relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                  <div className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ height: `${viewportHeight}px` }}>
+                    <AnimatePresence mode="wait">
+                      {currentImage && (
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
                       )}
-                    </div>
+                    </AnimatePresence>
                   </div>
-                  {/* Home bar */}
-                  <div className="flex justify-center py-1.5">
-                    <div className="w-20 h-1 bg-zinc-600 rounded-full" />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* --- TABLET: Marco estilo tablet --- */}
-            {activeDevice === 'tablet' && (
-              <div className="max-w-[480px] mx-auto">
-                <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 overflow-hidden">
-                  {/* Cámara */}
-                  <div className="flex justify-center mb-1">
-                    <div className="w-2 h-2 bg-zinc-600 rounded-full" />
-                  </div>
-                  {/* Pantalla */}
-                  <div
-                    className="group relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer"
-                    onClick={onOpenLightbox}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}
-                  >
-                    <div
-                      className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center"
-                      style={{ height: `${viewportHeight}px` }}
-                    >
-                      <AnimatePresence mode="wait">
-                        {currentImage && (
-                          <motion.img
-                            key={`${activeDevice}-${currentIndex}`}
-                            src={currentImage.image}
-                            alt={currentImage.label || 'Screenshot'}
-                            className={`${shouldScroll && isInView
-                              ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0'
-                              : 'w-full h-full object-contain'
-                            }`}
-                            style={shouldScroll ? {
-                              '--scroll-distance': `calc(100% - ${viewportHeight}px)`
-                            } : undefined}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            loading="lazy"
-                            decoding="async"
-                            onLoad={(e) => setImageHeight(e.target.naturalHeight)}
-                          />
-                        )}
-                      </AnimatePresence>
-                    </div>
-
-                    {/* Overlay hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                          <Maximize2 size={18} className="text-white" />
-                        </div>
-                      </div>
-                      {shouldScroll && (
-                        <div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5">
-                          <svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                          </svg>
-                          Scroll
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  {/* Home button */}
-                  <div className="flex justify-center py-1.5">
-                    <div className="w-8 h-1 bg-zinc-600 rounded-full" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300"><Maximize2 size={18} className="text-white" /></div></div>
+                    {shouldScroll && (<div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
                   </div>
                 </div>
+                <div className="flex justify-center py-1.5"><div className="w-8 h-1 bg-zinc-600 rounded-full" /></div>
               </div>
-            )}
-          </div>
-
-          {/* ===== INDICADORES DE CARRUSEL (fuera del marco) ===== */}
-          {currentScreenshots.length > 1 && (
-            <div className="flex items-center justify-center gap-2.5 mt-3 bg-zinc-800 rounded-full px-4 py-2 mx-auto w-fit">
-              {currentScreenshots.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
-                  className={`
-                    rounded-full transition-all duration-200 cursor-pointer
-                    ${idx === currentIndex
-                      ? 'bg-primary w-7 h-3.5 shadow-md shadow-primary/60'
-                      : 'bg-zinc-500 w-3.5 h-3.5 hover:bg-zinc-300 hover:scale-125'
-                    }
-                  `}
-                  aria-label={`Ver imagen ${idx + 1}`}
-                />
-              ))}
-              <span className="text-[11px] text-zinc-300 ml-1 font-semibold font-mono">
-                {currentIndex + 1}/{currentScreenshots.length}
-              </span>
             </div>
           )}
         </motion.div>
       </AnimatePresence>
+
+      {/* Indicadores - FUERA del contenedor de altura */}
+      {currentScreenshots.length > 1 && (
+        <div className="flex items-center justify-center gap-2.5 mt-2 bg-zinc-800 rounded-full px-4 py-1.5 mx-auto w-fit">
+          {currentScreenshots.map((_, idx) => (
+            <button key={idx} onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }} className={`rounded-full transition-all duration-200 cursor-pointer ${idx === currentIndex ? 'bg-primary w-7 h-3.5 shadow-md shadow-primary/60' : 'bg-zinc-500 w-3.5 h-3.5 hover:bg-zinc-300 hover:scale-125'}`} aria-label={`Ver imagen ${idx + 1}`} />
+          ))}
+          <span className="text-[11px] text-zinc-300 ml-1 font-semibold font-mono">{currentIndex + 1}/{currentScreenshots.length}</span>
+        </div>
+      )}
     </div>
   );
 };
