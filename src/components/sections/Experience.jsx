@@ -811,7 +811,7 @@ const Experience = ({ onNext }) => {
                   {/* Screenshots del Proyecto */}
                   {project.screenshotsByDevice && (
                     <motion.div
-                      className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-6 lg:pl-8' : 'md:pr-6 lg:pr-8'} ml-0`}
+                      className={`md:w-1/2 h-full ${index % 2 === 0 ? 'md:pl-6 lg:pl-8' : 'md:pr-6 lg:pr-8'} ml-0`}
                       initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
