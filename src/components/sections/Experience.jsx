@@ -411,8 +411,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                     </div>
                   </div>
                 </div>
-                <div className="group flex-1 relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
+                <div className="group flex-1 relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10 isolate" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                  <div className="absolute inset-0 overflow-hidden rounded-[inherit] transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
                         <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
@@ -441,15 +441,15 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
 
           {activeDevice === 'mobile' && (
             <div className="max-w-[280px] mx-auto w-full aspect-[9/19] flex flex-col relative px-2 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)]">
-              <div className="bg-zinc-950 rounded-[2.5rem] ring-4 ring-zinc-800/80 p-1 flex-1 flex flex-col relative overflow-hidden">
+              <div className="bg-zinc-950 rounded-[2.5rem] ring-4 ring-zinc-800/80 p-0 flex-1 flex flex-col relative overflow-hidden">
                 {/* Dynamic Island modern notch */}
                 <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 w-20 h-5 bg-black rounded-full shadow-inner flex items-center justify-start px-2 gap-2">
                   <div className="w-2 h-2 rounded-full bg-zinc-800/50 shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]" />
                   <div className="w-1 h-1 rounded-full bg-green-500/30" />
                 </div>
                 
-                <div className="group flex-1 relative overflow-hidden bg-zinc-900 rounded-[2.2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
+                <div className="group flex-1 relative bg-zinc-900 rounded-[2.2rem] overflow-hidden cursor-pointer isolate" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                  <div className="absolute inset-0 overflow-hidden rounded-[inherit] transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
                         <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
@@ -479,8 +479,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
             <div className="max-w-[480px] mx-auto w-full aspect-[3/4] flex flex-col">
               <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 flex-1 flex flex-col overflow-hidden">
                 <div className="flex justify-center mb-1"><div className="w-2 h-2 bg-zinc-600 rounded-full" /></div>
-                <div className="group flex-1 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
+                <div className="group flex-1 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer isolate" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                  <div className="absolute inset-0 overflow-hidden rounded-[inherit] transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
                         <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
