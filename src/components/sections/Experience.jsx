@@ -404,7 +404,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           transition={{ duration: 0.3 }}
         >
           {activeDevice === 'desktop' && (
-            <div className="w-full">
+            <div className="w-full h-full flex flex-col">
               <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0">
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -417,8 +417,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                   </div>
                 </div>
               </div>
-              <div className="group relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                <div className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ height: currentImage?.disableScroll ? 'auto' : `${viewportHeight}px`, maxHeight: currentImage?.disableScroll ? `${viewportHeight}px` : undefined }}>
+              <div className="group flex-1 relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                   <AnimatePresence mode="wait">
                     {currentImage && (
                       <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
@@ -439,11 +439,11 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           )}
 
           {activeDevice === 'mobile' && (
-            <div className="max-w-[280px] mx-auto">
-              <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 overflow-hidden">
+            <div className="max-w-[320px] mx-auto h-full w-full">
+              <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 h-full flex flex-col overflow-hidden">
                 <div className="relative flex justify-center"><div className="absolute top-0 z-10 w-24 h-5 bg-zinc-800 rounded-b-2xl flex items-center justify-center"><div className="w-12 h-1 bg-zinc-600 rounded-full" /></div></div>
-                <div className="group relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ height: `${viewportHeight}px` }}>
+                <div className="group flex-1 relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                     <AnimatePresence mode="wait">
                       {currentImage && (
                         <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
@@ -461,11 +461,11 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           )}
 
           {activeDevice === 'tablet' && (
-            <div className="max-w-[480px] mx-auto">
-              <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 overflow-hidden">
+            <div className="max-w-[480px] mx-auto w-full h-full">
+              <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 h-full flex flex-col overflow-hidden">
                 <div className="flex justify-center mb-1"><div className="w-2 h-2 bg-zinc-600 rounded-full" /></div>
-                <div className="group relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="relative overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ height: `${viewportHeight}px` }}>
+                <div className="group flex-1 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                     <AnimatePresence mode="wait">
                       {currentImage && (
                         <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
