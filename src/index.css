@@ -483,19 +483,26 @@ body,
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   image-rendering: -webkit-optimize-contrast;
-  transform: translateZ(0); /* Force GPU */
+  /* El secreto: un minúsculo escalado elimina el borde fantasma */
+  transform: translateZ(0) scale(1.02); 
 }
 
 /* Fix persistente para recorte en marcos redondeados (Webkit Clipping Bug) */
-.overflow-hidden[class*="rounded"] {
-  mask-image: -webkit-radial-gradient(white, black);
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
+.overflow-hidden[class*="rounded"], 
+.rounded-xl, .rounded-2xl, .rounded-[2.5rem], .rounded-[2.2rem], .rounded-b-xl {
+  mask-image: -webkit-radial-gradient(white, black) !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
   isolation: isolate;
+}
+
+/* Prevenir que la imagen muestre sus propias esquinas cuadradas */
+.overflow-hidden img {
+  border-radius: inherit;
 }
 
 /* Evitar blur en imágenes estáticas también mediante sub-pixel antialiasing */
 .object-contain, .object-cover {
   image-rendering: -webkit-optimize-contrast;
   -webkit-font-smoothing: antialiased;
-  transform: translateZ(0);
+  transform: translateZ(0) scale(1.01);
 }
