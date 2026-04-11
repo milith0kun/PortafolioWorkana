@@ -351,9 +351,9 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
 
   // Altura del viewport diferenciada por dispositivo
   const getViewportHeight = () => {
-    if (activeDevice === 'mobile') return 310;
-    if (activeDevice === 'tablet') return 380;
-    return 480; // Desktop: alineado al alto de la card
+    if (activeDevice === 'mobile') return 280;
+    if (activeDevice === 'tablet') return 320;
+    return 350; // Desktop: no sobrepasar la card
   };
 
   const viewportHeight = getViewportHeight();
@@ -629,22 +629,22 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
 
           {/* ===== INDICADORES DE CARRUSEL (fuera del marco) ===== */}
           {currentScreenshots.length > 1 && (
-            <div className="flex items-center justify-center gap-2.5 mt-3 bg-muted/50 rounded-full px-4 py-2 mx-auto w-fit">
+            <div className="flex items-center justify-center gap-2.5 mt-3 bg-zinc-800 rounded-full px-4 py-2 mx-auto w-fit">
               {currentScreenshots.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
                   className={`
-                    rounded-full transition-all duration-200 cursor-pointer border
+                    rounded-full transition-all duration-200 cursor-pointer
                     ${idx === currentIndex
-                      ? 'bg-primary w-7 h-3.5 shadow-md shadow-primary/50 border-primary'
-                      : 'bg-muted-foreground/40 w-3.5 h-3.5 hover:bg-primary/60 hover:scale-125 border-muted-foreground/20'
+                      ? 'bg-primary w-7 h-3.5 shadow-md shadow-primary/60'
+                      : 'bg-zinc-500 w-3.5 h-3.5 hover:bg-zinc-300 hover:scale-125'
                     }
                   `}
                   aria-label={`Ver imagen ${idx + 1}`}
                 />
               ))}
-              <span className="text-[11px] text-foreground/70 ml-1 font-semibold font-mono">
+              <span className="text-[11px] text-zinc-300 ml-1 font-semibold font-mono">
                 {currentIndex + 1}/{currentScreenshots.length}
               </span>
             </div>
