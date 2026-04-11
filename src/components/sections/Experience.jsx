@@ -629,22 +629,22 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
 
           {/* ===== INDICADORES DE CARRUSEL (fuera del marco) ===== */}
           {currentScreenshots.length > 1 && (
-            <div className="flex items-center justify-center gap-2 mt-2">
+            <div className="flex items-center justify-center gap-2.5 mt-3 bg-muted/50 rounded-full px-4 py-2 mx-auto w-fit">
               {currentScreenshots.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
                   className={`
-                    rounded-full transition-all duration-200 cursor-pointer
+                    rounded-full transition-all duration-200 cursor-pointer border
                     ${idx === currentIndex
-                      ? 'bg-primary w-6 h-3 shadow-sm shadow-primary/40'
-                      : 'bg-muted-foreground/30 w-3 h-3 hover:bg-muted-foreground/60 hover:scale-110'
+                      ? 'bg-primary w-7 h-3.5 shadow-md shadow-primary/50 border-primary'
+                      : 'bg-muted-foreground/40 w-3.5 h-3.5 hover:bg-primary/60 hover:scale-125 border-muted-foreground/20'
                     }
                   `}
                   aria-label={`Ver imagen ${idx + 1}`}
                 />
               ))}
-              <span className="text-[10px] text-muted-foreground ml-2 font-mono">
+              <span className="text-[11px] text-foreground/70 ml-1 font-semibold font-mono">
                 {currentIndex + 1}/{currentScreenshots.length}
               </span>
             </div>
