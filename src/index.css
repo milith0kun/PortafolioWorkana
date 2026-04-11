@@ -506,3 +506,7 @@ body,
   -webkit-font-smoothing: antialiased;
   transform: translateZ(0) scale(1.001);
 }
+.screenshot-scroll-stages {
+  clip-path: inset(0 0 0 0 round inherit) !important;
+  border-radius: inherit !important;
+}

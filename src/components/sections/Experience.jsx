@@ -14,16 +14,13 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
   const [activeDevice, setActiveDevice] = useState('desktop');
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Resetear al abrir y bloquear scroll
   useEffect(() => {
     if (isOpen) {
-      // Determinar el dispositivo inicial
       if (screenshotsByDevice?.desktop?.length > 0) setActiveDevice('desktop');
       else if (screenshotsByDevice?.tablet?.length > 0) setActiveDevice('tablet');
       else if (screenshotsByDevice?.mobile?.length > 0) setActiveDevice('mobile');
       setCurrentIndex(0);
 
-      // Prevenir scroll del body y html - más robusto
       const scrollY = window.scrollY;
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
@@ -32,7 +29,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
     } else {
-      // Restaurar scroll
       const scrollY = document.body.style.top;
       document.body.style.position = '';
       document.body.style.top = '';
@@ -46,7 +42,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
     }
 
     return () => {
-      // Cleanup
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.left = '';
@@ -56,7 +51,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
     };
   }, [isOpen, screenshotsByDevice]);
 
-  // Cerrar con ESC
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose();
@@ -65,7 +59,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
     return () => window.removeEventListener('keydown', handleEsc);
   }, [isOpen, onClose]);
 
-  // Navegación con flechas
   const handleKeyNav = useCallback((e) => {
     const screenshots = screenshotsByDevice?.[activeDevice] || [];
     if (e.key === 'ArrowRight') {
@@ -98,13 +91,11 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
   const goNext = () => setCurrentIndex((prev) => (prev + 1) % currentScreenshots.length);
   const goPrev = () => setCurrentIndex((prev) => (prev - 1 + currentScreenshots.length) % currentScreenshots.length);
 
-  // Cambiar dispositivo y resetear índice
   const changeDevice = (deviceKey) => {
     setActiveDevice(deviceKey);
     setCurrentIndex(0);
   };
 
-  // Usar Portal para renderizar fuera del árbol de componentes
   const modalContent = (
     <AnimatePresence>
       {isOpen && (
@@ -116,7 +107,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Backdrop oscuro */}
           <motion.div
             className="absolute inset-0 bg-black/95 backdrop-blur-md cursor-pointer"
             onClick={onClose}
@@ -125,7 +115,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
             exit={{ opacity: 0 }}
           />
 
-          {/* Botón de cerrar flotante - MÁS VISIBLE */}
           <button
             onClick={onClose}
             className="absolute top-4 right-4 z-50 p-3 rounded-full bg-red-600 hover:bg-red-500 text-white transition-all shadow-2xl hover:scale-110"
@@ -134,7 +123,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
             <X size={28} />
           </button>
 
-          {/* Contenido del Modal */}
           <motion.div
             className="relative z-10 w-full max-w-7xl mx-4 max-h-[95vh] flex flex-col"
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -142,7 +130,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
-            {/* Header del Modal */}
             <div className="flex items-center justify-between px-4 py-3 bg-zinc-900/80 backdrop-blur-sm rounded-t-2xl border-b border-white/10">
               <div className="flex items-center gap-3">
                 <Eye size={20} className="text-primary" />
@@ -151,7 +138,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
                 </h3>
               </div>
 
-              {/* Tabs de dispositivos */}
               <div className="flex items-center gap-1 bg-zinc-800/50 rounded-lg p-1">
                 {devices.map((device) => (
                   <button
@@ -171,7 +157,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
                 ))}
               </div>
 
-              {/* Botón cerrar */}
               <button
                 onClick={onClose}
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
@@ -180,9 +165,7 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
               </button>
             </div>
 
-            {/* Área de la imagen */}
             <div className="relative flex-1 bg-zinc-950/50 overflow-hidden flex items-center justify-center min-h-[400px] md:min-h-[500px]">
-              {/* Flechas de navegación */}
               {currentScreenshots.length > 1 && (
                 <>
                   <button
@@ -200,7 +183,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
                 </>
               )}
 
-              {/* Imagen principal con animación */}
               <AnimatePresence mode="wait">
                 {currentImage && (
                   <motion.div
@@ -214,7 +196,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
                     exit={{ opacity: 0, x: -50 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {/* Marco del dispositivo */}
                     <div className={`
                       relative rounded-lg overflow-hidden shadow-2xl isolate
                       ${activeDevice === 'mobile'
@@ -227,7 +208,7 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
                       <img
                         src={currentImage.image}
                         alt={currentImage.label || 'Screenshot'}
-                        className="w-full h-auto object-contain rounded-[inherit] rounded-[inherit]"
+                        className="w-full h-auto object-contain rounded-[inherit]"
                         loading="eager"
                       />
                     </div>
@@ -236,15 +217,12 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
               </AnimatePresence>
             </div>
 
-            {/* Footer del Modal */}
             <div className="flex items-center justify-between px-4 py-3 bg-zinc-900/80 backdrop-blur-sm rounded-b-2xl border-t border-white/10">
-              {/* Label de la imagen */}
               <div className="flex items-center gap-2">
                 <span className="text-white/60 text-sm">Vista:</span>
                 <span className="text-white font-medium">{currentImage?.label || 'Screenshot'}</span>
               </div>
 
-              {/* Indicadores de página */}
               {currentScreenshots.length > 1 && (
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1.5">
@@ -267,15 +245,6 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
                   </span>
                 </div>
               )}
-
-              {/* Instrucciones */}
-              <div className="hidden md:flex items-center gap-2 text-white/40 text-xs">
-                <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">←</kbd>
-                <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px]">→</kbd>
-                <span>navegar</span>
-                <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px] ml-2">ESC</kbd>
-                <span>cerrar</span>
-              </div>
             </div>
           </motion.div>
         </motion.div>
@@ -283,11 +252,9 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
     </AnimatePresence>
   );
 
-  // Renderizar usando Portal para que aparezca fuera del contenedor scrollable
   return createPortal(modalContent, document.body);
 };
 
-// Helper para convertir iconType a componente
 const getIcon = (iconType) => {
   const icons = {
     monitor: <Monitor size={14} />,
@@ -298,7 +265,7 @@ const getIcon = (iconType) => {
   return icons[iconType] || null;
 };
 
-// Componente de visualización con tabs y carrusel MEJORADO
+// Componente de visualización REFORMADO para evitar desbordamiento
 const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSide = true }) => {
   const [activeDevice, setActiveDevice] = useState(() => {
     if (screenshotsByDevice.desktop && screenshotsByDevice.desktop.length > 0) return 'desktop';
@@ -306,12 +273,10 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
     if (screenshotsByDevice.mobile && screenshotsByDevice.mobile.length > 0) return 'mobile';
     return 'desktop';
   });
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageHeight, setImageHeight] = useState(0);
   const [containerInnerHeight, setContainerInnerHeight] = useState(0);
 
-  // Filtrar solo dispositivos que tienen screenshots
   const allDevices = [
     { key: 'desktop', label: 'Desktop', icon: <Monitor size={14} /> },
     { key: 'tablet', label: 'Tablet', icon: <Tablet size={14} /> },
@@ -325,39 +290,25 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   const currentScreenshots = screenshotsByDevice[activeDevice] || [];
   const currentImage = currentScreenshots[currentIndex];
 
-  // Auto avance inteligente
   useEffect(() => {
-    if (!currentScreenshots.length) return;
-    if (activeDevice === 'desktop') return;
-
+    if (!currentScreenshots.length || activeDevice === 'desktop') return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % currentScreenshots.length);
-    }, 10000);
-
+    }, 8000);
     return () => clearInterval(interval);
   }, [activeDevice, currentScreenshots.length]);
 
-  // Reset index al cambiar dispositivo
   useEffect(() => {
     setCurrentIndex(0);
     setImageHeight(0);
     setContainerInnerHeight(0);
-    setIsImageLoaded(false);
   }, [activeDevice]);
-
-  // Reset carga al cambiar de imagen
-  useEffect(() => {
-    setIsImageLoaded(false);
-  }, [currentIndex]);
 
   if (!screenshotsByDevice) return null;
 
-  // Ya no usamos viewportHeight hardcodeado, usamos mediciones reales del DOM
-  const shouldScroll = !currentImage?.disableScroll && (imageHeight > containerInnerHeight + 10); // 10px de gracia
-
-  // Ref para detectar visibilidad y reiniciar animación
+  const shouldScroll = !currentImage?.disableScroll && (imageHeight > containerInnerHeight + 5);
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.3 });
+  const isInView = useInView(containerRef, { once: false, amount: 0.2 });
 
   return (
     <div ref={containerRef} className={`relative flex-1 flex flex-col justify-center transition-all duration-500 ${
@@ -367,19 +318,14 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           : "w-full md:w-[125%] lg:w-[140%] xl:w-[160%] md:-ml-[25%] lg:-ml-[40%] xl:-ml-[60%]"
         : "w-full"
     }`}>
-      {/* Tabs - FUERA del contenedor de altura (absoluto) */}
-      <div className="absolute top-0 md:-top-10 left-1/2 -translate-x-1/2 flex justify-center gap-1.5 z-10 w-full mb-0 pb-2 md:pb-0">
+      <div className="absolute top-0 md:-top-10 left-1/2 -translate-x-1/2 flex justify-center gap-1.5 z-30 w-full mb-0 pb-2 md:pb-0">
         {devices.map((device) => (
           <button
             key={device.key}
             onClick={() => setActiveDevice(device.key)}
-            className={`
-              flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-200
-              ${activeDevice === device.key
-                ? 'bg-primary text-primary-foreground shadow-md shadow-primary/30'
-                : 'text-muted-foreground bg-muted/40 hover:bg-muted/70 hover:text-foreground'
-              }
-            `}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-200 ${
+              activeDevice === device.key ? 'bg-primary text-primary-foreground shadow-lg' : 'text-muted-foreground bg-muted/40 hover:bg-muted/70'
+            }`}
           >
             {device.icon}
             <span className="hidden sm:inline">{device.label}</span>
@@ -387,52 +333,47 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
         ))}
       </div>
 
-      {/* Marco - contenedor que iguala el alto de la card */}
       <AnimatePresence mode="wait">
         <motion.div
-          className="mt-12 md:mt-0 flex-1 w-full flex flex-col min-h-[300px] md:min-h-0"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
+          key={activeDevice}
+          className="mt-12 md:mt-0 flex-1 w-full flex flex-col min-h-[300px] md:min-h-0 items-center justify-center"
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
           transition={{ duration: 0.3 }}
         >
           {activeDevice === 'desktop' && (
-            <div className="flex-1 flex flex-col justify-center transition-all duration-500 z-10 w-full">
-              <div className="w-full aspect-video md:aspect-[16/12] xl:aspect-[16/11] flex flex-col mx-auto shrink-0 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] isolate">
-                <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0 shrink-0 z-20 relative">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                  </div>
-                  <div className="flex-1 mx-2">
-                    <div className="bg-zinc-700/60 rounded-md px-3 py-0.5 text-[9px] text-zinc-400 font-mono truncate text-center">
-                      {currentImage?.label || 'Vista Desktop'}
-                    </div>
-                  </div>
+            <div className="w-full aspect-video md:aspect-[16/11] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-xl overflow-hidden bg-zinc-950 border border-zinc-700/50">
+              <div className="bg-zinc-800 px-3 py-2 flex items-center gap-2 border-b border-zinc-700/50 shrink-0 z-20">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                 </div>
-                <div className="group flex-1 relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10 isolate" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
-                    <AnimatePresence mode="wait">
-                      {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0 rounded-[inherit]' : currentImage?.disableScroll ? 'w-full h-auto object-contain rounded-[inherit]' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
-                          const containerWidth = e.target.parentElement.clientWidth;
-                          const containerHeight = e.target.parentElement.clientHeight;
-                          const ratio = e.target.naturalHeight / e.target.naturalWidth;
-                          const calculatedHeight = containerWidth * ratio;
-                          setImageHeight(calculatedHeight); 
-                          setContainerInnerHeight(containerHeight); 
-                        }} />
-                      )}
-                    </AnimatePresence>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div className="p-3 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                        <Maximize2 size={20} className="text-white" />
-                      </div>
-                    </div>
-                    {shouldScroll && (<div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
+                <div className="flex-1 bg-zinc-700/40 rounded px-3 py-0.5 text-[9px] text-zinc-400 font-mono truncate text-center">
+                  {currentImage?.label || 'Portfolio Viewer'}
+                </div>
+              </div>
+              <div className="flex-1 relative overflow-hidden group cursor-pointer" onClick={onOpenLightbox}>
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={`${activeDevice}-${currentIndex}`}
+                    src={currentImage?.image}
+                    alt="Screenshot"
+                    className={`w-full ${shouldScroll && isInView ? 'absolute top-0 left-0 h-auto screenshot-scroll-stages' : 'h-full object-contain'}`}
+                    style={shouldScroll ? { '--scroll-distance': `calc(100% - ${containerInnerHeight}px)` } : undefined}
+                    onLoad={(e) => {
+                      setContainerInnerHeight(e.target.parentElement.clientHeight);
+                      setImageHeight(e.target.naturalHeight * (e.target.parentElement.clientWidth / e.target.naturalWidth));
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="p-3 bg-primary rounded-full shadow-xl transform scale-75 group-hover:scale-100 transition-transform">
+                    <Maximize2 size={20} className="text-white" />
                   </div>
                 </div>
               </div>
@@ -440,119 +381,67 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           )}
 
           {activeDevice === 'mobile' && (
-            <div className="max-w-[280px] mx-auto w-full aspect-[9/19] flex flex-col relative px-2 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)]">
-              <div className="bg-zinc-950 rounded-[2.5rem] ring-4 ring-zinc-800/80 p-0 flex-1 flex flex-col relative overflow-hidden">
-                {/* Dynamic Island modern notch */}
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 w-20 h-5 bg-black rounded-full shadow-inner flex items-center justify-start px-2 gap-2">
-                  <div className="w-2 h-2 rounded-full bg-zinc-800/50 shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]" />
-                  <div className="w-1 h-1 rounded-full bg-green-500/30" />
-                </div>
-                
-                <div className="group flex-1 relative bg-zinc-900 rounded-[2.2rem] overflow-hidden cursor-pointer isolate" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
-                    <AnimatePresence mode="wait">
-                      {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0 rounded-[inherit]' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
-                          const containerWidth = e.target.parentElement.clientWidth;
-                          const containerHeight = e.target.parentElement.clientHeight;
-                          const ratio = e.target.naturalHeight / e.target.naturalWidth;
-                          const calculatedHeight = containerWidth * ratio;
-                          setImageHeight(calculatedHeight); 
-                          setContainerInnerHeight(containerHeight); 
-                        }} />
-                      )}
-                    </AnimatePresence>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300"><Maximize2 size={18} className="text-white" /></div></div>
-                    {shouldScroll && (<div className="absolute top-4 right-3 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-medium text-white/90 flex items-center gap-1 shadow-md border border-white/10"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
-                  </div>
-                </div>
-
-                {/* Home bar modern */}
-                <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-zinc-700/60 rounded-full z-20" />
+            <div className="max-w-[260px] w-full aspect-[9/18.5] relative rounded-[3rem] ring-[10px] ring-zinc-800 shadow-2xl overflow-hidden bg-zinc-950">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-24 h-6 bg-zinc-800 rounded-b-2xl" />
+              <div className="absolute inset-0 overflow-hidden cursor-pointer group" onClick={onOpenLightbox}>
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={`${activeDevice}-${currentIndex}`}
+                    src={currentImage?.image}
+                    alt="Mobile Screen"
+                    className={`w-full ${shouldScroll && isInView ? 'absolute top-0 left-0 h-auto screenshot-scroll-stages' : 'h-full object-cover'}`}
+                    style={shouldScroll ? { '--scroll-distance': `calc(100% - ${containerInnerHeight}px)` } : undefined}
+                    onLoad={(e) => {
+                      setContainerInnerHeight(e.target.parentElement.clientHeight);
+                      setImageHeight(e.target.naturalHeight * (e.target.parentElement.clientWidth / e.target.naturalWidth));
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </AnimatePresence>
               </div>
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-20 h-1 bg-zinc-700 rounded-full z-30" />
             </div>
           )}
 
           {activeDevice === 'tablet' && (
-            <div className="max-w-[480px] mx-auto w-full aspect-[3/4] flex flex-col">
-              <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 flex-1 flex flex-col overflow-hidden">
-                <div className="flex justify-center mb-1"><div className="w-2 h-2 bg-zinc-600 rounded-full" /></div>
-                <div className="group flex-1 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer isolate" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
-                    <AnimatePresence mode="wait">
-                      {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0 rounded-[inherit]' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
-                          const containerWidth = e.target.parentElement.clientWidth;
-                          const containerHeight = e.target.parentElement.clientHeight;
-                          const ratio = e.target.naturalHeight / e.target.naturalWidth;
-                          const calculatedHeight = containerWidth * ratio;
-                          setImageHeight(calculatedHeight); 
-                          setContainerInnerHeight(containerHeight); 
-                        }} />
-                      )}
-                    </AnimatePresence>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300"><Maximize2 size={18} className="text-white" /></div></div>
-                    {shouldScroll && (<div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
-                  </div>
-                </div>
-                <div className="flex justify-center py-1.5"><div className="w-8 h-1 bg-zinc-600 rounded-full" /></div>
+            <div className="max-w-[420px] w-full aspect-[3/4] relative rounded-2xl ring-[8px] ring-zinc-800 shadow-2xl overflow-hidden bg-zinc-950">
+              <div className="absolute inset-0 overflow-hidden cursor-pointer" onClick={onOpenLightbox}>
+                <img src={currentImage?.image} className="w-full h-full object-cover" alt="Tablet Screen" />
               </div>
             </div>
           )}
         </motion.div>
       </AnimatePresence>
 
-      {/* Indicadores - FUERA del contenedor de altura (absolutos) */}
       {currentScreenshots.length > 1 && (
-        <div className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 z-10 bg-zinc-900 shadow-lg px-3 py-1.5 rounded-full border border-zinc-800">
+        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
           {currentScreenshots.map((_, idx) => (
-            <button 
-              key={idx} 
-              onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }} 
-              className={`rounded-full transition-all duration-300 cursor-pointer ${
-                idx === currentIndex 
-                  ? 'bg-primary w-5 h-1.5 shadow-sm shadow-primary/30' 
-                  : 'bg-zinc-500 w-1.5 h-1.5 hover:bg-zinc-300 hover:scale-125'
-              }`} 
-              aria-label={`Ver imagen ${idx + 1}`} 
-            />
+            <div key={idx} className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentIndex ? 'bg-primary w-4' : 'bg-zinc-600'}`} />
           ))}
-          <div className="w-px h-3 bg-zinc-700 mx-1" />
-          <span className="text-[10px] text-zinc-400 font-medium font-mono tracking-wider">
-            {currentIndex + 1}/{currentScreenshots.length}
-          </span>
         </div>
       )}
     </div>
   );
 };
 
-
 const Experience = ({ onNext }) => {
-  // Estado para el modal de lightbox
   const [lightboxState, setLightboxState] = useState({
     isOpen: false,
     project: null
   });
 
-  // Ordenar proyectos por fecha (más reciente primero)
   const sortedProjects = [...projects].sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
     return dateB - dateA;
   });
 
-  // Función para manejar clic en screenshot
   const handleScreenshotClick = (project) => {
-    // Si tiene demoUrl, redirigir directamente
     if (project.demoUrl) {
       window.open(project.demoUrl, '_blank', 'noopener,noreferrer');
     } else if (project.screenshotsByDevice) {
-      // Si no tiene demoUrl pero tiene screenshots, abrir lightbox
       setLightboxState({
         isOpen: true,
         project: project
@@ -560,7 +449,6 @@ const Experience = ({ onNext }) => {
     }
   };
 
-  // Cerrar lightbox
   const closeLightbox = () => {
     setLightboxState({
       isOpen: false,
@@ -570,7 +458,6 @@ const Experience = ({ onNext }) => {
 
   return (
     <>
-      {/* Modal Lightbox */}
       <ScreenshotLightbox
         key={lightboxState.project?.title || 'lightbox'}
         isOpen={lightboxState.isOpen}
@@ -594,18 +481,14 @@ const Experience = ({ onNext }) => {
             <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
           </motion.div>
 
-          {/* Línea vertical: Oculta en móvil, visible en md+ */}
           <div className="relative space-y-24 md:space-y-40 before:hidden md:before:block before:absolute before:inset-0 md:before:left-1/2 md:before:-translate-x-1/2 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border-medium/50 before:to-transparent pt-8 pb-16">
             {sortedProjects.map((project, index) => (
               <div key={project.id} className="relative">
-                {/* Marker: Oculto en móvil */}
                 <div className="hidden md:flex absolute md:left-1/2 md:-translate-x-1/2 top-4 md:top-6 items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border-4 border-background bg-primary shadow z-10 transition-transform hover:scale-110">
                   <Code2 size={16} className="text-white" />
                 </div>
 
-                {/* Contenedor: Card + Screenshots */}
                 <div className={`flex flex-col md:flex-row gap-8 md:gap-16 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-                  {/* Card del Proyecto */}
                   <motion.div
                     className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-10 lg:pr-12' : 'md:pl-10 lg:pl-12'} ml-0`}
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -643,7 +526,6 @@ const Experience = ({ onNext }) => {
                           ))}
                         </div>
 
-                        {/* Enlaces */}
                         {(project.demoUrl || project.githubUrl || project.playStoreUrl) && (
                           <div className="flex flex-wrap gap-2 pt-3 md:pt-4 border-t border-border/20">
                             {project.githubUrl && (
@@ -683,7 +565,6 @@ const Experience = ({ onNext }) => {
                     </Card>
                   </motion.div>
 
-                  {/* Screenshots del Proyecto */}
                   {project.screenshotsByDevice && (
                     <motion.div
                       className={`md:w-1/2 flex flex-col self-stretch justify-center ${index % 2 === 0 ? 'md:pl-10 lg:pl-12' : 'md:pr-10 lg:pr-12'} ml-0`}
