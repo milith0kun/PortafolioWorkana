@@ -479,4 +479,16 @@ body,
 
 .screenshot-scroll-stages {
   animation: screenshot-scroll-3-stages 10s ease-in-out forwards;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0); /* Force GPU */
+}
+
+/* Evitar blur en imágenes estáticas también mediante sub-pixel antialiasing */
+.object-contain, .object-cover {
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
 }
