@@ -469,7 +469,17 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026"
+    date: "Febrero 2026",
+    screenshotsByDevice: {
+      desktop: [
+        { image: "/projects/screenshots/andina-adventures/desktop-1.webp", label: "Dashboard Administrativo" },
+        { image: "/projects/screenshots/andina-adventures/desktop-2.webp", label: "Gestión Operativa" },
+        { image: "/projects/screenshots/andina-adventures/desktop-3.webp", label: "Control de Reservas" },
+        { image: "/projects/screenshots/andina-adventures/desktop-4.webp", label: "Vista de Servicios" },
+        { image: "/projects/screenshots/andina-adventures/desktop-5.webp", label: "Configuración de Rutas" },
+        { image: "/projects/screenshots/andina-adventures/desktop-6.webp", label: "Liquidaciones y Pagos" }
+      ]
+    }
   }
 ];
 
