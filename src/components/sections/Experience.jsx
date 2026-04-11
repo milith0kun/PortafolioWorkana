@@ -402,13 +402,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           </div>
 
           {/* ===== MARCO DE DISPOSITIVO ===== */}
-          <div className={`${
-            activeDevice === 'desktop' && currentImage?.disableScroll
-              ? isRightSide
-                ? 'md:w-[125%] md:ml-0'
-                : 'md:w-[125%] md:mr-0 md:ml-auto md:-translate-x-0'
-              : ''
-          }`}>
+          <div>
 
             {/* --- DESKTOP: Marco estilo laptop --- */}
             {activeDevice === 'desktop' && (
@@ -734,7 +728,7 @@ const Experience = ({ onNext }) => {
                 </div>
 
                 {/* Contenedor: Card + Screenshots */}
-                <div className={`flex flex-col md:flex-row gap-6 md:gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                <div className={`flex flex-col md:flex-row md:items-start gap-6 md:gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
                   {/* Card del Proyecto */}
                   <motion.div
                     className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-6 lg:pr-8' : 'md:pl-6 lg:pl-8'} ml-0`}
