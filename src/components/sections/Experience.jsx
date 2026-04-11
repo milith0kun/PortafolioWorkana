@@ -573,7 +573,7 @@ const Experience = ({ onNext }) => {
           </motion.div>
 
           {/* Línea vertical: Oculta en móvil, visible en md+ */}
-          <div className="relative space-y-12 md:space-y-16 before:hidden md:before:block before:absolute before:inset-0 md:before:left-1/2 md:before:-translate-x-1/2 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border-medium/50 before:to-transparent">
+          <div className="relative space-y-24 md:space-y-40 before:hidden md:before:block before:absolute before:inset-0 md:before:left-1/2 md:before:-translate-x-1/2 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border-medium/50 before:to-transparent pt-8 pb-16">
             {sortedProjects.map((project, index) => (
               <div key={project.id} className="relative">
                 {/* Marker: Oculto en móvil */}
@@ -582,10 +582,10 @@ const Experience = ({ onNext }) => {
                 </div>
 
                 {/* Contenedor: Card + Screenshots */}
-                <div className={`flex flex-col md:flex-row gap-6 md:gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                <div className={`flex flex-col md:flex-row gap-8 md:gap-16 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
                   {/* Card del Proyecto */}
                   <motion.div
-                    className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-6 lg:pr-8' : 'md:pl-6 lg:pl-8'} ml-0`}
+                    className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-8 lg:pr-16' : 'md:pl-8 lg:pl-16'} ml-0`}
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -664,7 +664,7 @@ const Experience = ({ onNext }) => {
                   {/* Screenshots del Proyecto */}
                   {project.screenshotsByDevice && (
                     <motion.div
-                      className={`md:w-1/2 h-full ${index % 2 === 0 ? 'md:pl-6 lg:pl-8' : 'md:pr-6 lg:pr-8'} ml-0`}
+                      className={`md:w-1/2 h-full ${index % 2 === 0 ? 'md:pl-8 lg:pl-16' : 'md:pr-8 lg:pr-16'} ml-0`}
                       initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
