@@ -216,7 +216,7 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
                   >
                     {/* Marco del dispositivo */}
                     <div className={`
-                      relative rounded-lg overflow-hidden shadow-2xl
+                      relative rounded-lg overflow-hidden shadow-2xl isolate
                       ${activeDevice === 'mobile'
                         ? 'border-[8px] border-zinc-800 rounded-[2.5rem]'
                         : activeDevice === 'tablet'
@@ -227,7 +227,7 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
                       <img
                         src={currentImage.image}
                         alt={currentImage.label || 'Screenshot'}
-                        className="w-full h-auto object-contain"
+                        className="w-full h-auto object-contain rounded-[inherit]"
                         loading="eager"
                       />
                     </div>
@@ -398,8 +398,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
         >
           {activeDevice === 'desktop' && (
             <div className="flex-1 flex flex-col justify-center transition-all duration-500 z-10 w-full">
-              <div className="w-full aspect-video md:aspect-[16/12] xl:aspect-[16/11] flex flex-col mx-auto shrink-0 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
-                <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0 shrink-0">
+              <div className="w-full aspect-video md:aspect-[16/12] xl:aspect-[16/11] flex flex-col mx-auto shrink-0 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] isolate">
+                <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0 shrink-0 z-20 relative">
                   <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />

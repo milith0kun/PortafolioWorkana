@@ -486,6 +486,13 @@ body,
   transform: translateZ(0); /* Force GPU */
 }
 
+/* Fix persistente para recorte en marcos redondeados (Webkit Clipping Bug) */
+.overflow-hidden[class*="rounded"] {
+  mask-image: -webkit-radial-gradient(white, black);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  isolation: isolate;
+}
+
 /* Evitar blur en imágenes estáticas también mediante sub-pixel antialiasing */
 .object-contain, .object-cover {
   image-rendering: -webkit-optimize-contrast;
