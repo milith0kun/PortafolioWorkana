@@ -186,7 +186,7 @@ const ScreenshotLightbox = ({ isOpen, onClose, screenshotsByDevice, projectTitle
               <AnimatePresence mode="wait">
                 {currentImage && (
                   <motion.div
-                    key={`${activeDevice}-${currentIndex}`}
+                    key={`${activeDevice}-${$currentIndex}`}
                     className={`
                       relative overflow-auto max-h-[70vh] flex items-start justify-center
                       ${activeDevice === 'mobile' ? 'max-w-[320px]' : activeDevice === 'tablet' ? 'max-w-[600px]' : 'max-w-full'}
@@ -265,7 +265,6 @@ const getIcon = (iconType) => {
   return icons[iconType] || null;
 };
 
-// Componente de visualización REFORMADO para evitar desbordamiento
 const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSide = true }) => {
   const [activeDevice, setActiveDevice] = useState(() => {
     if (screenshotsByDevice.desktop && screenshotsByDevice.desktop.length > 0) return 'desktop';
@@ -294,7 +293,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
     if (!currentScreenshots.length || activeDevice === 'desktop') return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % currentScreenshots.length);
-    }, 8000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [activeDevice, currentScreenshots.length]);
 
@@ -357,7 +356,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
               <div className="flex-1 relative overflow-hidden group cursor-pointer" onClick={onOpenLightbox}>
                 <AnimatePresence mode="wait">
                   <motion.img
-                    key={`${activeDevice}-${currentIndex}`}
+                    key={`${activeDevice}-\$currentIndex}`}
                     src={currentImage?.image}
                     alt="Screenshot"
                     className={`w-full ${shouldScroll && isInView ? 'absolute top-0 left-0 h-auto screenshot-scroll-stages' : 'h-full object-contain'}`}
@@ -386,7 +385,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
               <div className="absolute inset-0 overflow-hidden cursor-pointer group" onClick={onOpenLightbox}>
                 <AnimatePresence mode="wait">
                   <motion.img
-                    key={`${activeDevice}-${currentIndex}`}
+                    key={`${activeDevice}-${$currentIndex}`}
                     src={currentImage?.image}
                     alt="Mobile Screen"
                     className={`w-full ${shouldScroll && isInView ? 'absolute top-0 left-0 h-auto screenshot-scroll-stages' : 'h-full object-cover'}`}
@@ -416,9 +415,27 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
       </AnimatePresence>
 
       {currentScreenshots.length > 1 && (
-        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 z-40 bg-zinc-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-xl">
           {currentScreenshots.map((_, idx) => (
-            <div key={idx} className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentIndex ? 'bg-primary w-4' : 'bg-zinc-600'}`} />
+            <button
+              key={idx}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentIndex(idx);
+              }}
+              className={`relative h-2 rounded-full transition-all duration-300 ${
+                idx === currentIndex ? 'bg-primary w-6' : 'bg-zinc-600 w-2 hover:bg-zinc-400'
+              }`}
+              aria-label={`Ver imagen ${idx + 1}`}
+            >
+              {idx === currentIndex && (
+                <motion.span
+                  layoutId="activeDot"
+                  className="absolute inset-0 bg-primary rounded-full"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </button>
           ))}
         </div>
       )}
