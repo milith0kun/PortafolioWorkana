@@ -411,7 +411,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
         >
           {activeDevice === 'desktop' && (
             <div className="flex-1 flex flex-col justify-center transition-all duration-500 z-10 w-full">
-              <div className="w-full aspect-[16/12] xl:aspect-[16/11] flex flex-col mx-auto shrink-0 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
+              <div className="w-full aspect-video md:aspect-[16/12] xl:aspect-[16/11] flex flex-col mx-auto shrink-0 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
                 <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0 shrink-0">
                   <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -571,8 +571,8 @@ const Experience = ({ onNext }) => {
         projectTitle={lightboxState.project?.title}
       />
 
-      <section id="experience" className="relative min-h-screen w-full bg-background py-16 md:py-24 px-4 md:px-6 overflow-y-auto">
-        <div className="container mx-auto max-w-[1700px]">
+      <section id="experience" className="relative min-h-screen w-full bg-background py-16 md:py-24 px-4 md:px-6 overflow-hidden">
+        <div className="container mx-auto max-w-[1700px] relative">
           <motion.div
             className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
