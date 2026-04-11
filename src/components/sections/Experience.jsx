@@ -486,11 +486,19 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
 
       {/* Indicadores - FUERA del contenedor de altura (absolutos) */}
       {currentScreenshots.length > 1 && (
-        <div className="absolute -bottom-6 md:-bottom-10 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2.5 bg-zinc-800 rounded-full px-4 py-1.5 w-fit z-10 transition-all">
+        <div className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center gap-1.5 z-10">
           {currentScreenshots.map((_, idx) => (
-            <button key={idx} onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }} className={`rounded-full transition-all duration-200 cursor-pointer ${idx === currentIndex ? 'bg-primary w-7 h-3.5 shadow-md shadow-primary/60' : 'bg-zinc-500 w-3.5 h-3.5 hover:bg-zinc-300 hover:scale-125'}`} aria-label={`Ver imagen ${idx + 1}`} />
+            <button 
+              key={idx} 
+              onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }} 
+              className={`rounded-full transition-all duration-300 cursor-pointer ${
+                idx === currentIndex 
+                  ? 'bg-primary w-4 h-1.5 opacity-100' 
+                  : 'bg-foreground/20 w-1.5 h-1.5 hover:bg-foreground/40'
+              }`} 
+              aria-label={`Ver imagen ${idx + 1}`} 
+            />
           ))}
-          <span className="text-[11px] text-zinc-300 ml-1 font-semibold font-mono">{currentIndex + 1}/{currentScreenshots.length}</span>
         </div>
       )}
     </div>
