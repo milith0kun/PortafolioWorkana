@@ -373,7 +373,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
 
   return (
-    <div ref={containerRef} className="relative h-full flex flex-col justify-center">
+    <div ref={containerRef} className="relative flex-1 w-full flex flex-col justify-center">
       {/* Tabs - FUERA del contenedor de altura (absoluto) */}
       <div className="absolute top-0 md:-top-10 left-1/2 -translate-x-1/2 flex justify-center gap-1.5 z-10 w-full mb-0 pb-2 md:pb-0">
         {devices.map((device) => (
@@ -397,14 +397,14 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
       {/* Marco - contenedor que iguala el alto de la card */}
       <AnimatePresence mode="wait">
         <motion.div
-          className="mt-12 md:mt-0 h-full flex flex-col min-h-[300px] md:min-h-0"
+          className="mt-12 md:mt-0 flex-1 w-full flex flex-col min-h-[300px] md:min-h-0"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
         >
           {activeDevice === 'desktop' && (
-            <div className="w-full h-full flex flex-col">
+            <div className="w-full flex-1 flex flex-col">
               <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0">
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -439,8 +439,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           )}
 
           {activeDevice === 'mobile' && (
-            <div className="max-w-[320px] mx-auto h-full w-full">
-              <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 h-full flex flex-col overflow-hidden">
+            <div className="max-w-[320px] mx-auto flex-1 w-full flex flex-col">
+              <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 flex-1 flex flex-col overflow-hidden">
                 <div className="relative flex justify-center"><div className="absolute top-0 z-10 w-24 h-5 bg-zinc-800 rounded-b-2xl flex items-center justify-center"><div className="w-12 h-1 bg-zinc-600 rounded-full" /></div></div>
                 <div className="group flex-1 min-h-[350px] md:min-h-0 relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
@@ -461,8 +461,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           )}
 
           {activeDevice === 'tablet' && (
-            <div className="max-w-[480px] mx-auto w-full h-full">
-              <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 h-full flex flex-col overflow-hidden">
+            <div className="max-w-[480px] mx-auto w-full flex-1 flex flex-col">
+              <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 flex-1 flex flex-col overflow-hidden">
                 <div className="flex justify-center mb-1"><div className="w-2 h-2 bg-zinc-600 rounded-full" /></div>
                 <div className="group flex-1 min-h-[350px] md:min-h-0 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
@@ -664,7 +664,7 @@ const Experience = ({ onNext }) => {
                   {/* Screenshots del Proyecto */}
                   {project.screenshotsByDevice && (
                     <motion.div
-                      className={`md:w-1/2 h-full ${index % 2 === 0 ? 'md:pl-10 lg:pl-12' : 'md:pr-10 lg:pr-12'} ml-0`}
+                      className={`md:w-1/2 flex flex-col self-stretch justify-center ${index % 2 === 0 ? 'md:pl-10 lg:pl-12' : 'md:pr-10 lg:pr-12'} ml-0`}
                       initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
