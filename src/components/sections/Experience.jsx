@@ -353,7 +353,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   const getViewportHeight = () => {
     if (activeDevice === 'mobile') return 280;
     if (activeDevice === 'tablet') return 320;
-    return 350; // Desktop: no sobrepasar la card
+    return 350;
   };
 
   const viewportHeight = getViewportHeight();
@@ -373,9 +373,10 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
 
   return (
-    <div ref={containerRef} className="mt-2">
+    <div ref={containerRef} className="h-full flex flex-col">
       <AnimatePresence mode="wait">
         <motion.div
+          className="flex flex-col flex-1"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
@@ -402,7 +403,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           </div>
 
           {/* ===== MARCO DE DISPOSITIVO ===== */}
-          <div>
+          <div className="flex-1 flex flex-col justify-center">
 
             {/* --- DESKTOP: Marco estilo laptop --- */}
             {activeDevice === 'desktop' && (
