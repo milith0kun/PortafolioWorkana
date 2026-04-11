@@ -597,11 +597,11 @@ const Experience = ({ onNext }) => {
 
                         <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 font-display">{project.title}</h3>
 
-                        <p className="text-xs md:text-sm text-foreground/70 leading-relaxed mb-4 line-clamp-5 flex-1">
+                        <p className="text-xs md:text-sm text-foreground/70 leading-relaxed mb-4 flex-1">
                           {project.longDescription || project.description}
                         </p>
 
-                        <div className="flex flex-wrap gap-1.5 mb-4 max-h-[52px] overflow-hidden">
+                        <div className="flex flex-wrap gap-1.5 mb-4">
                           {project.technologies.map((tech, idx) => (
                             <Badge key={idx} variant="outline" className="text-[9px] md:text-[10px] bg-background/50 border-border/60">
                               {tech}
