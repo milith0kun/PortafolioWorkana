@@ -397,7 +397,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
       {/* Marco - contenedor que iguala el alto de la card */}
       <AnimatePresence mode="wait">
         <motion.div
-          className="mt-12 md:mt-0 h-full flex flex-col min-h-[350px]"
+          className="mt-12 md:mt-0 h-full flex flex-col min-h-[300px] md:min-h-0"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
@@ -417,7 +417,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                   </div>
                 </div>
               </div>
-              <div className="group flex-1 min-h-[300px] relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+              <div className="group flex-1 relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
                 <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                   <AnimatePresence mode="wait">
                     {currentImage && (
@@ -442,7 +442,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
             <div className="max-w-[320px] mx-auto h-full w-full">
               <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 h-full flex flex-col overflow-hidden">
                 <div className="relative flex justify-center"><div className="absolute top-0 z-10 w-24 h-5 bg-zinc-800 rounded-b-2xl flex items-center justify-center"><div className="w-12 h-1 bg-zinc-600 rounded-full" /></div></div>
-                <div className="group flex-1 min-h-[350px] relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                <div className="group flex-1 min-h-[350px] md:min-h-0 relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                     <AnimatePresence mode="wait">
                       {currentImage && (
@@ -464,7 +464,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
             <div className="max-w-[480px] mx-auto w-full h-full">
               <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 h-full flex flex-col overflow-hidden">
                 <div className="flex justify-center mb-1"><div className="w-2 h-2 bg-zinc-600 rounded-full" /></div>
-                <div className="group flex-1 min-h-[350px] relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                <div className="group flex-1 min-h-[350px] md:min-h-0 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                     <AnimatePresence mode="wait">
                       {currentImage && (
