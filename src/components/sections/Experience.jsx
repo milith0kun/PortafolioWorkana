@@ -446,15 +446,15 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           )}
 
           {activeDevice === 'mobile' && (
-            <div className="max-w-[280px] mx-auto flex-1 w-full flex flex-col relative px-2">
-              <div className="bg-zinc-950 rounded-[2.5rem] ring-4 ring-zinc-800/80 shadow-2xl shadow-black/40 p-1 flex-1 flex flex-col relative overflow-hidden">
+            <div className="max-w-[280px] mx-auto w-full aspect-[9/19] flex flex-col relative px-2 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)]">
+              <div className="bg-zinc-950 rounded-[2.5rem] ring-4 ring-zinc-800/80 p-1 flex-1 flex flex-col relative overflow-hidden">
                 {/* Dynamic Island modern notch */}
                 <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 w-20 h-5 bg-black rounded-full shadow-inner flex items-center justify-start px-2 gap-2">
                   <div className="w-2 h-2 rounded-full bg-zinc-800/50 shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]" />
                   <div className="w-1 h-1 rounded-full bg-green-500/30" />
                 </div>
                 
-                <div className="group flex-1 min-h-[350px] md:min-h-0 relative overflow-hidden bg-zinc-900 rounded-[2.2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                <div className="group flex-1 relative overflow-hidden bg-zinc-900 rounded-[2.2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                     <AnimatePresence mode="wait">
                       {currentImage && (
@@ -475,10 +475,10 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           )}
 
           {activeDevice === 'tablet' && (
-            <div className="max-w-[480px] mx-auto w-full flex-1 flex flex-col">
+            <div className="max-w-[480px] mx-auto w-full aspect-[3/4] flex flex-col">
               <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 flex-1 flex flex-col overflow-hidden">
                 <div className="flex justify-center mb-1"><div className="w-2 h-2 bg-zinc-600 rounded-full" /></div>
-                <div className="group flex-1 min-h-[350px] md:min-h-0 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                <div className="group flex-1 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                     <AnimatePresence mode="wait">
                       {currentImage && (
