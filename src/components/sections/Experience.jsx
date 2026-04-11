@@ -558,7 +558,7 @@ const Experience = ({ onNext }) => {
       />
 
       <section id="experience" className="relative min-h-screen w-full bg-background py-16 md:py-24 px-4 md:px-6 overflow-y-auto">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-[1700px]">
           <motion.div
             className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -585,7 +585,7 @@ const Experience = ({ onNext }) => {
                 <div className={`flex flex-col md:flex-row gap-8 md:gap-16 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
                   {/* Card del Proyecto */}
                   <motion.div
-                    className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-8 lg:pr-16' : 'md:pl-8 lg:pl-16'} ml-0`}
+                    className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-10 lg:pr-12' : 'md:pl-10 lg:pl-12'} ml-0`}
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -664,7 +664,7 @@ const Experience = ({ onNext }) => {
                   {/* Screenshots del Proyecto */}
                   {project.screenshotsByDevice && (
                     <motion.div
-                      className={`md:w-1/2 h-full ${index % 2 === 0 ? 'md:pl-8 lg:pl-16' : 'md:pr-8 lg:pr-16'} ml-0`}
+                      className={`md:w-1/2 h-full ${index % 2 === 0 ? 'md:pl-10 lg:pl-12' : 'md:pr-10 lg:pr-12'} ml-0`}
                       initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
