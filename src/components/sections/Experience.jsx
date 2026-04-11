@@ -309,6 +309,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageHeight, setImageHeight] = useState(0);
+  const [containerInnerHeight, setContainerInnerHeight] = useState(0);
 
   // Filtrar solo dispositivos que tienen screenshots
   const allDevices = [
