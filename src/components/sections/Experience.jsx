@@ -404,8 +404,12 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           transition={{ duration: 0.3 }}
         >
           {activeDevice === 'desktop' && (
-            <div className="w-full flex-1 flex flex-col justify-center">
-              <div className="w-full aspect-[16/10] xl:aspect-video flex flex-col mx-auto shrink-0 shadow-2xl">
+            <div className={`flex-1 flex flex-col justify-center transition-all duration-500 z-10 ${
+              isRightSide 
+                ? "w-full md:w-[125%] lg:w-[140%] xl:w-[160%]" 
+                : "w-full md:w-[125%] lg:w-[140%] xl:w-[160%] md:-ml-[25%] lg:-ml-[40%] xl:-ml-[60%]"
+            }`}>
+              <div className="w-full aspect-[16/12] xl:aspect-[16/11] flex flex-col mx-auto shrink-0 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
                 <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0 shrink-0">
                   <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
