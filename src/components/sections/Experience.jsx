@@ -486,21 +486,21 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
 
       {/* Indicadores - FUERA del contenedor de altura (absolutos) */}
       {currentScreenshots.length > 1 && (
-        <div className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 z-10 bg-background/60 backdrop-blur-md border border-border/40 px-3 py-1.5 rounded-full shadow-sm">
+        <div className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 z-10 bg-zinc-900 shadow-lg px-3 py-1.5 rounded-full border border-zinc-800">
           {currentScreenshots.map((_, idx) => (
             <button 
               key={idx} 
               onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }} 
               className={`rounded-full transition-all duration-300 cursor-pointer ${
                 idx === currentIndex 
-                  ? 'bg-primary w-4 h-1.5 shadow-sm shadow-primary/30' 
-                  : 'bg-foreground/30 w-1.5 h-1.5 hover:bg-foreground/60 hover:scale-125'
+                  ? 'bg-primary w-5 h-1.5 shadow-sm shadow-primary/30' 
+                  : 'bg-zinc-500 w-1.5 h-1.5 hover:bg-zinc-300 hover:scale-125'
               }`} 
               aria-label={`Ver imagen ${idx + 1}`} 
             />
           ))}
-          <div className="w-px h-3 bg-border/60 mx-1" />
-          <span className="text-[10px] text-foreground/60 font-semibold font-mono tracking-wider">
+          <div className="w-px h-3 bg-zinc-700 mx-1" />
+          <span className="text-[10px] text-zinc-400 font-medium font-mono tracking-wider">
             {currentIndex + 1}/{currentScreenshots.length}
           </span>
         </div>
