@@ -404,37 +404,38 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           transition={{ duration: 0.3 }}
         >
           {activeDevice === 'desktop' && (
-            <div className="w-full flex-1 flex flex-col">
-              <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0">
-                <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                </div>
-                <div className="flex-1 mx-2">
-                  <div className="bg-zinc-700/60 rounded-md px-3 py-0.5 text-[9px] text-zinc-400 font-mono truncate text-center">
-                    {currentImage?.label || 'Vista Desktop'}
+            <div className="w-full flex-1 flex flex-col justify-center">
+              <div className="w-full aspect-[16/10] xl:aspect-video flex flex-col mx-auto shrink-0 shadow-2xl">
+                <div className="bg-zinc-800 rounded-t-xl px-3 py-2 flex items-center gap-2 border border-zinc-700/50 border-b-0 shrink-0">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                   </div>
-                </div>
-              </div>
-              <div className="group flex-1 relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
-                  <AnimatePresence mode="wait">
-                    {currentImage && (
-                      <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
-                    )}
-                  </AnimatePresence>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="p-3 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                      <Maximize2 size={20} className="text-white" />
+                  <div className="flex-1 mx-2">
+                    <div className="bg-zinc-700/60 rounded-md px-3 py-0.5 text-[9px] text-zinc-400 font-mono truncate text-center">
+                      {currentImage?.label || 'Vista Desktop'}
                     </div>
                   </div>
-                  {shouldScroll && (<div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
+                </div>
+                <div className="group flex-1 relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
+                    <AnimatePresence mode="wait">
+                      {currentImage && (
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <div className="p-3 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                        <Maximize2 size={20} className="text-white" />
+                      </div>
+                    </div>
+                    {shouldScroll && (<div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
+                  </div>
                 </div>
               </div>
-              <div className="mx-auto w-[60%] h-1 bg-gradient-to-r from-transparent via-zinc-600 to-transparent rounded-b-full" />
             </div>
           )}
 
