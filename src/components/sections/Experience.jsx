@@ -728,7 +728,7 @@ const Experience = ({ onNext }) => {
                 </div>
 
                 {/* Contenedor: Card + Screenshots */}
-                <div className={`flex flex-col md:flex-row md:items-start gap-6 md:gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                <div className={`flex flex-col md:flex-row gap-6 md:gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
                   {/* Card del Proyecto */}
                   <motion.div
                     className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-6 lg:pr-8' : 'md:pl-6 lg:pl-8'} ml-0`}
@@ -737,8 +737,8 @@ const Experience = ({ onNext }) => {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    <Card className="border-border/40 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all shadow-sm">
-                      <CardContent className="p-4 md:p-6 flex flex-col" style={{ height: '420px' }}>
+                    <Card className="border-border/40 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all shadow-sm h-full">
+                      <CardContent className="p-4 md:p-6 flex flex-col h-full">
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                           <time className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-primary font-bold bg-primary/5 px-2 py-0.5 rounded-full flex items-center gap-1">
                             <Calendar className="size-3" /> {project.date}
