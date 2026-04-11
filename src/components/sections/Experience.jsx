@@ -373,9 +373,9 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
 
   return (
-    <div ref={containerRef}>
-      {/* Tabs - FUERA del contenedor de altura */}
-      <div className="flex justify-center gap-1.5 mb-2">
+    <div ref={containerRef} className="relative h-full flex flex-col justify-center">
+      {/* Tabs - FUERA del contenedor de altura (absoluto) */}
+      <div className="absolute top-0 md:-top-10 left-1/2 -translate-x-1/2 flex justify-center gap-1.5 z-10 w-full mb-0 pb-2 md:pb-0">
         {devices.map((device) => (
           <button
             key={device.key}
@@ -397,6 +397,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
       {/* Marco - contenedor que iguala el alto de la card */}
       <AnimatePresence mode="wait">
         <motion.div
+          className="mt-12 md:mt-0"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
@@ -483,9 +484,9 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
         </motion.div>
       </AnimatePresence>
 
-      {/* Indicadores - FUERA del contenedor de altura */}
+      {/* Indicadores - FUERA del contenedor de altura (absolutos) */}
       {currentScreenshots.length > 1 && (
-        <div className="flex items-center justify-center gap-2.5 mt-2 bg-zinc-800 rounded-full px-4 py-1.5 mx-auto w-fit">
+        <div className="absolute -bottom-6 md:-bottom-10 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2.5 bg-zinc-800 rounded-full px-4 py-1.5 w-fit z-10 transition-all">
           {currentScreenshots.map((_, idx) => (
             <button key={idx} onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }} className={`rounded-full transition-all duration-200 cursor-pointer ${idx === currentIndex ? 'bg-primary w-7 h-3.5 shadow-md shadow-primary/60' : 'bg-zinc-500 w-3.5 h-3.5 hover:bg-zinc-300 hover:scale-125'}`} aria-label={`Ver imagen ${idx + 1}`} />
           ))}
