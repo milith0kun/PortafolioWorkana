@@ -324,9 +324,10 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   const currentScreenshots = screenshotsByDevice[activeDevice] || [];
   const currentImage = currentScreenshots[currentIndex];
 
-  // Carrusel automático cada 10 segundos (sincronizado con scroll de 10s)
+  // Auto avance inteligente
   useEffect(() => {
-    if (currentScreenshots.length <= 1) return;
+    if (!currentScreenshots.length) return;
+    if (activeDevice === 'desktop') return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % currentScreenshots.length);
@@ -339,6 +340,7 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
   useEffect(() => {
     setCurrentIndex(0);
     setImageHeight(0);
+    setContainerInnerHeight(0);
     setIsImageLoaded(false);
   }, [activeDevice]);
 
@@ -349,24 +351,8 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
 
   if (!screenshotsByDevice) return null;
 
-  // Altura del viewport diferenciada por dispositivo
-  const getViewportHeight = () => {
-    if (activeDevice === 'mobile') return 280;
-    if (activeDevice === 'tablet') return 320;
-    return 350;
-  };
-
-  const viewportHeight = getViewportHeight();
-
-  // Umbral inteligente según dispositivo para no romper experiencias previas
-  const getScrollThreshold = () => {
-    // Mobile/Tablet: Umbral bajo (800px) para que las Apps hagan scroll y se vean bien
-    if (activeDevice === 'mobile' || activeDevice === 'tablet') return 800;
-    // Desktop: Umbral alto (1000px). Evita que casi todas las capturas de pantalla de laptop se muevan.
-    return 1000;
-  };
-
-  const shouldScroll = !currentImage?.disableScroll && (imageHeight > getScrollThreshold());
+  // Ya no usamos viewportHeight hardcodeado, usamos mediciones reales del DOM
+  const shouldScroll = !currentImage?.disableScroll && (imageHeight > containerInnerHeight + 10); // 10px de gracia
 
   // Ref para detectar visibilidad y reiniciar animación
   const containerRef = useRef(null);
@@ -425,10 +411,10 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                   </div>
                 </div>
                 <div className="group flex-1 relative overflow-hidden bg-zinc-950 border-x border-b border-zinc-700/50 rounded-b-xl cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/10" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
+                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { setImageHeight(e.target.clientHeight); setContainerInnerHeight(e.target.parentElement.clientHeight); }} />
                       )}
                     </AnimatePresence>
                   </div>
@@ -455,10 +441,10 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                 </div>
                 
                 <div className="group flex-1 relative overflow-hidden bg-zinc-900 rounded-[2.2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
+                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { setImageHeight(e.target.clientHeight); setContainerInnerHeight(e.target.parentElement.clientHeight); }} />
                       )}
                     </AnimatePresence>
                   </div>
@@ -479,10 +465,10 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
               <div className="bg-zinc-800 rounded-[1.5rem] border-[3px] border-zinc-700 shadow-xl shadow-black/30 p-2 flex-1 flex flex-col overflow-hidden">
                 <div className="flex justify-center mb-1"><div className="w-2 h-2 bg-zinc-600 rounded-full" /></div>
                 <div className="group flex-1 relative overflow-hidden bg-zinc-950 rounded-xl cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
-                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
+                  <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - ${viewportHeight}px)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => setImageHeight(e.target.naturalHeight)} />
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { setImageHeight(e.target.clientHeight); setContainerInnerHeight(e.target.parentElement.clientHeight); }} />
                       )}
                     </AnimatePresence>
                   </div>
