@@ -390,7 +390,7 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026",
+    date: "Marzo 2026",
     screenshotsByDevice: {
       desktop: [
         { image: "/projects/screenshots/sfit/desktop-1.webp", label: "Gestión de Usuarios", disableScroll: true },
@@ -420,7 +420,7 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026",
+    date: "Marzo 2026",
     screenshotsByDevice: {
       desktop: [
         { image: "/projects/screenshots/peru-andean/desktop-1.webp", label: "Página de Inicio" },
@@ -448,7 +448,7 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "data-science",
-    date: "Febrero 2026",
+    date: "Abril 2026",
     screenshotsByDevice: {
       desktop: [
         { image: "/projects/screenshots/judiscribe/desktop-1.webp", label: "Página de Inicio", disableScroll: true },
@@ -469,7 +469,7 @@ export const projects = [
     githubUrl: null,
     featured: true,
     category: "full-stack",
-    date: "Febrero 2026",
+    date: "Abril 2026",
     screenshotsByDevice: {
       desktop: [
         { image: "/projects/screenshots/andina-adventures/desktop-1.webp", label: "Dashboard Administrativo" },
