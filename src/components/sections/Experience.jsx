@@ -439,10 +439,15 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
           )}
 
           {activeDevice === 'mobile' && (
-            <div className="max-w-[320px] mx-auto flex-1 w-full flex flex-col">
-              <div className="bg-zinc-800 rounded-[2.5rem] border-[3px] border-zinc-700 shadow-2xl shadow-black/40 p-1.5 flex-1 flex flex-col overflow-hidden">
-                <div className="relative flex justify-center"><div className="absolute top-0 z-10 w-24 h-5 bg-zinc-800 rounded-b-2xl flex items-center justify-center"><div className="w-12 h-1 bg-zinc-600 rounded-full" /></div></div>
-                <div className="group flex-1 min-h-[350px] md:min-h-0 relative overflow-hidden bg-zinc-950 rounded-[2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
+            <div className="max-w-[280px] mx-auto flex-1 w-full flex flex-col relative px-2">
+              <div className="bg-zinc-950 rounded-[2.5rem] ring-4 ring-zinc-800/80 shadow-2xl shadow-black/40 p-1 flex-1 flex flex-col relative overflow-hidden">
+                {/* Dynamic Island modern notch */}
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 w-20 h-5 bg-black rounded-full shadow-inner flex items-center justify-start px-2 gap-2">
+                  <div className="w-2 h-2 rounded-full bg-zinc-800/50 shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]" />
+                  <div className="w-1 h-1 rounded-full bg-green-500/30" />
+                </div>
+                
+                <div className="group flex-1 min-h-[350px] md:min-h-0 relative overflow-hidden bg-zinc-900 rounded-[2.2rem] cursor-pointer" onClick={onOpenLightbox} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpenLightbox?.()}>
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center">
                     <AnimatePresence mode="wait">
                       {currentImage && (
@@ -452,10 +457,12 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><div className="p-2.5 bg-primary/90 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300"><Maximize2 size={18} className="text-white" /></div></div>
-                    {shouldScroll && (<div className="absolute top-2 right-2 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[8px] text-white/80 flex items-center gap-0.5"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
+                    {shouldScroll && (<div className="absolute top-4 right-3 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-medium text-white/90 flex items-center gap-1 shadow-md border border-white/10"><svg className="w-2.5 h-2.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>Scroll</div>)}
                   </div>
                 </div>
-                <div className="flex justify-center py-1.5"><div className="w-20 h-1 bg-zinc-600 rounded-full" /></div>
+
+                {/* Home bar modern */}
+                <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-zinc-700/60 rounded-full z-20" />
               </div>
             </div>
           )}
