@@ -415,7 +415,14 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { setImageHeight(e.target.clientHeight); setContainerInnerHeight(e.target.parentElement.clientHeight); }} />
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : currentImage?.disableScroll ? 'w-full h-auto object-contain' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
+                          const containerWidth = e.target.parentElement.clientWidth;
+                          const containerHeight = e.target.parentElement.clientHeight;
+                          const ratio = e.target.naturalHeight / e.target.naturalWidth;
+                          const calculatedHeight = containerWidth * ratio;
+                          setImageHeight(calculatedHeight); 
+                          setContainerInnerHeight(containerHeight); 
+                        }} />
                       )}
                     </AnimatePresence>
                   </div>
@@ -445,7 +452,14 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { setImageHeight(e.target.clientHeight); setContainerInnerHeight(e.target.parentElement.clientHeight); }} />
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
+                          const containerWidth = e.target.parentElement.clientWidth;
+                          const containerHeight = e.target.parentElement.clientHeight;
+                          const ratio = e.target.naturalHeight / e.target.naturalWidth;
+                          const calculatedHeight = containerWidth * ratio;
+                          setImageHeight(calculatedHeight); 
+                          setContainerInnerHeight(containerHeight); 
+                        }} />
                       )}
                     </AnimatePresence>
                   </div>
@@ -469,7 +483,14 @@ const DeviceScreenshotViewer = ({ screenshotsByDevice, onOpenLightbox, isRightSi
                   <div className="absolute inset-0 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center" style={{ containerType: 'size' }}>
                     <AnimatePresence mode="wait">
                       {currentImage && (
-                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { setImageHeight(e.target.clientHeight); setContainerInnerHeight(e.target.parentElement.clientHeight); }} />
+                        <motion.img key={`${activeDevice}-${currentIndex}`} src={currentImage.image} alt={currentImage.label || 'Screenshot'} className={`${shouldScroll && isInView ? 'w-full h-auto object-cover object-top screenshot-scroll-stages absolute top-0 left-0' : 'w-full h-full object-contain'}`} style={shouldScroll ? { '--scroll-distance': `calc(100% - 100cqh)` } : undefined} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} loading="lazy" decoding="async" onLoad={(e) => { 
+                          const containerWidth = e.target.parentElement.clientWidth;
+                          const containerHeight = e.target.parentElement.clientHeight;
+                          const ratio = e.target.naturalHeight / e.target.naturalWidth;
+                          const calculatedHeight = containerWidth * ratio;
+                          setImageHeight(calculatedHeight); 
+                          setContainerInnerHeight(containerHeight); 
+                        }} />
                       )}
                     </AnimatePresence>
                   </div>
