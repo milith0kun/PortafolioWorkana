@@ -482,9 +482,9 @@ body,
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
   /* El secreto: un minúsculo escalado elimina el borde fantasma */
-  transform: translateZ(0) scale(1.02); 
+  transform: translateZ(0) scale(1.001); 
 }
 
 /* Fix persistente para recorte en marcos redondeados (Webkit Clipping Bug) */
@@ -502,7 +502,7 @@ body,
 
 /* Evitar blur en imágenes estáticas también mediante sub-pixel antialiasing */
 .object-contain, .object-cover {
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
   -webkit-font-smoothing: antialiased;
-  transform: translateZ(0) scale(1.01);
+  transform: translateZ(0) scale(1.001);
 }
