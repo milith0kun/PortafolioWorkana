@@ -478,6 +478,14 @@ export const projects = [
         { image: "/projects/screenshots/andina-adventures/desktop-4.webp", label: "Vista de Servicios" },
         { image: "/projects/screenshots/andina-adventures/desktop-5.webp", label: "Configuración de Rutas" },
         { image: "/projects/screenshots/andina-adventures/desktop-6.webp", label: "Liquidaciones y Pagos" }
+      ],
+      mobile: [
+        { image: "/projects/screenshots/andina-adventures/mobile-1.webp", label: "Login Móvil" },
+        { image: "/projects/screenshots/andina-adventures/mobile-2.webp", label: "Dashboard Guía" },
+        { image: "/projects/screenshots/andina-adventures/mobile-3.webp", label: "Lista de Tours" },
+        { image: "/projects/screenshots/andina-adventures/mobile-4.webp", label: "Detalle de Ruta" },
+        { image: "/projects/screenshots/andina-adventures/mobile-5.webp", label: "Confirmación de Servicio" },
+        { image: "/projects/screenshots/andina-adventures/mobile-6.webp", label: "Perfil de Guía" }
       ]
     }
   }
